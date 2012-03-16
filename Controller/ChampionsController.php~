@@ -1,0 +1,22 @@
+<?php
+class ChampionsController extends AppController {
+    public $name = 'Champions';
+    public $helpers = array('Html', 'Form');
+
+
+    function beforeFilter(){
+
+
+    }
+
+
+
+    public function index() {
+      $this->set('title_for_layout', 'Witamy');
+
+      $this->set('title', 'Championy');
+      $this->set('champions', $this->Champion->find('all'));
+    }
+
+
+}

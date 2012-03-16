@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<runes>
+  <marks>
+    <mark>
+      <name>Greater Mark of Malice</name>
+      <desc>+0.93% critical chance</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Desolation</name>
+      <desc>+1.66 armor penetration</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Fortitude</name>
+      <desc>+3.47 health</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Vitality</name>
+      <desc>+0.54 health per level (+9.72 at champion level 18)</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Resilience</name>
+      <desc>+0.91 armor</desc>
+      </mark>
+    <mark>
+      <name>Razer Mark of Precision</name>
+      <desc>+2.23% critical damage</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Warding</name>
+      <desc>+0.97 magic resist</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Knowledge</name>
+      <desc>+1.17 mana per level (+21.06 at champion level 18)</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Strength</name>
+      <desc>+0.95 attack damage</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Replenishment</name>
+      <desc>+0.26 mana regen / 5 sec.</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Might</name>
+      <desc>+0.13 attack damage per level (+2.43 at champion level 18)</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Insight</name>
+      <desc>+0.95 magic penetration</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Alacrity</name>
+      <desc>+1.7% attack speed</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Furor</name>
+      <desc>+2.23% critical damage</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Shielding</name>
+      <desc>+0.07 magic resist per level (+1.26 at champion level 18)</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Focus</name>
+      <desc>-0.16% cooldowns</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Potency</name>
+      <desc>+0.59 ability power</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Force</name>
+      <desc>+0.1 ability power per level (+1.8 at champion level 18)</desc>
+      </mark>
+    <mark>
+      <name>Greater Mark of Intellect</name>
+      <desc>+5.91 mana</desc>
+      </mark>
+  </marks>
+  <seals>
+    <seal>
+      <name>Greater Seal of Knowledge</name>
+      <desc>+1.17 mana per level (+21.06 at champion level 18)</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Replenishment</name>
+      <desc>+0.41 mana regen / 5 sec.</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Clarity</name>
+      <desc>+0.065 mana regen / 5 sec. per level (+1.17 at champion level 18)</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Strength</name>
+      <desc>+0.43 attack damage</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Might</name>
+      <desc>+0.06 attack damage per level (+1.09 at champion level 18)</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Alacrity</name>
+      <desc>+0.76% attack speed</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Furor</name>
+      <desc>+0.78% critical damage</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Meditation</name>
+      <desc>+0.63 Energy regen/5 sec</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Shielding</name>
+      <desc>+0.1 magic resist per level (+1.8 at champion level 18)</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Vigor</name>
+      <desc>+0.43 health regen / 5 sec.</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Regeneration</name>
+      <desc>+0.11 health regen / 5 sec. per level (+1.98 at champion level 18)</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Evasion</name>
+      <desc>+0.75% dodge</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Focus</name>
+      <desc>-0.29% cooldowns</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Potency</name>
+      <desc>+0.59 ability power</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Force</name>
+      <desc>+0.1 ability power per level (+1.8 at champion level 18)</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Intellect</name>
+      <desc>+6.89 mana</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Malice</name>
+      <desc>+0.42% critical chance</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Fortitude</name>
+      <desc>+5.35 health</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Vitality</name>
+      <desc>+1.08 health per level (+19.44 at champion level 18)</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Lucidity</name>
+      <desc>+0.064 Energy regen/5 sec per level (+1.15 at champion level 18)</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Resilience</name>
+      <desc>+1.41 armor</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Defense</name>
+      <desc>+0.15 armor per level (+2.7 at champion level 18)</desc>
+    </seal>
+    <seal>
+      <name>Greater Seal of Warding</name>
+      <desc>+0.74 magic resist</desc>
+    </seal>
+  </seals>
+  <glyphs>
+    <glyph>
+      <name>Greater Glyph of Insight</name>
+      <desc>+0.57 magic penetration</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Malice</name>
+      <desc>+0.28% critical chance</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Fortitude</name>
+      <desc>+2.67 health</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Vitality</name>
+      <desc>+0.54 health per level (+9.72 at champion level 18)</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Resilience</name>
+      <desc>+0.7 armor</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Warding</name>
+      <desc>+1.49 magic resist</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Strength</name>
+      <desc>+0.28 attack damage</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Might</name>
+      <desc>+0.04 attack damage per level (+0.73 at champion level 18)</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Alacrity</name>
+      <desc>+0.64% attack speed</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Furor</name>
+      <desc>+0.56% critical damage</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Acumen</name>
+      <desc>+2.2 Energy</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Shielding</name>
+      <desc>+0.15 magic resist per level (+2.7 at champion level 18)</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Sapience</name>
+      <desc>+0.161 Energy/level (+2.89 at level 18)</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Vigor</name>
+      <desc>+0.27 health regen / 5 sec.</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Focus</name>
+      <desc>-0.65% cooldowns</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Celerity</name>
+      <desc>-0.05% cooldowns per level (-0.9% at champion level 18)</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Potency</name>
+      <desc>+0.99 ability power</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Force</name>
+      <desc>+0.17 ability power per level (+3.06 at champion level 18)</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Intellect</name>
+      <desc>+11.25 mana</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Knowledge</name>
+      <desc>+1.42 mana per level (+25.56 at champion level 18)</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Replenishment</name>
+      <desc>+0.31 mana regen / 5 sec.</desc>
+    </glyph>
+    <glyph>
+      <name>Greater Glyph of Clarity</name>
+      <desc>+0.055 mana regen / 5 sec. per level (+0.99 at champion level 18)</desc>
+    </glyph>
+  </glyphs>
+  <quintessences>
+    <quintessence>
+      <name>Greater Quintessence of Knowledge</name>
+      <desc>+4.17 mana per level (+75.06 at champion level 18)</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Replenishment</name>
+      <desc>+1.25 mana regen / 5 sec.</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Clarity</name>
+      <desc>+0.24 mana regen / 5 sec. per level (+4.32 at champion level 18)</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Strength</name>
+      <desc>+2.25 attack damage</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Insight</name>
+      <desc>+1.89 magic penetration</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Might</name>
+      <desc>+0.25 attack damage per level (+4.5 at champion level 18)</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Alacrity</name>
+      <desc>+3.4% attack speed</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Swiftness</name>
+      <desc>+1.5% movement speed</desc>
+    </quintessence>
+    <quintessence>
+      <name>Razer Quintessence of Speed</name>
+      <desc>+1.5% movement speed</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Revival</name>
+      <desc>-5% time dead</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Furor</name>
+      <desc>+4.46% critical damage</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Avarice</name>
+      <desc>+1 gold / 10 sec.</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Wisdom</name>
+      <desc>+2% experience gained</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Shielding</name>
+      <desc>+0.37 magic resist per level (+6.66 at champion level 18)</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of the Piercing Present</name>
+      <desc>+1.89 magic penetration</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Vigor</name>
+      <desc>+2.7 health regen / 5 sec.</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Regeneration</name>
+      <desc>+0.28 health regen / 5 sec. per level (+5.04 at champion level 18)</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Evasion</name>
+      <desc>+1.5% dodge</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Focus</name>
+      <desc>-1.64% cooldowns</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Celerity</name>
+      <desc>-0.13% cooldowns per level (-2.34% at champion level 18)</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Potency</name>
+      <desc>+4.95 ability power</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Force</name>
+      <desc>+0.43 ability power per level (+7.74 at champion level 18)</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Intellect</name>
+      <desc>+37.5 mana</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Malice</name>
+      <desc>+1.86% critical chance</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Desolation</name>
+      <desc>+3.33 armor penetration</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Fortitude</name>
+      <desc>+26 health</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Meditation</name>
+      <desc>+1.575 Energy regen/5 sec</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Vitality</name>
+      <desc>+2.7 health per level (+48.6 at champion level 18)</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Acumen</name>
+      <desc>+5.4 Energy</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Resilience</name>
+      <desc>+4.26 armor</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Defense</name>
+      <desc>+0.38 armor per level (+6.84 at champion level 18)</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Warding</name>
+      <desc>+4.5 magic resist</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of the Deadly Wreath</name>
+      <desc>+3.33 armor penetration</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Frosty Fortitude</name>
+      <desc>+26 health</desc>
+    </quintessence>
+    <quintessence>
+      <name>Greater Quintessence of Sugar Rush</name>
+      <desc>+1.5% movement speed</desc>
+    </quintessence>
+  </quintessences>
+</runes>
