@@ -31,6 +31,7 @@
 	Router::connect('/', array('controller' => 'pages', 'action' => 'home', 'home'));
         Router::connect('/login', array('controller' => 'users', 'action' => 'login','admin'=>false));
         Router::connect('/admin/:controller/login', array('controller' => 'users', 'action' => 'login','admin'=>false));
+        Router::connect('/admin', array('controller' => 'news', 'action' => 'index','admin'=>true));
 //        Router::connect('/news/*', array('controller' => 'news', 'action' => 'single_news'));
 
 

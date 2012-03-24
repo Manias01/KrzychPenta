@@ -3,7 +3,8 @@
 <head>
 <title><?=$title_for_layout?> | Generator - Pentakill.pl</title>
 <?=$this->Html->charset()."\n"?>
-<?=$this->Html->css('generator.css')."\n"?>
+<?=$this->Html->css('generator.css')?>
+<?=$this->Html->script(array('jquery-1.7.2.min.js','generator.js'))?>
 <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 
 </head>
@@ -30,10 +31,8 @@
 </div> <!--/main-->
 
 
-
-
-
 <div class="clear"></div>
+
 
 <div id="footer">
   <hr />

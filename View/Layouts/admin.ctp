@@ -26,7 +26,8 @@
     'Items'=>'items',
     'Runes'=>'runes',
     'Summoner Spells'=>'sses',
-    'Users'=>'users'
+    'Users'=>'users',
+    'Builds'=>'builds'
   );?>
   <?foreach($linksAdmin as $nazwa=>$link):?>
     <a href="<?=$this->Html->url(array('controller'=>$link))?>" <?=($link==strtolower($this->name))?'class="active"':''?> ><?=$nazwa?></a>

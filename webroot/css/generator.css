@@ -4,7 +4,7 @@ body{
 	line-height: 1.5em;
 	color: #9b9b9b; /*#707070;*/
 	margin: auto;
-	background: black url('../img/frontend/back.jpg') center 0 no-repeat;
+	background: black /*url('../img/frontend/back.jpg') center 0 no-repeat*/;
 }
 #content{
 	padding: 1px 20px 0 20px;
@@ -49,19 +49,22 @@ ul{
 #menu{
     border-bottom: 1px solid #ccc;
 }
+div.clear{
+    clear: both;
+}
 
 
 
 
 
 
-/*------------------------- Tabela Skilli i ogĂłlnie -------------------------*/
+/*------------------------- Tabela Skilli i ogolnie -------------------------*/
 
 td{
 	text-align: center;
 }
 table, td{
-	border: 1px solid black;
+	border: 1px solid gray;
 	border-collapse: collapse;
 }
 .row-1,.row-3{
@@ -374,4 +377,34 @@ span.ikonka:hover{
 }
 #tooltip h3, #tooltip div {
   margin: 0;
+}
+
+
+/*------------Nowe----------*/
+/*----------=Index-choose-build-----------*/
+
+.build{
+    width: 150px;
+    height: auto;
+    padding: 0 0 10px 0;
+    float: left;
+    text-align: center;
+    border: 1px solid transparent;
+}
+.build:hover{
+    border: 1px solid gray;
+    text-decoration: none;
+}
+
+#list-champions a{
+    width: 100px;
+    min-height: 100px;
+    height: auto;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid transparent;
+}
+#list-champions a:hover{
+    border: 1px solid gray;
+    text-decoration: none;
 }
