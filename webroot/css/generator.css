@@ -52,6 +52,9 @@ ul{
 div.clear{
     clear: both;
 }
+.cake-sql-log{
+    font-size: 12px;
+}
 
 
 
@@ -408,3 +411,42 @@ span.ikonka:hover{
     border: 1px solid gray;
     text-decoration: none;
 }
+
+/*----------=Skills---------*/
+.skill{
+    font-size: 14px;
+}
+.skill label{
+    width: 80px;
+    display: inline-block;
+}
+.skill input{
+    width: 300px;
+}
+.skill p{
+    margin-left: 80px;
+}
+.skill textarea{
+    width: 800px;
+    height: 80px;
+}
+.skill-desc{
+    border: 1px solid orange;
+}
+#SkillSkillsForm .submit{
+    float: left;
+}
+#SkillSkillsForm .next{
+    float: right;
+    font-size: 18px;
+    margin-top: 10px;
+    border: 1px solid orange;
+    padding: 5px;
+    background-color: black;
+}
+#SkillSkillsForm .next:hover{
+    background-color: gray;
+}
+
+
+

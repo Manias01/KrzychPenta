@@ -105,7 +105,7 @@ class ChampionsController extends AppController {
 
        //zapis do bazy danych:
               $this->Champion->create();
-              $this->Champion->save(array(
+              $this->Champion->save(array(  //a nie 'set' ?
                   'id' => $tab['id'][$a],
                   'name' => $tab['name'][$a][1],
                   'mobafire_id' => $tab['nr'][$a][1],
