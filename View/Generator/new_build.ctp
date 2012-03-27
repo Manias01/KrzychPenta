@@ -8,7 +8,7 @@
     $img_url = $this->StrChanger->Dehumanize($champion['Champion']['name']);
     $champion['Champion']['image_src'] = $this->base.'/img/lol/champions/'.$img_url.'/'.$img_url.'.png';
 ?>
-    <a href="<?=$this->Html->url(array('action'=>'skills',$champion['Champion']['id']))?>" name="<?=strtolower($champion['Champion']['name'])?>">
+    <a href="<?=$this->Html->url(array('action'=>'save_new_build',$champion['Champion']['id']))?>" name="<?=strtolower($champion['Champion']['name'])?>">
         <?=$this->Thumb->Champion($champion['Champion']['name'])?>
         <p><?=$champion['Champion']['name']?></p>
     </a>

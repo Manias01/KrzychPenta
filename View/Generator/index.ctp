@@ -1,7 +1,9 @@
-<br/>
-<?=$this->Html->link('Stwórz nowy poradnik',array('action'=>'new_build'))?>
+<h2>Stwórz nowy poradnik:</h2>
+<?=$this->Html->link('-> Stwórz nowy poradnik',array('action'=>'new_build'))?>
 
-<h2>Dostępne poradniki:</h2>
+<br/><br/>
+<h2>lub wybierz z już rozpoczętych:</h2>
+
 
 <?
 foreach($builds as &$build):

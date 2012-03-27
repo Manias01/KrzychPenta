@@ -14,11 +14,20 @@
 
 <div id="menu">
 
-<?$linksAdmin = array(
-    'Wybór poradnka'=>'index'
+<?$links = array(
+    'Wybór poradnika'=>'index',
+    'Umiejętności'=>'skills',
+    'Kolejność umiejętności'=>'skill_sequence',
+    'Specjalizacja'=>'masteries',
+    'Summoner spells'=>'ss',
+    'Runy'=>'runes',
+    'Przedmioty'=>'build'
   );?>
-  <?foreach($linksAdmin as $nazwa=>$link):?>
-    <a href="<?=$this->Html->url(array('action'=>$link))?>" <?=($nazwa==$this->name)?'class="active"':''?> ><?=$nazwa?></a>
+  <div class="done">
+  <?(isSet($this->params['pass'][0]))?$index = false:$index = true;?>
+  <?foreach($links as $nazwa=>$link):?>
+  <?=($link==$this->params['action'])?'</div><!--/done-->':''?>
+    <a href="<?=($index)?'#':$this->Html->url(array('action'=>$link,$this->params['pass'][0]));?>" <?=($link==$this->params['action'])?'class="active"':(($index)?'class="inactive"':'')?> ><?=$nazwa?></a> ->
   <?endforeach?>
 
 </div><!--/menu-->

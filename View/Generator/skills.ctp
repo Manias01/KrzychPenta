@@ -1,13 +1,30 @@
-<h2>Sprawdź czy opisy skilli są poprawne</h2>
-
 <h2><?=$this->Session->flash();?></h2>
 
-<div class="build">
-    <?=$this->Thumb->Champion($champion['Champion']['name'])?>
-    <p><?=$champion['Champion']['name']?></p>
-</div><!--/build-->
+<h2>Nazwij poradnik:</h2>
+<div id="skills-header-background">
+    <div class="build">
+        <?=$this->Thumb->Champion($build['Champion']['name'])?>
+        <p><?=$build['Champion']['name']?></p>
+    </div><!--/build-->
 
-<div class="clear"></div>
+
+    <?=$this->Form->create('Build',array('url'=>array('controller'=>'generator','action'=>'save_buildName_skills')))?>
+        <?=$this->Form->input('id',array('value'=>$build['Build']['id']))?>
+        <?=$this->Form->input('name',array('label'=>$build['Champion']['name'].' - ','value'=>$build['Build']['name']))?>
+    <?=$this->Form->end("Zapisz nazwę a potem sprawdź skille")?>
+
+    
+    <div class="clear"></div>
+    
+</div><!--/skills-header-background-->
+
+
+
+
+
+<h2>A następnie sprawdź czy opisy skilli są poprawne:</h2>
+
+
 
 <?=$this->Form->create('Skill');?>
     <?$a=0;foreach($skills as $skill):?>
@@ -17,7 +34,7 @@
         <fieldset>
             <legend><? echo $skill['Skill']['name_en']; ?></legend>
     <?
-            echo $this->Thumb->Skill($champion['Champion']['name'],$skill['Skill']['name_en']);
+            echo $this->Thumb->Skill($build['Champion']['name'],$skill['Skill']['name_en']);
             echo $this->Form->input($a.'.Skill.id',array('value'=>$skill['Skill']['id']));
             echo $this->Form->input($a.'.Skill.name_en',array('value'=>$skill['Skill']['name_en']));
             echo $this->Form->input($a.'.Skill.name_pl',array('value'=>$skill['Skill']['name_pl']));
@@ -34,5 +51,5 @@
     </div>
 
     <?$a++;endforeach?>
-    <a href="" class="next">Następny krok</a>
+    <a href="<?=$this->Html->url(array('action'=>'skill_sequence',$build['Build']['id']))?>" class="next">Następny krok</a>
 <?=$this->Form->end('Zaktualizuj dane');?>
