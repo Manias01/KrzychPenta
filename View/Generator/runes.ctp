@@ -32,6 +32,3 @@
         <?=$this->Form->input($type,array('type'=>'hidden','value'=>$build['Build']['runes'][$type]))?>
     <?endfor?>
 <?=$this->Form->end('Następny krok')?>
-    
-
-<?//=print_r($build)?>

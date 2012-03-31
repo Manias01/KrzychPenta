@@ -52,6 +52,15 @@ class ThumbHelper extends AppHelper {
         return($img_full);
     }
 
+
+    public function Item($id='?',$name,$class=false){
+        $item = $this->Dehumanize($name);
+        $img_url = $this->base.'/img/lol/items/'.$item.'.gif';
+        $img_full = '<img src="'.$img_url.'" alt="'.$item.'" item_id="'.$id.'" '.(($class)?'class="'.$class.'"':'').'/>';
+
+        return($img_full);
+    }
+
     
 
 }

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-//Filtrowanie podczas wyboru championa:
+//------Filtrowanie podczas wyboru championa:------
     if($('#new_build-filter').length){  //jeżeli jest okno do filtrowania:
         $('#new_build-filter').focus();
         $('#new_build-filter').keyup(function(){ //po kazdej literze:
@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 
 
-//Wybór SS
+//------Wybór SS------
     var spell_1 = '';
     var spell_2 = '';
     var spell_nr = 1;
@@ -52,7 +52,7 @@ $(document).ready(function(){
 
 
 
-//Wybór runy
+//------Wybór runy------
     //--Start strony--
     $('.rune-type').hide();
     $('#rune-1').show();
@@ -91,6 +91,55 @@ $(document).ready(function(){
     });
 
 
+
+//------Itemy - drag & drop------
+    $("#items-destination").sortable().disableSelection();
+    $("#items-ready img").draggable({
+        appendTo: "body",
+        helper: "clone",
+        start: function(){
+            $(".item-box-img").addClass('items-highlight');
+        },
+        stop: function(){
+             $(".item-box-img").removeClass('items-highlight');
+        }
+    });
+
+    $(".item-box").droppable({
+          tolerance: 'touch',
+          drop: function(event,ui){
+              $(this).find('p').html($(ui.draggable).attr('alt'));
+              $(this).find('img').attr('src',$(ui.draggable).attr('src')).attr('item_id',$(ui.draggable).attr('item_id')).fadeIn('normal');
+          }
+    });
+
+    //Kasowanie po kliku na "x"
+    $('.item-box-img a.item-delete').click(function(){
+        $(this).parent('div').find('img').attr('src','').attr('item_id','').attr('alt','').fadeOut('normal'); //obrazek zniknij
+        $(this).parent('div').parent('div').find('p').html('');              //usun podpis
+        return false;
+    });
+
+
+    //Itemy-input-filtrowanie
+    $('#items-search').focus();
+    $('#items-search').keyup(function(){ //po kazdej literze:
+        if($(this).attr('value') == ''){
+            $('#items-all img').show();
+        }else{
+            var word = ($(this).attr('value')).toLowerCase();
+            $('#items-all img').hide().filter('[alt*="'+word+'"]').show();
+        }
+    });
+
+    //Zapisanie do form-a wybranych i ustawionych itemow
+    $('.submit input').click(function(){
+        for(a=1;a<=6;a++){
+            $('.item-box').eq((a-1)).attr('item_id',a);
+            $('input#Build'+a).attr('value', $('.item-box-img').eq((a-1)).find('img').attr('item_id'));
+        }
+        return true;
+    });
 
 
 

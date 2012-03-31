@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class GeneratorController extends AppController {
-    public $uses = array('Build','Champion','Skill','Ss','Rune');
+    public $uses = array('Build','Champion','Skill','Ss','Rune','Item','ItemsTag');
     public $helpers = array('StrChanger','Thumb','Time');
 
 
@@ -200,10 +200,9 @@ class GeneratorController extends AppController {
         $this->CheckId($build_id);
         //after click 'next step':
         if($this->request->is('post')){
-            $runes_data = serialize($this->request->data['Build']);
             if($this->Build->save(array(
                 'id'=>$build_id,
-                'runes'=>$runes_data
+                'runes'=>serialize($this->request->data['Build'])
                 ))
             ){
                 $this->redirect(array('action'=>'items',$this->params['pass'][0]));
@@ -232,27 +231,54 @@ class GeneratorController extends AppController {
     public function items($build_id=false){
         $this->CheckId($build_id);
         //after click 'next step':
-        /*if($this->request->is('post')){
-            $runes_data = serialize($this->request->data['Build']);
+        if($this->request->is('post')){
             if($this->Build->save(array(
                 'id'=>$build_id,
-                'ss1_id'=>intval($this->request->data['Build']['ss1']),
-                'ss2_id'=>intval($this->request->data['Build']['ss2'])
+                'items'=>serialize($this->request->data['Build'])
                 ))
             ){
-                $this->redirect(array('action'=>'items',$this->params['pass'][0]));
+                $this->redirect(array('action'=>'description',$this->params['pass'][0]));
             }else{
-                echo 'Problem z zapisem sekwencji skilli [GeneratorController -> runes()]';
+                echo 'Problem z zapisem przedmiotów [GeneratorController -> items()]';
                 exit;
             }
-        }*/
+        }
 
     //normal view:
         $build = $this->Build->find('first',array('recursive'=>-1,'conditions'=>array('Build.id'=>$build_id)));
+        $items = $this->Item->find('all',array('recursive'=>-1));
 
-
+        $build['Build']['items'] = unserialize($build['Build']['items']);
+        /*
+        $categories = array(
+          'atak' => array(
+            'damage',
+            'attack_speed',
+            'life_steal',
+            'critical_strike'
+          ),
+          'obrona' => array(
+            'armor',
+            'health',
+            'health_regen',
+            'spell_block'
+          ),
+          'magia' => array(
+            'mana',
+            'cooldown_reduction',
+            'mana_regen',
+            'spell_damage'
+          ),
+          'inne' => array(
+            'movement',
+            'consumable'
+          )
+        );
+        
+        $this->set('categories',$categories);*/
+        
         $this->set('build',$build);
-//        $this->set('items',$items);
+        $this->set('items',$items);
     }
 
 

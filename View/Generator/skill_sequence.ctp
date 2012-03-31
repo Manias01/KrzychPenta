@@ -36,6 +36,4 @@
 
     </table><!--/tabela-skill-->
     
-<div style="float:right;margin-right:137px">
-    <?=$this->Form->end('Następny krok')?>
-</div>
+<?=$this->Form->end('Następny krok')?>

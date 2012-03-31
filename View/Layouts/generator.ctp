@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
 <head>
-<title><?=$title_for_layout?> | Generator - Pentakill.pl</title>
-<?=$this->Html->charset()."\n"?>
-<?=$this->Html->css('generator.css')?>
-<?=$this->Html->script(array('jquery-1.7.2.min.js','generator.js'))?>
-<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-
+    <title><?=$title_for_layout?> | Generator - Pentakill.pl</title>
+    <?=$this->Html->charset()."\n"?>
+    <?=$this->Html->css('generator.css')?>
+    <?=$this->Html->script(array('jquery-1.7.2.min.js','jquery-ui-1.8.18.custom.min.js','generator.js'))?>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 </head>
 <body>
-<div id="wrap">
 
+<div id="wrap">
+    
 
 <div id="menu">
 
@@ -21,7 +21,8 @@
     'Specjalizacja'=>'masteries',
     'Summoner spells'=>'ss',
     'Runy'=>'runes',
-    'Przedmioty'=>'items'
+    'Przedmioty'=>'items',
+    'Własna treść'=>'description'
   );?>
   <div class="done">
   <?(isSet($this->params['pass'][0]))?$index = false:$index = true;?>
