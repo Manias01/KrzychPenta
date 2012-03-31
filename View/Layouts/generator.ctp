@@ -21,7 +21,7 @@
     'Specjalizacja'=>'masteries',
     'Summoner spells'=>'ss',
     'Runy'=>'runes',
-    'Przedmioty'=>'build'
+    'Przedmioty'=>'items'
   );?>
   <div class="done">
   <?(isSet($this->params['pass'][0]))?$index = false:$index = true;?>

@@ -3,7 +3,7 @@
 <div id="sspells-box">
 
     <?foreach($ss as $s):?>
-    <div class="sspell" title="<?=$this->Thumb->Dehumanize($s['Ss']['name_en'])?>">
+    <div class="sspell" title="<?=$s['Ss']['id']?>">
         <?=$this->Thumb->SS($s['Ss']['name_en'])?><br/>
         <span class="mas-name"><?=$s['Ss']['name_en']?></span>
     </div><!--/sspell-->
@@ -15,10 +15,12 @@
 <div id="chooseSS">
 
     <?=$this->Form->create()?>
-        <?=$this->Form->input('ss1',array('type'=>'hidden'))?>
-        <?=$this->Form->input('ss2',array('type'=>'hidden'))?>
-        <?=$this->Form->input('ss1_opis',array('type'=>'textarea'))?>
-        <?=$this->Form->input('ss2_opis',array('type'=>'textarea'))?>
+        <?=$this->Form->input('ss1',array('type'=>'hidden','value'=>$build['Build']['ss1_id']))?>
+        <?=$this->Form->input('ss2',array('type'=>'hidden','value'=>$build['Build']['ss2_id']))?>
+        <?//=$this->Form->input('ss1_opis',array('type'=>'textarea'))?>
+        <?//=$this->Form->input('ss2_opis',array('type'=>'textarea'))?>
+    <p class="choose1">SS1 - X</p>
+    <p class="choose2">SS2 - X</p>
     <?=$this->Form->end('Następny krok')?>
 
 </div><!--chooseSS-->

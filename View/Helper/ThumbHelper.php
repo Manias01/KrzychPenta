@@ -43,6 +43,15 @@ class ThumbHelper extends AppHelper {
         return($img_full);
     }
 
+
+    public function Rune($name,$class=false){
+        $rune = $this->Dehumanize($name);
+        $img_url = $this->base.'/img/lol/runes/'.$rune.'.gif';
+        $img_full = '<img src="'.$img_url.'" alt="'.$name.'" '.(($class)?'class="'.$class.'"':'').'/>';
+
+        return($img_full);
+    }
+
     
 
 }
