@@ -498,6 +498,24 @@ span.ikonka:hover{
 }
 */
 
+/*------------Description------------*/
+#BuildDescriptionForm textarea{
+    width: 600px;
+    height: 400px;
+    float: left;
+}
+#desc-champs{border: 1px solid red;
+    width: 260px;
+    height: auto;
+    float: right;
+}
+#desc-champs img{
+    width: 32px;
+    height: 32px;
+    float: left;
+    margin: 1px;
+}
+
 /*------------Nowe----------*/
 /*----------=Index-choose-build-----------*/
 

@@ -1,7 +1,7 @@
 <h2>Kolejność wyboru umiejętności</h2>
 
 <div class="build">
-    <?=$this->Thumb->Champion($build['Champion']['name'])?>
+    <?=$this->Thumb->Champion($build['Champion']['id'],$build['Champion']['name'])?>
     <p><?=$build['Champion']['name']?></p>
 </div><!--/build-->
 
@@ -21,7 +21,7 @@
 
         <tr class="row-<?=$type?>">
             <td class="skill">
-                <?=$this->Thumb->Skill($build['Champion']['name'],$skills[$type]['Skill']['name_en'])?>
+                <?=$this->Thumb->Skill($build['Champion']['id'],$build['Champion']['name'],$skills[$type]['Skill']['name_en'])?>
                 <?=$skills[$type]['Skill']['name_en']?>
             </td>
 

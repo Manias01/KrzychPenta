@@ -5,10 +5,10 @@ $(document).ready(function(){
         $('#new_build-filter').focus();
         $('#new_build-filter').keyup(function(){ //po kazdej literze:
             if($(this).attr('value') == ''){
-                $('#list-champions a').show();
+                $('#filter-champions a').show();
             }else{
                 var word = ($(this).attr('value')).toLowerCase();
-                $('#list-champions a').hide().filter('[name*="'+word+'"]').show();
+                $('#filter-champions a').hide().filter('[name*="'+word+'"]').show();
             }
         });
     }
@@ -25,26 +25,24 @@ $(document).ready(function(){
         var ss2 = $('input#BuildSs2').attr('value');
         $('.choose1').html('Summoner Spell 1 - '+ss1);
         $('.choose2').html('Summoner Spell 2 - '+ss2);
-        $('.sspell').filter('[title="'+ss1+'"]').addClass('highlight-choose1');
-        $('.sspell').filter('[title="'+ss2+'"]').addClass('highlight-choose2');
+        $('.sspell').filter('[id="'+ss1+'"]').addClass('highlight-choose1');
+        $('.sspell').filter('[id="'+ss2+'"]').addClass('highlight-choose2');
     }
 
     $('.sspell').click(function(){
-        if(spell_nr == 1 && spell_2.alt != this.title){
+        if(spell_nr == 1 && spell_2.alt != this.id){
             $('.sspell').removeClass('highlight-choose1');
             $(this).addClass('highlight-choose1');
             spell_1 = this;
-            //$('label[for="BuildSs1Opis"]').html('Summoner Spell 1 - '+this.title);
-            $('.choose1').html('Summoner Spell 1 - '+this.title);
-            $('#BuildSs1').attr('value', this.title);
+            $('.choose1').html('Summoner Spell 1 - '+this.id);
+            $('#BuildSs1').attr('value', this.id);
             spell_nr = 2;
-        }else if(spell_nr == 2 && spell_1.alt != this.title){
+        }else if(spell_nr == 2 && spell_1.alt != this.id){
             $('.sspell').removeClass('highlight-choose2');
             $(this).addClass('highlight-choose2');
             spell_2 = this;
-            //$('label[for="BuildSs2Opis"]').html('Summoner Spell 2 - '+this.title);
-            $('.choose2').html('Summoner Spell 2 - '+this.title);
-            $('#BuildSs2').attr('value', this.title);
+            $('.choose2').html('Summoner Spell 2 - '+this.id);
+            $('#BuildSs2').attr('value', this.id);
             spell_nr = 1;
       }
     });
@@ -108,14 +106,14 @@ $(document).ready(function(){
     $(".item-box").droppable({
           tolerance: 'touch',
           drop: function(event,ui){
-              $(this).find('p').html($(ui.draggable).attr('alt'));
-              $(this).find('img').attr('src',$(ui.draggable).attr('src')).attr('item_id',$(ui.draggable).attr('item_id')).fadeIn('normal');
+              $(this).find('p').html($(ui.draggable).parent('a').attr('name'));
+              $(this).find('img').attr('src',$(ui.draggable).attr('src')).attr('tip_id',$(ui.draggable).attr('tip_id')).fadeIn('normal');
           }
     });
 
     //Kasowanie po kliku na "x"
     $('.item-box-img a.item-delete').click(function(){
-        $(this).parent('div').find('img').attr('src','').attr('item_id','').attr('alt','').fadeOut('normal'); //obrazek zniknij
+        $(this).parent('div').find('img').attr('src','').attr('tip_id','').attr('alt','').fadeOut('normal'); //obrazek zniknij
         $(this).parent('div').parent('div').find('p').html('');              //usun podpis
         return false;
     });
@@ -125,21 +123,49 @@ $(document).ready(function(){
     $('#items-search').focus();
     $('#items-search').keyup(function(){ //po kazdej literze:
         if($(this).attr('value') == ''){
-            $('#items-all img').show();
+            $('#items-all a').show();
         }else{
             var word = ($(this).attr('value')).toLowerCase();
-            $('#items-all img').hide().filter('[alt*="'+word+'"]').show();
+            $('#items-all a').hide().filter('[name*="'+word+'"]').show();
         }
     });
 
     //Zapisanie do form-a wybranych i ustawionych itemow
     $('.submit input').click(function(){
         for(a=1;a<=6;a++){
-            $('.item-box').eq((a-1)).attr('item_id',a);
-            $('input#Build'+a).attr('value', $('.item-box-img').eq((a-1)).find('img').attr('item_id'));
+            $('.item-box').eq((a-1)).attr('tip_id',a);
+            $('input#Build'+a).attr('value', $('.item-box-img').eq((a-1)).find('img').attr('tip_id'));
         }
         return true;
     });
+
+
+
+//-----Description-----
+    if($('form#BuildDescriptionForm').length){
+        tinyMCE.init({
+            width : "600",
+            mode : "textareas",
+            theme : "advanced",
+            skin : "o2k7",
+            skin_variant : "black",
+            plugins : "emotions,spellchecker,advhr,insertdatetime,preview,wordcount",
+
+            // Theme options - button# indicated the row# only
+            theme_advanced_buttons1 : "newdocument,|,bold,italic,underline,|,justifyleft,justifycenter,justifyright,fontselect,fontsizeselect,formatselect",
+            theme_advanced_buttons2 : "cut,copy,paste,|,bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,anchor,image,|,code,preview,|,forecolor,backcolor",
+            theme_advanced_buttons3 : "insertdate,inserttime,|,spellchecker,advhr,,removeformat,|,sub,sup,|,charmap,emotions",
+            theme_advanced_toolbar_location : "top",
+            theme_advanced_toolbar_align : "left",
+            theme_advanced_statusbar_location : "bottom",
+            theme_advanced_resizing : true,
+            relative_urls : true,
+            force_br_newlines : true,
+            force_p_newlines : false,
+            forced_root_block : ''
+        });
+    }
+    
 
 
 

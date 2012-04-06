@@ -3,8 +3,8 @@
 <div id="sspells-box">
 
     <?foreach($ss as $s):?>
-    <div class="sspell" title="<?=$s['Ss']['id']?>">
-        <?=$this->Thumb->SS($s['Ss']['name_en'])?><br/>
+    <div class="sspell" id="<?=$s['Ss']['id']?>">
+        <?=$this->Thumb->SS($s['Ss']['id'], $s['Ss']['name_en'])?><br/>
         <span class="mas-name"><?=$s['Ss']['name_en']?></span>
     </div><!--/sspell-->
     <?endforeach?>

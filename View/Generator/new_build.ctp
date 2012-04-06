@@ -3,15 +3,14 @@
 
 
 <div id="list-champions">
+    <div id="filter-champions">
 
-<?foreach($champions as $champion):
-    $img_url = $this->StrChanger->Dehumanize($champion['Champion']['name']);
-    $champion['Champion']['image_src'] = $this->base.'/img/lol/champions/'.$img_url.'/'.$img_url.'.png';
-?>
-    <a href="<?=$this->Html->url(array('action'=>'save_new_build',$champion['Champion']['id']))?>" name="<?=strtolower($champion['Champion']['name'])?>">
-        <?=$this->Thumb->Champion($champion['Champion']['name'])?>
-        <p><?=$champion['Champion']['name']?></p>
-    </a>
+<?foreach($champions as $champion):?>
+        <a href="<?=$this->Html->url(array('action'=>'save_new_build',$champion['Champion']['id']))?>" name="<?=strtolower($champion['Champion']['name'])?>">
+            <?=$this->Thumb->Champion($champion['Champion']['id'],$champion['Champion']['name'],64)?>
+            <p><?=$champion['Champion']['name']?></p>
+        </a>
 <?endforeach?>
-    
-</div>
+        
+    </div><!--/filter-champions-->
+</div><!--/list-champions-->

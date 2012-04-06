@@ -3,7 +3,7 @@
 <h2>Nazwij poradnik:</h2>
 <div id="skills-header-background">
     <div class="build">
-        <?=$this->Thumb->Champion($build['Champion']['name'])?>
+        <?=$this->Thumb->Champion($build['Champion']['id'],$build['Champion']['name'])?>
         <p><?=$build['Champion']['name']?></p>
     </div><!--/build-->
 
@@ -34,7 +34,7 @@
         <fieldset>
             <legend><? echo $skill['Skill']['name_en']; ?></legend>
     <?
-            echo $this->Thumb->Skill($build['Champion']['name'],$skill['Skill']['name_en']);
+            echo $this->Thumb->Skill($build['Champion']['id'],$build['Champion']['name'],$skill['Skill']['name_en']);
             echo $this->Form->input($a.'.Skill.id',array('value'=>$skill['Skill']['id']));
             echo $this->Form->input($a.'.Skill.name_en',array('value'=>$skill['Skill']['name_en']));
             echo $this->Form->input($a.'.Skill.name_pl',array('value'=>$skill['Skill']['name_pl']));

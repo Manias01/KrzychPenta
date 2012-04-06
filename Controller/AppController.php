@@ -14,8 +14,6 @@ class AppController extends Controller {
 
 
 
-
-
     public function beforeFilter() {
 
         if (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') {
@@ -39,7 +37,6 @@ class AppController extends Controller {
             }
             return($output);
     }
-
 
 
 

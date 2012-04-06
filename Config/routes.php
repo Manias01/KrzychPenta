@@ -34,6 +34,7 @@
         Router::connect('/admin', array('controller' => 'news', 'action' => 'index','admin'=>true));
 //        Router::connect('/news/*', array('controller' => 'news', 'action' => 'single_news'));
 
+//        Router::connect('/tooltip', array('controller' => 'tooltip', 'action' => 'index'));
 
 
 //        Router::connect('/*', array('controller' => 'pages', 'action' => 'guide'));

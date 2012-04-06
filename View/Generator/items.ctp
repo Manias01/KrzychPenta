@@ -9,7 +9,7 @@
             <div class="item-box-img">
                 <a class="item-delete">x</a>
                 <?if($build['Build']['items'][$a]):?>
-                    <?=$this->Thumb->item($build['Build']['items'][$a],$items[($build['Build']['items'][$a]-1)]['Item']['name_en'],'display')."\n"?>
+                    <?=$this->Thumb->item($build['Build']['items'][$a],$items[($build['Build']['items'][$a]-1)]['Item']['name_en'],64,'display')."\n"?>
                 <?else:?>
                     <img src="" />
                 <?endif?>
@@ -30,10 +30,10 @@
 
     <ul id="items-ready" class="connectedSortable">
 
-<?//$a=0;?>
         <?foreach($items as $item):?>
-<?//$a++;if($a>=6) break?>
-            <?=$this->Thumb->item($item['Item']['id'],$item['Item']['name_en'])."\n"?>
+            <a name="<?=strtolower($item['Item']['name_en'])?>">
+                <?=$this->Thumb->item($item['Item']['id'],$item['Item']['name_en'],64)."\n"?>
+            </a>
         <?endforeach?>
 
     </ul>

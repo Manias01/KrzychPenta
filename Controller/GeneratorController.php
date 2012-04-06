@@ -39,17 +39,12 @@ class GeneratorController extends AppController {
 
     
     public function new_build(){
-        $champions = $this->Champion->find('all',
-                array(
-                    'recursive'=>-1,
-                    'fields'=>array('Champion.id','Champion.name'),
-                    'order'=>'Champion.name asc'
-                )
-        );
+        $champions = $this->Champion->find('all',array('recursive'=>-1,'order'=>'Champion.name asc'));
         $this->set('champions',$champions);
     }
 
     public function save_new_build($champion_id){
+        $this->CheckId($champion_id);
         $this->Build->create();
         $this->Build->save(array(
             'champion_id'=>$champion_id,
@@ -281,6 +276,33 @@ class GeneratorController extends AppController {
         $this->set('items',$items);
     }
 
+
+
+
+    public function description($build_id=false){
+        $this->CheckId($build_id);
+        //after click 'next step':
+        if($this->request->is('post')){
+            if($this->Build->save(array(
+                'id'=>$build_id,
+                'description'=>$this->request->data['Build']['description']
+                ))
+            ){
+                $this->redirect(array('action'=>'description',$this->params['pass'][0]));
+            }else{
+                echo 'Problem z zapisem tekstu do poradnika [GeneratorController -> description()]';
+                exit;
+            }
+        }
+
+    //normal view:
+        $build = $this->Build->find('first',array('recursive'=>-1,'conditions'=>array('Build.id'=>$build_id)));
+        $champions = $this->Champion->find('all',array('recursive'=>-1,'order'=>'Champion.name asc'));
+        $this->set('champions',$champions);
+
+        $this->set('build',$build);
+        $this->set('champions',$champions);
+    }
 
  
 }
