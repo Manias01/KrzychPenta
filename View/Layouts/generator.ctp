@@ -3,7 +3,7 @@
 <head>
     <title><?=$title_for_layout?> | Generator - Pentakill.pl</title>
     <?=$this->Html->charset()."\n"?>
-    <?=$this->Html->css(array('tooltip.css','generator.css'))?>
+    <?=$this->Html->css(array('generator.css','tooltip.css'))?>
     <?=$this->Html->script(array('jquery-1.7.2.min.js','jquery-ui-1.8.18.custom.min.js','tiny_mce/tiny_mce.js','jquery.tooltip.min.js',  'tooltip.js','generator.js'))?>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 </head>

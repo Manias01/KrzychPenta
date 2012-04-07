@@ -10,8 +10,10 @@
 
     <?=$this->Form->create('Build',array('url'=>array('controller'=>'generator','action'=>'save_buildName_skills')))?>
         <?=$this->Form->input('id',array('value'=>$build['Build']['id']))?>
-        <?=$this->Form->input('name',array('label'=>$build['Champion']['name'].' - ','value'=>$build['Build']['name']))?>
-    <?=$this->Form->end("Zapisz nazwę a potem sprawdź skille")?>
+        <?=$this->Form->input('name',array('label'=>'Codename:','value'=>$build['Build']['name']))?>
+        <?=$this->Form->input('introduction',array('type'=>'textarea','label'=>'Wprowadzenie:','value'=>$build['Build']['introduction'],'maxlength'=>220))?>
+        <p class="counter">Wpisz coś powyżej aby zobaczyć ile znaków pozostało</p>
+    <?=$this->Form->end("Zapisz nazwę i codename")?>
 
     
     <div class="clear"></div>
@@ -34,7 +36,7 @@
         <fieldset>
             <legend><? echo $skill['Skill']['name_en']; ?></legend>
     <?
-            echo $this->Thumb->Skill($build['Champion']['id'],$build['Champion']['name'],$skill['Skill']['name_en']);
+            echo $this->Thumb->Skill($build['Champion']['name'],$skill['Skill']['id'],$skill['Skill']['name_en']);
             echo $this->Form->input($a.'.Skill.id',array('value'=>$skill['Skill']['id']));
             echo $this->Form->input($a.'.Skill.name_en',array('value'=>$skill['Skill']['name_en']));
             echo $this->Form->input($a.'.Skill.name_pl',array('value'=>$skill['Skill']['name_pl']));

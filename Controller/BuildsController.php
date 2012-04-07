@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class BuildsController extends AppController {
-        public $helpers=array('StrChanger');
+        public $helpers=array('Thumb','Text');
 
         function beforeFilter(){
           $this->Auth->allow('*');

@@ -21,7 +21,7 @@
 
         <tr class="row-<?=$type?>">
             <td class="skill">
-                <?=$this->Thumb->Skill($build['Champion']['id'],$build['Champion']['name'],$skills[$type]['Skill']['name_en'])?>
+                <?=$this->Thumb->Skill($build['Champion']['name'],$skills[$type]['Skill']['id'],$skills[$type]['Skill']['name_en'])?>
                 <?=$skills[$type]['Skill']['name_en']?>
             </td>
 

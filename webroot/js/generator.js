@@ -13,6 +13,22 @@ $(document).ready(function(){
         });
     }
 
+//------Skills-----
+    //letter counter
+    $('#BuildIntroduction').keyup(function(e) {
+        var tval = $('textarea').val(),
+        tlength = tval.length,
+        set = 140,
+        remain = parseInt(set - tlength);
+        $('p.counter').text(remain);
+        if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
+            $('#BuildIntroduction').val((tval).substring(0, tlength - 1))
+        }
+        if(remain > 20) $('p.counter').css('color','green');
+        if(remain < 20) $('p.counter').css('color','orange');
+        if(remain < 1) $('p.counter').css('color','red');
+    });
+
 
 
 //------Wybór SS------
@@ -162,7 +178,9 @@ $(document).ready(function(){
             relative_urls : true,
             force_br_newlines : true,
             force_p_newlines : false,
-            forced_root_block : ''
+            forced_root_block : '',
+            relative_urls : false,
+            extended_valid_elements  : "img[tip_id|tip_id=|longdesc|usemap|src|border|alt=|title|hspace|vspace|width|height|align|class=]"
         });
     }
     

@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class RunesController extends AppController {
-    public $helpers = array('StrChanger');
+    public $helpers = array('Thumb');
 
     
         function beforeFilter(){

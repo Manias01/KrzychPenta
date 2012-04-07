@@ -11,7 +11,7 @@
 	</tr>
 	<?php
 	foreach ($champions as $champion): ?>
-        <?$img_url = $this->StrChanger->Dehumanize($champion['Champion']['name'])?>
+        <?$img_url = $this->Thumb->Dehumanize($champion['Champion']['name'])?>
 	<tr>
 		<td><?php echo h($champion['Champion']['id']); ?>&nbsp;</td>
                 <td><img src="<?=$this->base?>/img/lol/champions/<?=$img_url?>/<?=$img_url?>.png" alt="<?=$champion['Champion']['name']?>"/></td>

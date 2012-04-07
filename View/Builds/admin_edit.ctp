@@ -6,8 +6,10 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
 		echo $this->Form->input('champion_id');
+		echo $this->Form->input('skill_sequence');
 		echo $this->Form->input('masteries');
-		echo $this->Form->input('ss');
+		echo $this->Form->input('ss1_id');
+		echo $this->Form->input('ss2_id');
 		echo $this->Form->input('runes');
 		echo $this->Form->input('items');
 		echo $this->Form->input('description');

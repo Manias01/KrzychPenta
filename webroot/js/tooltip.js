@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     var base_url = '/'+window.location.pathname.split( '/' )[1];
 
-    $('img.ss, img.item, img.champ').tooltip({
+    $('img.ss, img.item, img.champ, img.rune, img.skill').tooltip({
         track: true,
         delay: 0,
         showURL: false,

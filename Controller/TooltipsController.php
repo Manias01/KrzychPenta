@@ -46,6 +46,23 @@ class TooltipsController extends AppController {
                 echo '<h3>'.$output['Champion']['name'].'</h3><br/>';
             }
 
+            if($input['type'] == 'skill'){
+                $output = $this->Skill->find('first',array(
+                    'recursive'=>-1,
+                    'conditions'=>array('id'=>$input['id']),
+                ));
+                echo '<h3>'.$output['Skill']['name_en'].'</h3><br/>';
+                echo $output['Skill']['desc_pl'];
+            }
+
+            if($input['type'] == 'rune'){
+                $output = $this->Rune->find('first',array(
+                    'conditions'=>array('id'=>$input['id']),
+                ));
+                echo '<h3>'.$output['Rune']['name_en'].'</h3><br/>';
+                echo $output['Rune']['desc_pl'];
+            }
+
 
 
         }else{

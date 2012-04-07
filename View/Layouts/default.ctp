@@ -3,7 +3,8 @@
 <head>
 <title><?=$title_for_layout?> | Pentakill.pl</title>
 <?=$this->Html->charset()."\n"?>
-<?=$this->Html->css('style.css')."\n"?>
+<?=$this->Html->css(array('style.css','tooltip.css'))."\n"?>
+<?=$this->Html->script(array('jquery-1.7.2.min.js','jquery.tooltip.min.js','tooltip.js'))?>
 <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 
 </head>

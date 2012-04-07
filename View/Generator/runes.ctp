@@ -16,7 +16,7 @@
         <div class="rune<?=($build['Build']['runes'][$type]==$rune['Rune']['id'])?' highlight-rune':''?>"
              title="<?=$rune['Rune']['id']?>"
          >
-         <?=$this->Thumb->Rune($rune['Rune']['name_en'])?>
+         <?=$this->Thumb->Rune($rune['Rune']['id'], $rune['Rune']['name_en'])?>
           <span class="orange strong"><?=$rune['Rune']['name_en']?></span>
           <p class="mini"><?=$rune['Rune']['desc_en']?></p>
         </div> <!--/rune-->

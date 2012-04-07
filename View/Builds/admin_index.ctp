@@ -3,11 +3,12 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
-                        <th>Image</th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th><?php echo $this->Paginator->sort('champion_id');?></th>
+			<th><?php echo $this->Paginator->sort('skill_sequence');?></th>
 			<th><?php echo $this->Paginator->sort('masteries');?></th>
-			<th><?php echo $this->Paginator->sort('ss');?></th>
+			<th><?php echo $this->Paginator->sort('ss1_id');?></th>
+			<th><?php echo $this->Paginator->sort('ss2_id');?></th>
 			<th><?php echo $this->Paginator->sort('runes');?></th>
 			<th><?php echo $this->Paginator->sort('items');?></th>
 			<th><?php echo $this->Paginator->sort('description');?></th>
@@ -18,21 +19,21 @@
 	</tr>
 	<?php
 	foreach ($builds as $build): ?>
-        <?$img_url = $this->StrChanger->Dehumanize($build['Champion']['name'])?>
 	<tr>
 		<td><?php echo h($build['Build']['id']); ?>&nbsp;</td>
-                <td><img src="<?=$this->base?>/img/lol/champions/<?=$img_url?>/<?=$img_url?>.png" alt="<?=$build['Champion']['name']?>"/></td>
 		<td><?php echo h($build['Build']['name']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($build['Champion']['name'], array('controller' => 'champions', 'action' => 'view', $build['Champion']['id'])); ?>
 		</td>
+		<td><?php echo print_r(unserialize($build['Build']['skill_sequence'])); ?>&nbsp;</td>
 		<td><?php echo h($build['Build']['masteries']); ?>&nbsp;</td>
-		<td><?php echo h($build['Build']['ss']); ?>&nbsp;</td>
-		<td><?php echo h($build['Build']['runes']); ?>&nbsp;</td>
-		<td><?php echo h($build['Build']['items']); ?>&nbsp;</td>
-		<td><?php echo h($build['Build']['description']); ?>&nbsp;</td>
+		<td><?php echo h($build['Build']['ss1_id']); ?>&nbsp;</td>
+		<td><?php echo h($build['Build']['ss2_id']); ?>&nbsp;</td>
+		<td><?php echo print_r(unserialize($build['Build']['runes'])); ?>&nbsp;</td>
+		<td><?php echo print_r(unserialize($build['Build']['items'])); ?>&nbsp;</td>
+		<td><?php echo $this->Text->truncate($build['Build']['description'],50,array('html'=>true)); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($build['User']['username'], array('controller' => 'users', 'action' => 'view', $build['User']['id'])); ?>
+			<?php echo $this->Html->link($build['User']['id'], array('controller' => 'users', 'action' => 'view', $build['User']['id'])); ?>
 		</td>
 		<td><?php echo h($build['Build']['created']); ?>&nbsp;</td>
 		<td><?php echo h($build['Build']['modified']); ?>&nbsp;</td>

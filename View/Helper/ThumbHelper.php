@@ -25,11 +25,11 @@ class ThumbHelper extends AppHelper {
     }
 
 
-    public function Skill($id,$champion_name,$skill_name,$size=38,$class=false){
+    public function Skill($champion_name,$skill_id,$skill_name,$size=38,$class=false){
         $folder_name = $this->Dehumanize($champion_name);
         $img_name = $this->Dehumanize($skill_name);
         $img_url = $this->base.'/img/lol/champions/'.$folder_name.'/'.$img_name.'_'.$size.'.png';
-        $img_full = '<img src="'.$img_url.'" alt="'.$skill_name.'" tip_id="'.$id.'" />';
+        $img_full = '<img src="'.$img_url.'" alt="'.$skill_name.'" tip_id="'.$skill_id.'" class="skill'.(($class)?' '.$class:'').'" />';
 
         return($img_full);
     }
@@ -44,10 +44,10 @@ class ThumbHelper extends AppHelper {
     }
 
 
-    public function Rune($name,$size=34,$class=false){
+    public function Rune($id,$name,$size=34,$class=false){
         $rune = $this->Dehumanize($name);
         $img_url = $this->base.'/img/lol/runes/'.$rune.'.gif';
-        $img_full = '<img src="'.$img_url.'" alt="'.$name.'" '.(($class)?'class="'.$class.'"':'').'/>';
+        $img_full = '<img src="'.$img_url.'" alt="'.$name.'" tip_id="'.$id.'" class="rune'.(($class)?' '.$class:'').'"/>';
 
         return($img_full);
     }

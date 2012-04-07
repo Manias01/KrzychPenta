@@ -13,7 +13,7 @@
 	</tr>
 	<?php
 	foreach ($items as $item): ?>
-        <?$img_url = $this->StrChanger->Dehumanize($item['Item']['name_en'])?>
+        <?$img_url = $this->Thumb->Dehumanize($item['Item']['name_en'])?>
 	<tr>
 		<td><?php echo h($item['Item']['id']); ?>&nbsp;</td>
                 <td><img src="<?=$this->base?>/img/lol/items/<?=$img_url?>.gif" alt="<?=$item['Item']['name_en']?>"/></td>

@@ -16,14 +16,24 @@
 			<?php echo $this->Html->link($build['Champion']['name'], array('controller' => 'champions', 'action' => 'view', $build['Champion']['id'])); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Skill Sequence'); ?></dt>
+		<dd>
+			<?php echo h($build['Build']['skill_sequence']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Masteries'); ?></dt>
 		<dd>
 			<?php echo h($build['Build']['masteries']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Ss'); ?></dt>
+		<dt><?php echo __('Ss1 Id'); ?></dt>
 		<dd>
-			<?php echo h($build['Build']['ss']); ?>
+			<?php echo h($build['Build']['ss1_id']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Ss2 Id'); ?></dt>
+		<dd>
+			<?php echo h($build['Build']['ss2_id']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Runes'); ?></dt>

@@ -13,7 +13,7 @@
 	</tr>
 	<?php
 	foreach ($runes as $rune): ?>
-        <?$img_url = $this->StrChanger->Dehumanize($rune['Rune']['name_en'])?>
+        <?$img_url = $this->Thumb->Dehumanize($rune['Rune']['name_en'])?>
 	<tr>
 		<td><?php echo h($rune['Rune']['id']); ?>&nbsp;</td>
                 <td><img src="<?=$this->base?>/img/lol/runes/<?=$img_url?>.gif" alt="<?=$rune['Rune']['name_en']?>"/></td>

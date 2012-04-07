@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class ChampionsController extends AppController {
-        public $helpers=array('StrChanger');
+        public $helpers=array('Thumb');
 
         function beforeFilter(){
           $this->Auth->allow('*');

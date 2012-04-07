@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 
 class SkillsController extends AppController {
     public $uses = array('Skill','Champion');
-    public $helpers = array('StrChanger');
+    public $helpers = array('Thumb');
 
 
     function beforeFilter(){

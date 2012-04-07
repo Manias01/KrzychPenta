@@ -80,22 +80,32 @@ div.clear{
     margin: 50px 0 0 0;
 }
 #BuildSkillsForm label{
-    width: 82px;
-    display: inline-block;
-}
-#BuildSkillsForm .text{
+    width: 120px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    /*display: inline-block;*/
     float: left;
 }
 #BuildSkillsForm .text input{
     width: 250px;
     height: 20px;
 }
+#BuildSkillsForm .textarea textarea{
+    width: 250px;
+    height: 150px;
+}
+#BuildSkillsForm p.counter{
+    margin: 5px 0 0 270px;
+    font-size: 14px;
+    color: green;
+}
 #BuildSkillsForm div.submit{
     float: left;
 }
 #skills-header-background{
     padding: 10px 0 50px 0;
-    background: url('../img/generator/skills-arrows.png') 228px 0 no-repeat;
+    /*background: url('../img/generator/skills-arrows.png') 228px 0 no-repeat;*/
 }
 td{
 	text-align: center;
@@ -147,6 +157,42 @@ td.lv:hover{
 }
 .display{
     display: block !important;
+}
+
+/*----------=Skills---------*/
+.skill{
+    font-size: 14px;
+}
+.skill label{
+    width: 80px;
+    display: inline-block;
+}
+.skill input{
+    width: 300px;
+}
+.skill p{
+    margin-left: 80px;
+}
+.skill textarea{
+    width: 800px;
+    height: 80px;
+}
+.skill-desc{
+    border: 1px solid orange;
+}
+#SkillSkillsForm .submit{
+    float: left;
+}
+#SkillSkillsForm .next{
+    float: right;
+    font-size: 18px;
+    margin-top: 10px;
+    border: 1px solid orange;
+    padding: 5px;
+    background-color: black;
+}
+#SkillSkillsForm .next:hover{
+    background-color: gray;
 }
 
 
@@ -504,10 +550,13 @@ span.ikonka:hover{
     height: 400px;
     float: left;
 }
-#desc-champs{border: 1px solid red;
+#desc-right-column{
     width: 260px;
     height: auto;
     float: right;
+}
+#desc-champs{
+
 }
 #desc-champs img{
     width: 32px;
@@ -545,41 +594,6 @@ span.ikonka:hover{
     text-decoration: none;
 }
 
-/*----------=Skills---------*/
-.skill{
-    font-size: 14px;
-}
-.skill label{
-    width: 80px;
-    display: inline-block;
-}
-.skill input{
-    width: 300px;
-}
-.skill p{
-    margin-left: 80px;
-}
-.skill textarea{
-    width: 800px;
-    height: 80px;
-}
-.skill-desc{
-    border: 1px solid orange;
-}
-#SkillSkillsForm .submit{
-    float: left;
-}
-#SkillSkillsForm .next{
-    float: right;
-    font-size: 18px;
-    margin-top: 10px;
-    border: 1px solid orange;
-    padding: 5px;
-    background-color: black;
-}
-#SkillSkillsForm .next:hover{
-    background-color: gray;
-}
 
 /*-------------=Masteries------------*/
 .masteries{

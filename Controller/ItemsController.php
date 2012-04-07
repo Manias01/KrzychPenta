@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 class ItemsController extends AppController {
 
     public $uses = array('Item','ItemsTag');
-    public $helpers = array('StrChanger');
+    public $helpers = array('Thumb');
 
 
     function beforeFilter(){

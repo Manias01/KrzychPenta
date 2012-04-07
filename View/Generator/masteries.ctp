@@ -15,7 +15,7 @@ $types = array(
     
     <?foreach($masteries->$type as $name):?>
         <?if($name=='.' || $name=='..' || $name=='.directory') continue;?>
-        <a href="<?=$this->Html->url(array('action'=>'save_masteries',$this->params['pass'][0],$name))?>"<?=(isSet($build['Build']['masteries'])&&$build['Build']['masteries']==$name)?'class="active"':''?>>
+        <a href="<?=$this->Html->url(array('action'=>'save_masteries',$this->params['pass'][0],$type.'-'.$name))?>"<?=(isSet($build['Build']['masteries'])&&$build['Build']['masteries']==($type.'/'.$name))?'class="active"':''?>>
             <img src="<?=$this->base?>/img/lol/masteries/<?=$type?>/<?=$name?>" />
         </a>
     <?endforeach?>

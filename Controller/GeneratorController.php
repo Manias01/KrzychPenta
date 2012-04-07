@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 
 class GeneratorController extends AppController {
     public $uses = array('Build','Champion','Skill','Ss','Rune','Item','ItemsTag');
-    public $helpers = array('StrChanger','Thumb','Time');
+    public $helpers = array('Thumb','Time');
 
 
     function beforeFilter(){
@@ -43,8 +43,9 @@ class GeneratorController extends AppController {
         $this->set('champions',$champions);
     }
 
-    public function save_new_build($champion_id){
+    public function save_new_build($champion_id=false){
         $this->CheckId($champion_id);
+        
         $this->Build->create();
         $this->Build->save(array(
             'champion_id'=>$champion_id,
@@ -120,7 +121,7 @@ class GeneratorController extends AppController {
                 array(
                     'recursive' => -1,
                     'conditions'=>array('Skill.champion_id'=>$build['Build']['champion_id']),
-                    'limit'=>20, //just in case, if error in database data
+                    'limit'=>6, //just in case, if error in database data
                     'order'=>'Skill.type asc'
                 )
         );
@@ -151,7 +152,7 @@ class GeneratorController extends AppController {
 
     public function save_masteries($build_id=false,$name='error'){
         $this->CheckId($build_id);
-        if($this->Build->save(array('id'=>$build_id,'masteries'=>$name))){
+        if($this->Build->save(array('id'=>$build_id,'masteries'=>str_replace('-','/',$name)))){
             $this->redirect(array('action'=>'ss',$build_id));
         }else{
             echo 'Problem z zapisem masteries [GeneratorController -> save_masteries()]';
@@ -296,12 +297,13 @@ class GeneratorController extends AppController {
         }
 
     //normal view:
-        $build = $this->Build->find('first',array('recursive'=>-1,'conditions'=>array('Build.id'=>$build_id)));
-        $champions = $this->Champion->find('all',array('recursive'=>-1,'order'=>'Champion.name asc'));
-        $this->set('champions',$champions);
+        $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Build.id'=>$build_id)));
+        $champions = $this->Champion->find('all',array('recursive'=>0,'order'=>'Champion.name asc'));
+        $skills = $this->Skill->find('all',array('recursive'=>-1,'conditions'=>array('Skill.champion_id'=>$build['Build']['champion_id'])));
 
         $this->set('build',$build);
         $this->set('champions',$champions);
+        $this->set('skills',$skills);
     }
 
  

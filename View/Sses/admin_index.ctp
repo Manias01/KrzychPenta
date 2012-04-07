@@ -13,7 +13,7 @@
 	</tr>
 	<?php
 	foreach ($sses as $ss): ?>
-        <?$img_url = $this->StrChanger->Dehumanize($ss['Ss']['name_en'])?>
+        <?$img_url = $this->Thumb->Dehumanize($ss['Ss']['name_en'])?>
 	<tr>
 		<td><?php echo h($ss['Ss']['id']); ?>&nbsp;</td>
                 <td><img src="<?=$this->base?>/img/lol/ss/<?=$img_url?>.png" alt="<?=$ss['Ss']['name_en']?>"/></td>
