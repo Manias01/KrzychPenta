@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 </head>
 <body>
+<div id="base" base_url="<?=$this->base?>" style="display:none"></div>
 
 <div id="wrap">
     
@@ -22,7 +23,8 @@
     'Summoner spells'=>'ss',
     'Runy'=>'runes',
     'Przedmioty'=>'items',
-    'Własna treść'=>'description'
+    'Własna treść'=>'description',
+    'Podgląd'=>'preview'
   );?>
   <div class="done">
   <?(isSet($this->params['pass'][0]))?$index = false:$index = true;?>

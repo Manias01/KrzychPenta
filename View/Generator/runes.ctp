@@ -13,13 +13,13 @@
     <div id="rune-<?=$type?>" class="rune-type">
         <h3>Marks</h3>
        <?foreach($runes[$type] as $rune):?>
-        <div class="rune<?=($build['Build']['runes'][$type]==$rune['Rune']['id'])?' highlight-rune':''?>"
+        <div class="rune-column<?=($build['Build']['runes'][$type]==$rune['Rune']['id'])?' highlight-rune':''?>"
              title="<?=$rune['Rune']['id']?>"
          >
          <?=$this->Thumb->Rune($rune['Rune']['id'], $rune['Rune']['name_en'])?>
           <span class="orange strong"><?=$rune['Rune']['name_en']?></span>
           <p class="mini"><?=$rune['Rune']['desc_en']?></p>
-        </div> <!--/rune-->
+        </div> <!--/rune-column-->
        <?endforeach?>
     </div> <!--/rune-type-->
 

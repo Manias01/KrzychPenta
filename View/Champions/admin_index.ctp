@@ -14,7 +14,7 @@
         <?$img_url = $this->Thumb->Dehumanize($champion['Champion']['name'])?>
 	<tr>
 		<td><?php echo h($champion['Champion']['id']); ?>&nbsp;</td>
-                <td><img src="<?=$this->base?>/img/lol/champions/<?=$img_url?>/<?=$img_url?>.png" alt="<?=$champion['Champion']['name']?>"/></td>
+                <td><img src="<?=$this->base?>/img/lol/champions/<?=$img_url?>/<?=$img_url?>_38.png" alt="<?=$champion['Champion']['name']?>"/></td>
 		<td><?php echo h($champion['Champion']['name']); ?>&nbsp;</td>
 		<td><?php echo h($champion['Champion']['rp']); ?>&nbsp;</td>
 		<td><?php echo h($champion['Champion']['ip']); ?>&nbsp;</td>

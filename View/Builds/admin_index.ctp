@@ -22,7 +22,9 @@
 	<tr>
 		<td><?php echo h($build['Build']['id']); ?>&nbsp;</td>
 		<td><?php echo h($build['Build']['name']); ?>&nbsp;</td>
-		<td>
+		<td style="text-align:center">
+                        <?$img_url = $this->Thumb->Dehumanize($build['Champion']['name'])?>
+                        <img src="<?=$this->base?>/img/lol/champions/<?=$img_url?>/<?=$img_url?>_38.png" alt="<?=$build['Champion']['name']?>" />
 			<?php echo $this->Html->link($build['Champion']['name'], array('controller' => 'champions', 'action' => 'view', $build['Champion']['id'])); ?>
 		</td>
 		<td><?php echo print_r(unserialize($build['Build']['skill_sequence'])); ?>&nbsp;</td>

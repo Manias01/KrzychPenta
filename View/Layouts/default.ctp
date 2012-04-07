@@ -9,6 +9,8 @@
 
 </head>
 <body>
+<div id="base" base_url="<?=$this->base?>" style="display:none"></div>
+
 <div id="wrap">
 
 <div id="header">

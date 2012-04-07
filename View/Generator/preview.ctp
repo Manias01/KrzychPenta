@@ -1,0 +1,1 @@
+<iframe src="<?=$this->Html->url(array('controller'=>'pages','action'=>'poradnik',$build_id))?>" style="width:1010px;height:800px;position:absolute;left:50%;margin-left:-500px;border:none"></iframe>

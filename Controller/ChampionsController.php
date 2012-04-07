@@ -75,6 +75,7 @@ class ChampionsController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 
+        
 
         public function GetChampionsName() {
         //Pobranie nazw postaci

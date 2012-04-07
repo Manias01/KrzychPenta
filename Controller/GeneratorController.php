@@ -306,5 +306,14 @@ class GeneratorController extends AppController {
         $this->set('skills',$skills);
     }
 
+
+
+    public function preview($build_id=false){
+        $this->CheckId($build_id);
+        $this->set('build_id',$build_id);
+//        $this->viewPath = 'pages';
+//        $this->render('poradnik');
+    }
+
  
 }

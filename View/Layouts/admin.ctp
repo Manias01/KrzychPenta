@@ -3,11 +3,14 @@
 <head>
 <title><?=$title_for_layout?> | Admin - Pentakill.pl</title>
 <?=$this->Html->charset()."\n"?>
-<?=$this->Html->css('admin.css')."\n"?>
+<?=$this->Html->css(array('admin.css','tooltip.css'))."\n"?>
+<?=$this->Html->script(array('jquery-1.7.2.min.js','jquery.tooltip.min.js','tooltip.js'))?>
 <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 
 </head>
 <body>
+<div id="base" base_url="<?=$this->base?>" style="display:none"></div>
+
 <div id="wrap">
 
 <div id="header">

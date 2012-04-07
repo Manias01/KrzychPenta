@@ -22,7 +22,7 @@
 		<td>
 			<?php echo $this->Html->link($skill['Champion']['name'], array('controller' => 'champions', 'action' => 'view', $skill['Champion']['id'])); ?>
 		</td>
-                <td><img src="<?=$this->base?>/img/lol/champions/<?=$this->Thumb->Dehumanize($skill['Champion']['name'])?>/<?=$img_url?>.png" alt="<?=$skill['Skill']['name_en']?>"/></td>
+                <td><img src="<?=$this->base?>/img/lol/champions/<?=$this->Thumb->Dehumanize($skill['Champion']['name'])?>/<?=$img_url?>_38.png" alt="<?=$skill['Skill']['name_en']?>"/></td>
 		<td><?php echo h($skill['Skill']['name_en']); ?>&nbsp;</td>
                 <td><?php echo h($skill['Skill']['name_pl']); ?>&nbsp;</td>
 		<td><?php echo h($skill['Skill']['desc_pl']); ?>&nbsp;</td>
