@@ -73,7 +73,12 @@ div.clear{
     color: gray;
     text-decoration: line-through;
 }
-
+a.exit-generator{
+    /*float: right;*/
+    /*display: block;*/
+    margin: 0 0 0 780px;
+    color: gray;
+}
 
 /*------------------------- Tabela Skilli i ogolnie -------------------------*/
 #BuildSkillsForm{
@@ -555,14 +560,27 @@ span.ikonka:hover{
     height: auto;
     float: right;
 }
-#desc-champs{
-
-}
 #desc-champs img{
     width: 32px;
     height: 32px;
     float: left;
     margin: 1px;
+}
+#desc-left-column{
+    width: 660px;
+    height: auto;
+    float: left;
+}
+#tinymce{
+    width: 660px;
+    min-height: 500px;
+}
+#desc-items #items-search{
+    margin: 0 0 10px 100px;
+}
+#desc-items #items-all img{
+    width: 32px;
+    height: 32px;
 }
 
 /*------------Nowe----------*/
@@ -619,5 +637,33 @@ span.ikonka:hover{
     border: 1px solid green;
     box-shadow: 0 0 30px green;
 }
+.masteries p{
+    text-align: center;
+    margin: 0;
+}
 
+/*----------------=Preview---------------*/
+#preview{
+    height: 800px;
+}
+#preview-accept{
+    position: fixed;
+    top: 30px;
+    right: 60px;
+}
+#preview-accept .submit input{
+    float: none;
+}
 
+/*---------------=Done------------*/
+#done{
+    width: auto;
+    height: 600px;
+    display: block;
+    text-align: center;
+}
+#done a{
+    /*float: left;*/
+    margin: 0 60px;
+    display: inline-block;
+}

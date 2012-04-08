@@ -3,19 +3,28 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
-			<th><?php echo $this->Paginator->sort('image');?></th>
+                        <th>Image</th>
 			<th><?php echo $this->Paginator->sort('title');?></th>
 			<th><?php echo $this->Paginator->sort('text');?></th>
+			<th><?php echo $this->Paginator->sort('image');?></th>
+			<th><?php echo $this->Paginator->sort('type');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
-	foreach ($news as $news): ?>
+	foreach ($news as $news):?>
+            <?if($news['News']['type']=='build'){
+                $img_url = $this->base.'/img/lol/champions/'.strtolower($news['News']['title'].'/'.$news['News']['title'].'_64.png');
+            }else{
+                $img_url = $this->base.'/img/news/'.$news['News']['image'];
+            }?>
 	<tr>
 		<td><?php echo h($news['News']['id']); ?>&nbsp;</td>
-		<td><img src="<?=$this->base?>/img/news/<?=$news['News']['image']?>" alt="<?=$news['News']['image']?>" /></td>
+                <td><img src="<?=$img_url?>" /></td>
 		<td><?php echo h($news['News']['title']); ?>&nbsp;</td>
 		<td><?php echo h($news['News']['text']); ?>&nbsp;</td>
+		<td><?php echo h($news['News']['image']); ?>&nbsp;</td>
+		<td><?php echo h($news['News']['type']); ?>&nbsp;</td>
 		<td><?php echo h($news['News']['created']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $news['News']['id'])); ?>

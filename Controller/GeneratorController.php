@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class GeneratorController extends AppController {
-    public $uses = array('Build','Champion','Skill','Ss','Rune','Item','ItemsTag');
+    public $uses = array('Build','Champion','Skill','Ss','Rune','Item','News');
     public $helpers = array('Thumb','Time');
 
 
@@ -108,7 +108,7 @@ class GeneratorController extends AppController {
         if($this->request->is('post')){
             $output = serialize($this->request->data);
             if($this->Build->save(array('id'=>$build_id,'skill_sequence'=>$output))){
-                $this->redirect(array('action'=>'masteries',$this->params['pass'][0]));
+                $this->redirect(array('action'=>'masteries',$build_id));
             }else{
                 echo 'Problem z zapisem sekwencji skilli [GeneratorController -> skill_sequence()]';
                 exit;
@@ -173,7 +173,7 @@ class GeneratorController extends AppController {
                 'ss2_id'=>intval($this->request->data['Build']['ss2'])
                 ))
             ){
-                $this->redirect(array('action'=>'runes',$this->params['pass'][0]));
+                $this->redirect(array('action'=>'runes',$build_id));
             }else{
                 echo 'Problem z zapisem Summoner Spells [GeneratorController -> ss()]';
                 exit;
@@ -201,7 +201,7 @@ class GeneratorController extends AppController {
                 'runes'=>serialize($this->request->data['Build'])
                 ))
             ){
-                $this->redirect(array('action'=>'items',$this->params['pass'][0]));
+                $this->redirect(array('action'=>'items',$build_id));
             }else{
                 echo 'Problem z zapisem run [GeneratorController -> runes()]';
                 exit;
@@ -233,7 +233,7 @@ class GeneratorController extends AppController {
                 'items'=>serialize($this->request->data['Build'])
                 ))
             ){
-                $this->redirect(array('action'=>'description',$this->params['pass'][0]));
+                $this->redirect(array('action'=>'description',$build_id));
             }else{
                 echo 'Problem z zapisem przedmiotów [GeneratorController -> items()]';
                 exit;
@@ -289,7 +289,7 @@ class GeneratorController extends AppController {
                 'description'=>$this->request->data['Build']['description']
                 ))
             ){
-                $this->redirect(array('action'=>'description',$this->params['pass'][0]));
+                $this->redirect(array('action'=>'preview',$build_id));
             }else{
                 echo 'Problem z zapisem tekstu do poradnika [GeneratorController -> description()]';
                 exit;
@@ -300,19 +300,60 @@ class GeneratorController extends AppController {
         $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Build.id'=>$build_id)));
         $champions = $this->Champion->find('all',array('recursive'=>0,'order'=>'Champion.name asc'));
         $skills = $this->Skill->find('all',array('recursive'=>-1,'conditions'=>array('Skill.champion_id'=>$build['Build']['champion_id'])));
+        $items = $this->Item->find('all');
 
         $this->set('build',$build);
         $this->set('champions',$champions);
         $this->set('skills',$skills);
+        $this->set('items',$items);
     }
 
 
 
     public function preview($build_id=false){
         $this->CheckId($build_id);
+        $build = $this->Build->find('first',array('recursive'=>1,'conditions'=>array('Build.id'=>$build_id)));
+        
+     //after click 'next step':
+        if($this->request->is('post')){
+        //write build
+            if($this->Build->save(array(
+                'id'=>$build_id,
+                'done'=>1
+                ))
+            ){
+            //write new news
+                $this->News->create();
+                if($this->News->save(array(
+                    'title'=>$build['Champion']['name'],
+                    'text'=>$build['Build']['introduction'],
+                    //'image'=>'', don't use in this type of news
+                    'type'=>'build'
+                    ))
+                ){
+                    $this->redirect(array('action'=>'done',$build_id));
+                }else{
+                    echo 'Problem z zapisem nowego newsa [GeneratorController ->preview()]';
+                    exit;
+                }
+                
+            }else{
+                echo 'Problem z zapisem poradnika [GeneratorController ->preview()]';
+                exit;
+            }
+            
+
+
+        }
+
         $this->set('build_id',$build_id);
-//        $this->viewPath = 'pages';
-//        $this->render('poradnik');
+    }
+
+
+
+
+    public function done($build_id=false){
+        $this->CheckId($build_id);
     }
 
  

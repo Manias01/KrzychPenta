@@ -7,6 +7,7 @@
 		echo $this->Form->input('title');
 		echo $this->Form->input('text');
 		echo $this->Form->input('image');
+		echo $this->Form->input('type');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>

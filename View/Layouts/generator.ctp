@@ -9,9 +9,9 @@
 </head>
 <body>
 <div id="base" base_url="<?=$this->base?>" style="display:none"></div>
-
-<div id="wrap">
     
+<div id="wrap">
+    <a href="<?=$this->base?>/admin" class="exit-generator">Powrót do panelu admina</a>
 
 <div id="menu">
 
@@ -19,12 +19,13 @@
     'Wybór poradnika'=>'index',
     'Umiejętności'=>'skills',
     'Kolejność umiejętności'=>'skill_sequence',
-    'Specjalizacja'=>'masteries',
+    'Masteries'=>'masteries',
     'Summoner spells'=>'ss',
     'Runy'=>'runes',
     'Przedmioty'=>'items',
     'Własna treść'=>'description',
-    'Podgląd'=>'preview'
+    'Podgląd'=>'preview',
+    ''=>'done'
   );?>
   <div class="done">
   <?(isSet($this->params['pass'][0]))?$index = false:$index = true;?>
@@ -32,7 +33,6 @@
   <?=($link==$this->params['action'])?'</div><!--/done-->':''?>
     <a href="<?=($index)?'#':$this->Html->url(array('action'=>$link,$this->params['pass'][0]));?>" <?=($link==$this->params['action'])?'class="active"':(($index)?'class="inactive"':'')?> ><?=$nazwa?></a> ->
   <?endforeach?>
-
 </div><!--/menu-->
 
 

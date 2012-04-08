@@ -14,25 +14,26 @@ class PagesController extends AppController {
 
 
 
-    public function home($page) {
-      $this->set('title_for_layout', 'Witamy');
-
-      if($page == 'home'){
+    public function home() {
+        $this->set('title_for_layout', 'Witamy');
         $this->paginate = array(
             'order'=>'News.id DESC',
             'limit'=>3
-        );
+            );
         $news = $this->paginate('News');
         $this->set('news', $news);
-      }
 
     }
 
 
 
     public function poradnik($build_id){
+        if(!is_numeric($build_id)) $this->redirect(array('controller'=>'pages', 'action'=>'home'));
+        
         //build
         $build = $this->Build->findById($build_id);
+        if(!$build) $this->redirect(array('controller'=>'pages', 'action'=>'home'));
+        
         $build['Build']['skill_sequence'] = unserialize($build['Build']['skill_sequence']);
         $this->set('build', $build);
 
@@ -61,7 +62,7 @@ class PagesController extends AppController {
         );
         $this->set('skills',$skills);
 
-
+        $this->set('title_for_layout', 'Poradnik do '.$build['Champion']['name']);
     }
 
 /*
