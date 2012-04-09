@@ -44,11 +44,24 @@ class PagesController extends AppController {
 
 
 
-    public function poradnik($build_id){
-        if(!is_numeric($build_id)) $this->redirect(array('controller'=>'pages', 'action'=>'home'));
-        
+    public function all_poradnik(){
+        $this->paginate = array(
+            'order'=>'Build.name ASC',
+            'limit'=>10
+        );
+        $builds = $this->paginate('Build');
+        $this->set('builds',$builds);
+
+        $this->set('title_for_layout', 'Poradniki');
+        $this->set('header','Poradniki');
+    }
+
+
+
+
+    public function poradnik($champion_name){
         //build
-        $build = $this->Build->findById($build_id);
+        $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Champion.name'=>$champion_name)));
         if(!$build) $this->redirect(array('controller'=>'pages', 'action'=>'home'));
         
         $build['Build']['skill_sequence'] = unserialize($build['Build']['skill_sequence']);
@@ -79,19 +92,22 @@ class PagesController extends AppController {
         );
         $this->set('skills',$skills);
 
+        //3 another builds at the bottom page
+        $another_builds = $this->Build->find('all',array('limit'=>3,'recursive'=>0,'conditions'=>array('Champion.name <>'=>$champion_name)));
+        $this->set('another_builds',$another_builds);
+
         $this->set('title_for_layout', $build['Champion']['name'].' - poradnik');
         $this->set('header','Poradnik');
     }
 
-/*
-    public function single_news($id){
 
-        $single_news = $this->News->find('first',array('conditions'=>array('News.id'=>$id)));
-        $this->set('single_news',$single_news);
 
-        $this->set('title_for_layout', $single_news['News']['title']);
-        
+
+    public function contact(){
+        $this->set('title_for_layout', 'Kontakt');
+        $this->set('header','Skontakuj się z nami');
     }
-*/
 
+
+    
 }

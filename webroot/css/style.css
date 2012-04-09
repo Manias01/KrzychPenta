@@ -130,6 +130,9 @@ h4{
     background-color: black;
     text-align: center;
 }
+#header-nav{
+    margin: 0 0 10px 0;
+}
 #header-nav a{
     font-size: 20px;
     color: white;
@@ -226,6 +229,83 @@ div.news{
     color: #970000;
     margin: 5px 0 0 0;
     display: block;
+}
+.builds-thumb{
+    float: left;
+    margin: 0 5px 0 10px;
+}
+
+/*---------------------Poradnik(build)-page-----------------------*/
+#poradnik{
+    padding: 0 15px;
+    background-color: #190000;
+}
+#poradnik h4{
+    margin: 0;
+}
+#shortcut{border: 1px solid red;
+    width: 100%;
+    height: 380px;
+}
+#shortcut h2{
+    font-size: 35px;
+    background: none;
+}
+#introduction{
+    width: 400px;
+    height: 170px;
+}
+#ss-runes-panel{
+    width: 350px;
+    height: 55px;
+}
+#ss{
+    float: left;
+}
+#runes{
+    float: left;
+}
+#items{border: 1px solid red;
+    width: 100%;
+    height: 70px;
+    clear: both;
+}
+
+#shortcut, #skill_sequence, #masteries, #description{
+    margin: 0 0 10px 0;
+    padding: 0 0 30px 0;
+    background: black url('../img/frontend/news-background.png') 0 100% repeat-x;
+}
+#skill_sequence{
+    width: 100%;
+    background: black;
+}
+#skill_sequence th{
+    width: 100px;
+}
+#skill_sequence td{
+    width: 15px;
+    height: 15px;
+}
+#masteries{
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+#masteries h4{
+    margin-bottom: 5px;
+}
+#description h4{
+    margin-bottom: 10px;
+}
+#description p{
+    margin: 0 0 0 20px;
+    font-size: 15px;
+}
+
+#another-builds{
+    width: 100%;
+    height: auto;
+    background: black;
 }
 
 /*--------------------------- Footer ---------------------------*/

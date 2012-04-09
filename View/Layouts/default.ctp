@@ -24,10 +24,10 @@
     <div id="header-nav">
         <?$navigation=array(
             'Home'=>'',
-            'Nowości'=>'news',
-            'Poradniki'=>'poradnik',
-            'Championi'=>'champions',
-            'Kontakt'=>'contact'
+            'Nowości'=>'nowosci',
+            'Poradniki'=>'poradniki',
+            '<span style="color:#454545">Championi</span>'=>'',
+            'Kontakt'=>'kontakt'
         );
         foreach($navigation as $name=>$link):?>
             <a href="<?=$this->base.'/'.$link?>"><?=$name?></a>
@@ -51,7 +51,7 @@
     </script>
         <div id="slider" class="nivoSlider">
             <?foreach($sliders as $slider):?>
-                <a href="<?=$slider['Slider']['url']?>"><img src="<?=$slider['Slider']['image']?>" alt="" title="<?=$slider['Slider']['description']?>" /></a>
+                <a href="<?=$slider['Slider']['url']?>"><img src="<?=$slider['Slider']['image']?>" alt="" title="<?=$this->Html->truncate($slider['Slider']['description'],100)?>" /></a>
             <?endforeach?>
         </div>
 <?endif?>
@@ -72,7 +72,7 @@
         <h4>Wyszukiwarka</h4>
         <input type="text" />
     </div><!--/search-->
-
+<?/*
     <div id="rotation">
         <h4>Darmowi bohaterowie</h4>
         <ul>
@@ -85,11 +85,11 @@
             <li>Akali</li>
         </ul>
     </div><!--/rotation-->
-
+*/?>
     <div id="new-builds">
         <h4>Najnowsze poradniki</h4>
         <?foreach($newest_builds as $newest):?>
-            <a href="<?=$this->Html->url(array('controller'=>'pages','action'=>'poradnik',$newest['Build']['id']))?>">
+            <a href="<?=$this->Html->url(array('controller'=>'pages','action'=>'poradnik',strtolower($newest['Champion']['name'])))?>">
                 <?=$this->Thumb->champion($newest['Build']['champion_id'],$newest['Champion']['name'],64);?>
                 <h5><?=$newest['Champion']['name'];?></h5>
             </a>
@@ -100,6 +100,38 @@
     <div id="facebook">
         <h4>Facebook</h4>
     </div><!--/facebook-->
+
+    
+    <?/*advert*/?>
+        <?/*$type = rand(0,1);
+            if($type == 0):?>
+                <script type="text/javascript"><!--
+                google_ad_client = "ca-pub-4638937189329374";
+                <?// Pentakill-widget-graficzna?>
+                google_ad_slot = "6946897739";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                //-->
+                </script>
+                <script type="text/javascript"
+                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+            <?else:?>
+                <script type="text/javascript"><!--
+                google_ad_client = "ca-pub-4638937189329374";
+                <?//Pentakill-graf-MenuR?>
+                google_ad_slot = "5335428888";
+                google_ad_width = 250;
+                google_ad_height = 250;
+                //-->
+                </script>
+                <script type="text/javascript"
+                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+            <?endif*/?>
+
+    <?/*end advert*/?>
+
 
 </div><!--/sidebar-->
 

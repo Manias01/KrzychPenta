@@ -1,0 +1,1 @@
+Aby się z nami skontaktować napisz e-mail na adres info@pentakill.pl

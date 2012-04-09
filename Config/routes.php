@@ -35,10 +35,14 @@
         Router::connect('/admin/:controller/login', array('controller' => 'users', 'action' => 'login','admin'=>false));
         Router::connect('/admin', array('controller' => 'news', 'action' => 'index','admin'=>true));
 
-        Router::connect('/news', array('controller' => 'news', 'action' => 'all_news'));
-//        Router::connect('/news/*', array('controller' => 'news', 'action' => 'single_news'));
+        Router::connect('/kontakt', array('controller' => 'pages', 'action' => 'contact'));
 
-//        Router::connect('/tooltip', array('controller' => 'tooltip', 'action' => 'index'));
+        Router::connect('/nowosci', array('controller' => 'news', 'action' => 'all_news'));
+        Router::connect('/nowosc/*', array('controller' => 'news', 'action' => 'single_news'));
+
+        Router::connect('/poradniki', array('controller' => 'pages', 'action' => 'all_poradnik'));
+        Router::connect('/poradnik/*', array('controller' => 'pages', 'action' => 'poradnik'));
+
 
 
 //        Router::connect('/*', array('controller' => 'pages', 'action' => 'guide'));

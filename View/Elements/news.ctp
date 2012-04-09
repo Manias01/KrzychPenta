@@ -4,7 +4,7 @@
 
         if($new['type']=='poradnik'){//image for news
             $img_url = 'lol/champions/'.strtolower($new['title'].'/'.$new['title'].'_64.png');
-            $news_link = array('controller'=>'pages','action'=>'poradnik',intval($new['image']));
+            $news_link = array('controller'=>'pages','action'=>'poradnik',strtolower($new['title']));
         }else{
             $img_url = 'news/'.$new['image'];
             $news_link = array('controller'=>'news','action'=>'single_news',$new['id']);

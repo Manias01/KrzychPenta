@@ -16,10 +16,10 @@ class ThumbHelper extends AppHelper {
     }
 
 //return thumbnail image for champion
-    public function Champion($id,$champion_name,$size=64,$class=false){
+    public function Champion($champion_id,$champion_name,$size=64,$class=false){
         $img_name = $this->Dehumanize($champion_name);
         $img_url = $this->base.'/img/lol/champions/'.$img_name.'/'.$img_name.'_'.$size.'.png';
-        $img_full = '<img src="'.$img_url.'" alt="'.$champion_name.'" tip_id="'.$id.'" class="champ'.(($class)?' '.$class:'').'"/>';
+        $img_full = '<img src="'.$img_url.'" alt="'.$champion_name.'" tip_id="'.$champion_id.'" class="champ'.(($class)?' '.$class:'').'"/>';
 
         return($img_full);
     }
