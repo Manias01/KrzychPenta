@@ -2,34 +2,49 @@
 App::uses('AppController', 'Controller');
 
 class NewsController extends AppController {
-    public $name = 'News';
-    public $helpers = array('Html','Text');
-    public $paginate = array(
-        'limit' => 4,
-        'order' => array(
-            'News.id' => 'desc'
-        )
-    );
-
-
+        public $name = 'News';
+        public $uses = array('News','Build');
+        public $helpers = array('Html','Text','Thumb');
+        public $paginate = array(
+            'limit' => 10,
+            'order' => array(
+                'News.id' => 'desc'
+            )
+        );
 
         function beforeFilter(){
-          parent::beforeFilter();
-          $this->Auth->allow('*');
+            $this->Auth->allow('*');
+            
+        //content to 'najnowsze poradniki' for layout 'default.ctp'
+            $newest = $this->Build->find('all',array('recursive'=>1,'limit'=>3,'order'=>'Build.id desc',
+                'fields'=>array('id','champion_id','Champion.name'))
+            );
+            $this->set('newest_builds',$newest);
+            parent::beforeFilter();
         }
 
 
         public function single_news($id){
-
             $single_news = $this->News->find('first',array('conditions'=>array('News.id'=>$id)));
             $this->set('single_news',$single_news);
 
+            $this->set('header','Aktualność');
             $this->set('title_for_layout', $single_news['News']['title']);
-
         }
 
 
-    
+        public function all_news(){
+            $news = $this->paginate('News');
+            $this->set('news',$news);
+            
+            $this->set('header','Wszystkie aktualności');
+            $this->set('title_for_layout', 'Wszystkie aktualności');
+        }
+
+
+
+/*--------------Admin functions------------*/
+
 	public function admin_index() {
 		$this->News->recursive = 0;
 		$this->set('news', $this->paginate());

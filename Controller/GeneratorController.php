@@ -327,11 +327,25 @@ class GeneratorController extends AppController {
                 if($this->News->save(array(
                     'title'=>$build['Champion']['name'],
                     'text'=>$build['Build']['introduction'],
-                    //'image'=>'', don't use in this type of news
-                    'type'=>'build'
+                    'image'=>$build['Build']['id'], //when type = 'poradnik', image contain build_id
+                    'type'=>'poradnik'
                     ))
                 ){
-                    $this->redirect(array('action'=>'done',$build_id));
+            //write new slider
+                    $this->Slider->create();
+                    if($this->Slider->save(array(
+                        'image'=>$build['Champion']['name'],
+                        'description'=>$build['Build']['introduction'],
+                        'url'=>$build['Build']['champion_id'],
+                        'type'=>'poradnik'
+                        ))
+                    ){
+                        $this->redirect(array('action'=>'done',$build_id));
+                    }else{
+                        echo 'Problem z zapisem nowego newsa [GeneratorController ->preview()]';
+                        exit;
+                    }
+
                 }else{
                     echo 'Problem z zapisem nowego newsa [GeneratorController ->preview()]';
                     exit;

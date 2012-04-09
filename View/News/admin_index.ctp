@@ -13,7 +13,7 @@
 	</tr>
 	<?php
 	foreach ($news as $news):?>
-            <?if($news['News']['type']=='build'){
+            <?if($news['News']['type']=='poradnik'){
                 $img_url = $this->base.'/img/lol/champions/'.strtolower($news['News']['title'].'/'.$news['News']['title'].'_64.png');
             }else{
                 $img_url = $this->base.'/img/news/'.$news['News']['image'];

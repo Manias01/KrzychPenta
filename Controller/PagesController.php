@@ -4,25 +4,42 @@ App::uses('AppController', 'Controller');
 class PagesController extends AppController {
     public $name = 'Pages';
     public $helpers = array('Html','Text','Thumb');
-    public $uses = array('News','Build','Skill','Ss','Rune','Item');
+    public $uses = array('News','Build','Skill','Ss','Rune','Item','Slider');
 
 
     function beforeFilter(){
       $this->Auth->allow('*');
+
+    //content to 'najnowsze poradniki' for layout 'default.ctp'
+      $newest = $this->Build->find('all',array('recursive'=>1,'limit'=>3,'order'=>'Build.id desc',
+          'fields'=>array('id','champion_id','Champion.name'))
+      );
+      $this->set('newest_builds',$newest);
       parent::beforeFilter();
     }
 
 
 
     public function home() {
-        $this->set('title_for_layout', 'Witamy');
         $this->paginate = array(
             'order'=>'News.id DESC',
             'limit'=>3
-            );
+        );
         $news = $this->paginate('News');
         $this->set('news', $news);
-
+        
+     //sliders for homepage
+        $sliders = $this->Slider->find('all',array('limit'=>3,'order'=>'Slider.id desc','fields'=>array('image','description','url','type')));
+        foreach($sliders as $slider){
+            if($slider['Slider']['type'] == 'poradnik'){
+                $slider['Slider']['image'] = $this->base.'/img/lol/champions/'.$slider['Slider']['image'].'/background.jpg';
+                $slider['Slider']['url'] = $this->base.'/poradnik/'.$slider['Slider']['url'];
+            }
+        }
+        $this->set('sliders',$sliders);
+        
+        $this->set('title_for_layout', 'Witamy');
+        $this->set('header','Aktualności');
     }
 
 
@@ -62,7 +79,8 @@ class PagesController extends AppController {
         );
         $this->set('skills',$skills);
 
-        $this->set('title_for_layout', 'Poradnik do '.$build['Champion']['name']);
+        $this->set('title_for_layout', $build['Champion']['name'].' - poradnik');
+        $this->set('header','Poradnik');
     }
 
 /*

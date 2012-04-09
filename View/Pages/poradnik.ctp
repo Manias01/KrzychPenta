@@ -1,7 +1,7 @@
 <div id="poradnik">
 
     <div id="shortcut">
-        <h1><?=$build['Champion']['name']?></h1>
+        <h2><?=$build['Champion']['name']?></h2>
 
         <div id="introduction">
             <?=$build['Build']['introduction']?>
