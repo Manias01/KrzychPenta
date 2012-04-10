@@ -40,27 +40,26 @@
 
 
 
-<?if(isSet($sliders[0])): //show slider, actually it's on homepage?>
-    <script type="text/javascript">
-        $(window).load(function(){
-            $('#slider').nivoSlider({
-                prevText: '',
-                nextText: ''
-            });
-        });
-    </script>
-        <div id="slider" class="nivoSlider">
-            <?foreach($sliders as $slider):?>
-                <a href="<?=$slider['Slider']['url']?>"><img src="<?=$slider['Slider']['image']?>" alt="" title="<?=$this->Html->truncate($slider['Slider']['description'],100)?>" /></a>
-            <?endforeach?>
-        </div>
-<?endif?>
-
-
-
-<h1><?=$header?></h1>
 
 <div id="main">
+
+    <?if(isSet($sliders[0])): //show slider, actually it's on homepage?>
+        <script type="text/javascript">
+            $(window).load(function(){
+                $('#slider').nivoSlider({
+                    prevText: '',
+                    nextText: ''
+                });
+            });
+        </script>
+            <div id="slider" class="nivoSlider">
+                <?foreach($sliders as $slider):?>
+                    <a href="<?=$slider['Slider']['url']?>"><img src="<?=$slider['Slider']['image']?>" alt="" title="<?=$this->Text->truncate($slider['Slider']['description'],100)?>" /></a>
+                <?endforeach?>
+            </div>
+    <?endif?>
+
+    <h1><?=$header?></h1>
 
     <?=$content_for_layout?>
 

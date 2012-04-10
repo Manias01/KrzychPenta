@@ -3,8 +3,8 @@
 <head>
 <title><?=$title_for_layout?> | Admin - Pentakill.pl</title>
 <?=$this->Html->charset()."\n"?>
-<?=$this->Html->css(array('admin.css','tooltip.css'))."\n"?>
-<?=$this->Html->script(array('jquery-1.7.2.min.js','jquery.tooltip.min.js','tooltip.js'))?>
+<?=$this->Html->css(array('admin.css','tooltip.css','imgarea-css/imgareaselect-default.css'))."\n"?>
+<?=$this->Html->script(array('jquery-1.7.2.min.js','jquery.imgareaselect.min','jquery.tooltip.min.js','tooltip.js'))?>
 <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 
 </head>
@@ -15,15 +15,17 @@
 
 <div id="header">
     <?=$this->Html->link(
-            $this->Html->image('frontend/header_pentakill.jpg',array('alt'=>'Pentakill.pl - Poradniki do League of Legends')),'/admin/news',
+            $this->Html->image('frontend/pentakill-logo.jpg',array('alt'=>'Pentakill.pl - Poradniki do League of Legends')),'/admin/news',
             array('escape'=>false)
        );?>
 </div><!--/header-->
+
 
 <div id="menu">
     
 <?$linksAdmin = array(
     'News'=>'news',
+    'Sliders'=>'sliders',
     'Champions'=>'champions',
     'Skills'=>'skills',
     'Items'=>'items',

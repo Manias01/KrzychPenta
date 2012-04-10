@@ -1,10 +1,11 @@
+<?php echo $this->Session->flash(); ?>
 <div class="champions index">
 	<h2><?php echo __('Champions');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
-                        <th>Image</th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
+                        <th>Background</th>
 			<th><?php echo $this->Paginator->sort('rp');?></th>
 			<th><?php echo $this->Paginator->sort('ip');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
@@ -14,11 +15,19 @@
         <?$img_url = $this->Thumb->Dehumanize($champion['Champion']['name'])?>
 	<tr>
 		<td><?php echo h($champion['Champion']['id']); ?>&nbsp;</td>
-                <td><img src="<?=$this->base?>/img/lol/champions/<?=$img_url?>/<?=$img_url?>_38.png" alt="<?=$champion['Champion']['name']?>"/></td>
-		<td><?php echo h($champion['Champion']['name']); ?>&nbsp;</td>
+                <td>
+                    <img src="<?=$this->base?>/img/lol/champions/<?=$img_url?>/<?=$img_url?>_38.png" alt="<?=$champion['Champion']['name']?>"/>
+                    <?php echo h($champion['Champion']['name']); ?>&nbsp;
+                </td>
+                <td>
+                    <?if($champion['Champion']['background']):?>
+                        <img src="<?=$this->base?>/img/lol/backgrounds/<?=$img_url?>_background.jpg" width="150" alt="" />
+                    <?endif?>
+                </td>
 		<td><?php echo h($champion['Champion']['rp']); ?>&nbsp;</td>
 		<td><?php echo h($champion['Champion']['ip']); ?>&nbsp;</td>
 		<td class="actions">
+                        <?=$this->Html->link('Add background',array('action'=>'background',$champion['Champion']['id']))?> | 
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $champion['Champion']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $champion['Champion']['id'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $champion['Champion']['id']), null, __('Are you sure you want to delete # %s?', $champion['Champion']['id'])); ?>

@@ -30,10 +30,10 @@ class PagesController extends AppController {
         
      //sliders for homepage
         $sliders = $this->Slider->find('all',array('limit'=>3,'order'=>'Slider.id desc','fields'=>array('image','description','url','type')));
-        foreach($sliders as $slider){
+        foreach($sliders as &$slider){
             if($slider['Slider']['type'] == 'poradnik'){
-                $slider['Slider']['image'] = $this->base.'/img/lol/champions/'.$slider['Slider']['image'].'/background.jpg';
-                $slider['Slider']['url'] = $this->base.'/poradnik/'.$slider['Slider']['url'];
+                $slider['Slider']['image'] = $this->base.'/img/lol/backgrounds/'.$this->Dehumanize($slider['Slider']['image']).'_background.jpg';
+                $slider['Slider']['url'] = $this->base.'/poradnik/'.$this->Dehumanize($slider['Slider']['url']);
             }
         }
         $this->set('sliders',$sliders);
@@ -61,9 +61,14 @@ class PagesController extends AppController {
 
     public function poradnik($champion_name){
         //build
-        $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Champion.name'=>$champion_name)));
+        if(is_numeric($champion_name)){
+            $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Build.id'=>$champion_name)));
+        }else $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Champion.name'=>$champion_name)));
+
+        //check if build don't exist
         if(!$build) $this->redirect(array('controller'=>'pages', 'action'=>'home'));
-        
+
+        //Build
         $build['Build']['skill_sequence'] = unserialize($build['Build']['skill_sequence']);
         $this->set('build', $build);
 

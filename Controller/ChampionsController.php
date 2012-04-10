@@ -75,6 +75,80 @@ class ChampionsController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 
+
+
+        public function admin_background($id=null){
+		$this->Champion->id = $id;
+		if (!$this->Champion->exists()) {
+			throw new NotFoundException(__('Invalid champion'));
+		}
+
+		if ($this->request->is('post')) {
+                    print_r($this->request->data['Champion']);
+//                    exit;
+                    $champ_name = $this->Champion->read('name');
+                    $champ_name = $this->Dehumanize($champ_name['Champion']['name']);
+
+                //if step one:
+                    if(is_uploaded_file($this->request->data['Champion']['background']['tmp_name'])){
+
+                        if($this->request->data['Champion']['background']['type']!='image/jpeg'){
+                            echo 'Zły format pliku. Musi być *.jpg!';
+                            exit;
+                        }
+
+                        if(!move_uploaded_file(
+                                $this->request->data['Champion']['background']['tmp_name'],
+                                'img/upload_temp/'.$champ_name.'_background.jpg'
+                        )){
+                            echo 'Problem z zapisaniem wysłanej grafiki. Spróbuj jeszcze raz';
+                            exit;
+                        }
+                    }else{
+               //if stop two: resize, save in folder, write name in DB
+                        $corner = $this->request->data['Champion'];
+                        $imagePath = 'img/upload_temp/'.$champ_name.'_background.jpg';
+                        $imageInfo = getimagesize($imagePath);
+                        $sourceWidth = $imageInfo[0];
+                        $sourceHeight = $imageInfo[1];
+
+                        $widthCrop = $corner['width']; $heightCrop = $corner['height'];
+                        $widthResize = 600; $heightResize = 250;
+                        $destinationCrop = imagecreatetruecolor($widthCrop, $heightCrop);  //create new img in slider size
+                        $destinationResize = imagecreatetruecolor($widthResize, $heightResize);  //create new img in slider size
+                        
+                        $source = imagecreatefromjpeg($imagePath);  //source of image to crop and resize
+                        imagecopy($destinationCrop,$source,0,0, $corner['x1'],$corner['y1'], $sourceWidth, $sourceHeight);//crop selected area
+                        imagecopyresized($destinationResize, $destinationCrop, 0,0,0,0, $widthResize, $heightResize, $widthCrop, $heightCrop);//resize img
+                        imagejpeg($destinationResize, 'img/lol/backgrounds/'.$champ_name.'_background.jpg',85); //write completed slider/background image
+
+                        unlink($imagePath); //delete temp file
+
+                  //write to DB that champion have background:
+                        $this->Champion->save(array(
+                            'id'=>$id,
+                            'background'=>true
+                        ));
+
+
+                        $this->Session->setFlash('Zapis slidera zakonczony powodzeniem');
+                        $this->redirect(array('controller'=>'champions','action'=>'index','admin'=>true));
+                    }
+
+                    $this->redirect(array($id,$champ_name.'_background'));
+                    /*
+			if ($this->Champion->save($this->request->data)) {
+				$this->Session->setFlash(__('The champion has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The champion could not be saved. Please, try again.'));
+			}
+                    */
+		} else {
+			//$this->request->data = $this->Champion->read(null, $id);
+		}
+        }
+
         
 
         public function GetChampionsName() {

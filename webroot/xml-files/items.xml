@@ -1,0 +1,1128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+<item id="3001">
+  <en>Abyssal Scepter</en>
+  <pl>Berło Otchłani</pl>
+  <d>+70 pkt. mocy umiejętności +57pkt. odporności na magię UNIKALNE Aura: Obniża odporność na magię przeciwników znajdujących się w pobliżu o 20.</d>
+  <c1>1050</c1>
+  <c2>2650</c2>
+  <t>spell_damage</t>
+  <t>spell_block</t>
+</item>
+<item id="3105">
+  <en>Aegis of the Legion</en>
+  <pl>Egida Legionu</pl>
+  <d>+270 pkt. zdrowia +18 pkt. pancerza +24 pkt. odporności na magię UNIKALNE Aura: Pobliscy sojusznicy otrzymują 12 pkt. pancerza, 15 pkt. odporności na magię i 8 obrażeń od ataku.</d>
+  <c1>750</c1>
+  <c2>1925</c2>
+  <t>spell_block</t>
+  <t>armor</t>
+  <t>health</t>
+</item>
+<item id="1052">
+  <en>Amplifying Tome</en>
+  <pl>Wzmacniająca Księga</pl>
+  <d>+20 mocy umiejętności</d>
+  <c1>435</c1>
+  <c2>435</c2>
+  <t>spell_damage</t>
+</item>
+<item id="3003">
+  <en>Archangel's Staff</en>
+  <pl>Kostur Archanioła</pl>
+  <d>+400 pkt. many +25 pkt. regeneracji many co 5 sek. +45 pkt. mocy umiejętności Bierne: Zmienia 3% twojej...</d>
+  <c1>1000</c1>
+  <c2>2855</c2>
+  <t>mana_regen</t>
+  <t>spell_damage</t>
+  <t>mana</t>
+</item>
+<item id="3005">
+  <en>Atma's Impaler</en>
+  <pl>Włócznia Atmy</pl>
+  <d>+45 pkt. pancerza +18% szans na trafienie krytyczne UNIKALNE Bierne: Zmienia 2% twojego maksymalnego zdrowia w obrażenia od ataku.</d>
+  <c1>825</c1>
+  <c2>2355</c2>
+  <t>damage</t>
+  <t>critical_strike</t>
+  <t>armor</t>
+</item>
+<item id="3093">
+  <en>Avarice Blade</en>
+  <pl>Ostrze Chciwości</pl>
+  <d>+12% szans na trafienie krytyczne UNIKALNE Bierne: Otrzymujesz 5 szt. złota co 10 sekund.</d>
+  <c1>350</c1>
+  <c2>750</c2>
+  <t>critical_strike</t>
+</item>
+<item id="1038">
+  <en>B. F. Sword</en>
+  <pl>K. W. Miecz</pl>
+  <d>+45 pkt. obrażeń od ataku</d>
+  <c1>1650</c1>
+  <c2>1650</c2>
+  <t>damage</t>
+</item>
+<item id="3102">
+  <en>Banshee's Veil</en>
+  <pl>Całun Banshee</pl>
+  <d>+375 pkt. zdrowia +375 pkt. many +50 pkt. odporności na magię UNIKALNE Bierne: Magiczna tarcza, która blokuje następną wrogą umiejętność (45 sek. odnowienia).</d>
+  <c1>650</c1>
+  <c2>2715</c2>
+  <t>mana</t>
+  <t>spell_block</t>
+  <t>health</t>
+</item>
+<item id="3006">
+  <en>Berserker's Greaves</en>
+  <pl>Nagolenniki Berserkera</pl>
+  <d> +25% szybkości ataku UNIKALNE Bierne: Ulepszone poruszanie 2 (Efekt nie kumuluje się z innymi Butami.)</d>
+  <c1>150</c1>
+  <c2>920</c2>
+  <t>attack_speed</t>
+  <t>movement</t>
+</item>
+<item id="3144">
+  <en>Bilgewater Cutlass</en>
+  <pl>Kordelas z Bilgewater</pl>
+  <d>+35 obrażeń od ataku +15% wykradania życia UNIKALNE Użycie: Zadaje 150 obrażeń magicznych i spowalnia cel o 50% na 3 sekundy (60 sek. odnowienia).</d>
+  <c1>400</c1>
+  <c2>1825</c2>
+  <t>life_steal</t>
+  <t>damage</t>
+</item>
+<item id="1026">
+  <en>Blasting Wand</en>
+  <pl>Różdżka Zniszczenia</pl>
+  <d>+40 mocy umiejętności</d>
+  <c1>860</c1>
+  <c2>860</c2>
+  <t>spell_damage</t>
+</item>
+<item id="3117">
+  <en>Boots of Mobility</en>
+  <pl>Buty Ruchliwości</pl>
+  <d>UNIKALNE Bierne: Ulepszone poruszanie 2; gdy bohater znajduje się poza walką przez 5 sekund efekt zmienia się na Ulepszone Poruszanie 5 (nie kumuluje się z innymi Butami).</d>
+  <c1>650</c1>
+  <c2>1000</c2>
+  <t>movement</t>
+</item>
+<item id="1001">
+  <en>Boots of Speed</en>
+  <pl>Buty Szybkości</pl>
+  <d>UNIKALNE Bierne: Ulepszone poruszanie 1 (Efekt nie kumuluje się z innymi Butami.)</d>
+  <c1>350</c1>
+  <c2>350</c2>
+  <t>movement</t>
+</item>
+<item id="3009">
+  <en>Boots of Swiftness</en>
+  <pl>Buty Prędkości</pl>
+  <d>UNIKALNE Bierne: Ulepszone poruszanie 3 (Efekt nie kumuluje się z innymi Butami.)</d>
+  <c1>650</c1>
+  <c2>1000</c2>
+  <t>movement</t>
+</item>
+<item id="1051">
+  <en>Brawler's Gloves</en>
+  <pl>Rękawice Awanturnika</pl>
+  <d>+8% szans na trafienie krytyczne</d>
+  <c1>400</c1>
+  <c2>400</c2>
+  <t>critical_strike</t>
+</item>
+<item id="2003">
+  <en>Health Potion</en>
+  <pl>Mikstura Zdrowia</pl>
+  <d>Kliknij, aby użyć: Odnawia 200 punktów zdrowia przez 20 sekund.</d>
+  <c1>35</c1>
+  <c2>35</c2>
+  <t>consumable</t>
+</item>
+<item id="3010">
+  <en>Catalyst the Protector</en>
+  <pl>Katalizator Ochrony</pl>
+  <d>+290 pkt. zdrowia +325 pkt. many UNIKALNE Bierne: W momencie zdobycia poziomu przywraca 250 pkt. zdrowia i 200 pkt. many w przeciągu 8 sekund.</d>
+  <c1>450</c1>
+  <c2>1325</c2>
+  <t>mana</t>
+  <t>health</t>
+</item>
+<item id="1031">
+  <en>Chain Vest</en>
+  <pl>Kamizelka Kolcza</pl>
+  <d>+45 pancerza</d>
+  <c1>700</c1>
+  <c2>700</c2>
+  <t>armor</t>
+</item>
+<item id="3028">
+  <en>Chalice of Harmony</en>
+  <pl>Kielich Harmonii</pl>
+  <d>+30 pkt. odporności na magię +7,5 pkt. regeneracji many co 5 sek. UNIKALNE Bierne: Zwiększa regenerację many o 1% za każdy 1% brakującej many.</d>
+  <c1>100</c1>
+  <c2>890</c2>
+  <t>mana_regen</t>
+  <t>spell_block</t>
+</item>
+<item id="3172">
+  <en>Cloak and Dagger</en>
+  <pl>Płaszcz i Szpada</pl>
+  <d>+20% szybkości ataku +20% szans na trafienie krytyczne UNIKALNE Bierne: +35 pkt. nieustępliwości (Nieustępliwość...</d>
+  <c1>200</c1>
+  <c2>1450</c2>
+  <t>attack_speed</t>
+  <t>critical_strike</t>
+</item>
+<item id="1018">
+  <en>Cloak of Agility</en>
+  <pl>Płaszcz Zręczności</pl>
+  <d>+18% szans na trafienie krytyczne</d>
+  <c1>830</c1>
+  <c2>830</c2>
+  <t>critical_strike</t>
+</item>
+<item id="1029">
+  <en>Cloth Armor</en>
+  <pl>Lekka Szata</pl>
+  <d>+18 pancerza</d>
+  <c1>300</c1>
+  <c2>300</c2>
+  <t>armor</t>
+</item>
+<item id="1042">
+  <en>Dagger</en>
+  <pl>Sztylet</pl>
+  <d>+15% prędkości ataku</d>
+  <c1>420</c1>
+  <c2>420</c2>
+  <t>attack_speed</t>
+</item>
+<item id="3128">
+  <en>Deathfire Grasp</en>
+  <pl>Objęcie Ognia</pl>
+  <d>+60 pkt. mocy umiejętności +10 pkt. regeneracji many co 5 sek. UNIKALNE Bierne: +15% skrócenia czasu...</d>
+  <c1>600</c1>
+  <c2>2610</c2>
+  <t>mana_regen</t>
+  <t>spell_damage</t>
+  <t>cooldown_reduction</t>
+</item>
+<item id="1055">
+  <en>Doran's Blade</en>
+  <pl>Ostrze Dorana</pl>
+  <d>+100 pkt. zdrowia +10 obrażeń od ataku +3% kradzieży życia</d>
+  <c1>475</c1>
+  <c2>475</c2>
+  <t>life_steal</t>
+  <t>damage</t>
+  <t>health</t>
+</item>
+<item id="1056">
+  <en>Doran's Ring</en>
+  <pl>Pierścień Dorana</pl>
+  <d>+100 pkt. zdrowia +15 pkt. mocy umiejętności +5 pkt. regeneracji many co 5 sek.</d>
+  <c1>475</c1>
+  <c2>475</c2>
+  <t>mana_regen</t>
+  <t>spell_damage</t>
+  <t>health</t>
+</item>
+<item id="1054">
+  <en>Doran's Shield</en>
+  <pl>Tarcza Dorana</pl>
+  <d>+120 pkt. zdrowia +10 pkt. pancerza +8 pkt. regeneracji zdrowia co 5 sek.</d>
+  <c1>475</c1>
+  <c2>475</c2>
+  <t>health_regen</t>
+  <t>armor</t>
+  <t>health</t>
+</item>
+<item id="3173">
+  <en>Eleisa's Miracle</en>
+  <pl>Cud Eleisy</pl>
+  <d>+25 pkt. regeneracji zdrowia co 5 sek. +20 pkt. regeneracji many co 5 sekund UNIKALNE Bierne: +35 pkt....</d>
+  <c1>500</c1>
+  <c2>1300</c2>
+  <t>mana_regen</t>
+  <t>health_regen</t>
+</item>
+<item id="3097">
+  <en>Emblem of Valor</en>
+  <pl>Emblemat Bohaterstwa</pl>
+  <d>+17% kradzieży życia UNIKALNE Aura: Pobliscy bohaterowie regenerują 10 pkt. zdrowia co 5 sekund.</d>
+  <c1>100</c1>
+  <c2>800</c2>
+  <t>life_steal</t>
+  <t>health_regen</t>
+</item>
+<item id="3184">
+  <en>Entropy</en>
+  <pl>Entropia</pl>
+  <d>+275 pkt. zdrowia +70 obrażeń od ataku UNIKALNE Bierne: Twoje ataki mają 25% szans na spowolnienie...</d>
+  <c1>600</c1>
+  <c2>3565</c2>
+  <t>damage</t>
+  <t>health</t>
+</item>
+<item id="3123">
+  <en>Executioner's Calling</en>
+  <pl>Wezwanie Kata</pl>
+  <d>+18% kradzieży życia +15% szans na trafienie krytyczne UNIKALNE Użycie: Zadaje wrogiemu bohaterowi Głęboką Ranę, zmniejszając leczenie oraz regenerację o 50% na 8 sekund (20 sek. odnowienia).</d>
+  <c1>500</c1>
+  <c2>1350</c2>
+  <t>life_steal</t>
+  <t>critical_strike</t>
+</item>
+<item id="1004">
+  <en>Faerie Charm</en>
+  <pl>Amulet Wróżki</pl>
+  <d>+3 pkt. regeneracji many co 5 sek.</d>
+  <c1>180</c1>
+  <c2>180</c2>
+  <t>mana_regen</t>
+</item>
+<item id="3108">
+  <en>Fiendish Codex</en>
+  <pl>Czarci Kodeks</pl>
+  <d>+30 pkt. mocy umiejętności +7 pkt. regeneracji many co 5 sek. UNIKALNE Bierne: +10% skrócenia czasu odnowienia</d>
+  <c1>420</c1>
+  <c2>1245</c2>
+  <t>mana_regen</t>
+  <t>spell_damage</t>
+  <t>cooldown_reduction</t>
+</item>
+<item id="3109">
+  <en>Force of Nature</en>
+  <pl>Siła Natury</pl>
+  <d>+76 pkt. odporności na magię +40 pkt. regeneracji zdrowia co 5 sek. +8% prędkości ruchu UNIKALNE Bierne: Odnawia 0,35% zdrowia bohatera co sekundę.</d>
+  <c1>1000</c1>
+  <c2>2610</c2>
+  <t>health_regen</t>
+  <t>spell_block</t>
+  <t>movement</t>
+</item>
+<item id="3110">
+  <en>Frozen Heart</en>
+  <pl>Lodowe Serce</pl>
+  <d>+99 pkt. pancerza +500 pkt. many UNIKALNE Bierne: +20% skrócenia czasu odnowienia UNIKALNE Aura: Zmniejsza prędkość ataku pobliskich wrogów o 20%.</d>
+  <c1>650</c1>
+  <c2>2775</c2>
+  <t>mana</t>
+  <t>armor</t>
+  <t>cooldown_reduction</t>
+</item>
+<item id="3022">
+  <en>Frozen Mallet</en>
+  <pl>Lodowy Młot</pl>
+  <d>+700 pkt. zdrowia +20 obrażeń od ataku UNIKALNE Bierne: Twoje ataki spowalniają cel o 40% na 2,5 sekundy (30% w przypadku ataków na dystans).</d>
+  <c1>825</c1>
+  <c2>3250</c2>
+  <t>damage</t>
+  <t>health</t>
+</item>
+<item id="1011">
+  <en>Giant's Belt</en>
+  <pl>Pas Giganta</pl>
+  <d>+430 zdrowia</d>
+  <c1>1110</c1>
+  <c2>1110</c2>
+  <t>health</t>
+</item>
+<item id="3024">
+  <en>Glacial Shroud</en>
+  <pl>Lodowcowy Całun</pl>
+  <d>+425 pkt. many +45 pkt. pancerza UNIKALNE Bierne: +15% skrócenia czasu odnowienia</d>
+  <c1>425</c1>
+  <c2>1525</c2>
+  <t>mana</t>
+  <t>armor</t>
+  <t>cooldown_reduction</t>
+</item>
+<item id="3026">
+  <en>Guardian Angel</en>
+  <pl>Anioł Stróż</pl>
+  <d>+68 pkt. pancerza +38 pkt. odporności na magię UNIKALNE Bierne: Ożywia twojego bohatera po śmierci, przywracając 750 pkt. zdrowia oraz 375 pkt. many (5 minut odnowienia).</d>
+  <c1>1200</c1>
+  <c2>2600</c2>
+  <t>spell_block</t>
+  <t>armor</t>
+</item>
+<item id="3124">
+  <en>Guinsoo's Rageblade</en>
+  <pl>Ostrze Gniewu Guinsoo</pl>
+  <d>+35 obrażeń od ataku +45 pkt. mocy umiejętności UNIKALNE Bierne: Przy ataku lub użyciu umiejętności zwiększa szybkość ataku o 4% i moc umiejętności o 6 na 5 sekund (kumuluje się do 8 razy).</d>
+  <c1>400</c1>
+  <c2>2235</c2>
+  <t>attack_speed</t>
+  <t>spell_damage</t>
+  <t>damage</t>
+</item>
+<item id="3136">
+  <en>Haunting Guise</en>
+  <pl>Nawiedzona Maska</pl>
+  <d>+25 pkt. mocy umiejętności +200 pkt. zdrowia UNIKALNE Bierne: +20 pkt. przebicia odporności</d>
+  <c1>575</c1>
+  <c2>1485</c2>
+  <t>spell_damage</t>
+  <t>health</t>
+</item>
+<item id="3132">
+  <en>Heart of Gold</en>
+  <pl>Serce ze Złota</pl>
+  <d>+250 pkt. zdrowia UNIKALNE Bierne: Otrzymujesz 5 szt. złota co 10 sekund.</d>
+  <c1>350</c1>
+  <c2>825</c2>
+  <t>health</t>
+</item>
+<item id="3155">
+  <en>Hexdrinker</en>
+  <pl>Pochłaniacz Uroków</pl>
+  <d>+35 obrażeń od ataku +30 pkt. odporności na magię UNIKALNE Bierne: Jeśli otrzymasz obrażenia magiczne,...</d>
+  <c1>570</c1>
+  <c2>1800</c2>
+  <t>damage</t>
+  <t>spell_block</t>
+</item>
+<item id="3146">
+  <en>Hextech Gunblade</en>
+  <pl>Miecz-Pistolet Hextech</pl>
+  <d>+40 pkt. obrażeń ataku +70 pkt. mocy umiejętności +15% kradzieży życia. UNIKALNE Bierne: +20% wampiryzm...</d>
+  <c1>600</c1>
+  <c2>3625</c2>
+  <t>life_steal</t>
+  <t>spell_damage</t>
+  <t>damage</t>
+</item>
+<item id="3145">
+  <en>Hextech Revolver</en>
+  <pl>Rewolwer Hextech</pl>
+  <d>+40 pkt. mocy umiejętności UNIKALNE Bierne: +15% wampiryzmu zaklęć</d>
+  <c1>330</c1>
+  <c2>1200</c2>
+  <t>spell_damage</t>
+</item>
+<item id="3187">
+  <en>Hextech Sweeper</en>
+  <pl>Wykrywacz Hextech</pl>
+  <d>`+40 pkt. mocy umiejętności +300 pkt. zdrowia UNIKALNE Bierne: +10% skrócenia czasu odnowienia UNIKALNE...</d>
+  <c1>150</c1>
+  <c2>1870</c2>
+  <t>spell_damage</t>
+  <t>cooldown_reduction</t>
+  <t>health</t>
+</item>
+<item id="3031">
+  <en>Infinity Edge</en>
+  <pl>Ostrze Nieskończoności</pl>
+  <d>+80 obrażeń od ataku +25% szans na trafienie krytyczne UNIKALNE Bierne: Trafienia krytyczne zadają 250% obrażeń, zamiast 200%.</d>
+  <c1>375</c1>
+  <c2>3830</c2>
+  <t>damage</t>
+  <t>critical_strike</t>
+</item>
+<item id="3158">
+  <en>Ionian Boots of Lucidity</en>
+  <pl>Ioniańskie Buty Jasności</pl>
+  <d>UNIKALNE Bierne: +15% skrócenia czasu odnowienia UNIKALNE Bierne: Ulepszone poruszanie 2 (Efekt nie kumuluje się z innymi Butami.)</d>
+  <c1>700</c1>
+  <c2>1050</c2>
+  <t>movement</t>
+  <t>cooldown_reduction</t>
+</item>
+<item id="3178">
+  <en>Ionic Spark</en>
+  <pl>Jonowa Iskra</pl>
+  <d>+45% szybkości ataku +250 pkt. zdrowia UNIKALNE Bierne: Co 4 atak wywołuje łańcuch błyskawic, zadając 100 obrażeń magicznych maksymalnie 4 celom.</d>
+  <c1>775</c1>
+  <c2>2300</c2>
+  <t>attack_speed</t>
+  <t>health</t>
+</item>
+<item id="3098">
+  <en>Kage's Lucky Pick</en>
+  <pl>Szczęśliwy Sztylet Kage'a</pl>
+  <d>+25 pkt. mocy umiejętności UNIKALNE Bierne: Otrzymujesz 5 szt. złota co 10 sekund.</d>
+  <c1>330</c1>
+  <c2>765</c2>
+  <t>spell_damage</t>
+</item>
+<item id="3067">
+  <en>Kindlegem</en>
+  <pl>Rozgrzany Klejnot</pl>
+  <d>+200 pkt. zdrowia UNIKALNE Bierne: +10% skrócenia czasu odnowienia</d>
+  <c1>375</c1>
+  <c2>850</c2>
+  <t>cooldown_reduction</t>
+  <t>health</t>
+</item>
+<item id="3186">
+  <en>Kitae's Bloodrazor</en>
+  <pl>Krwawe Szpony Kitae</pl>
+  <d>+30 obrażeń od ataku +40% szybkości ataku UNIKALNE Bierne: Twoje ataki zadają magiczne obrażenia w wysokości 2,5% maksymalnego zdrowia celu.</d>
+  <c1>700</c1>
+  <c2>2725</c2>
+  <t>attack_speed</t>
+  <t>damage</t>
+</item>
+<item id="3035">
+  <en>Last Whisper</en>
+  <pl>Ostatni Szept</pl>
+  <d>+40 obrażeń od ataku UNIKALNE Bierne: +40% przebicia pancerza</d>
+  <c1>900</c1>
+  <c2>2290</c2>
+  <t>damage</t>
+</item>
+<item id="3138">
+  <en>Leviathan</en>
+  <pl>Lewiatan</pl>
+  <d>+180 zdrowia UNIKALNE Bierne: Twój bohater otrzymuje 32 pkt. zdrowia za każdy ładunek, otrzymując...</d>
+  <c1>800</c1>
+  <c2>1275</c2>
+  <t>health</t>
+</item>
+<item id="3100">
+  <en>Lich Bane</en>
+  <pl>Zmora Licza</pl>
+  <d>+350 pkt. many +80 pkt. mocy umiejętności +30 pkt. odporności na magię +7% prędkości ruchu UNIKALNE...</d>
+  <c1>950</c1>
+  <c2>3470</c2>
+  <t>spell_damage</t>
+  <t>mana</t>
+  <t>spell_block</t>
+  <t>movement</t>
+</item>
+<item id="1036">
+  <en>Long Sword</en>
+  <pl>Długi Miecz</pl>
+  <d>+10 obrażeń od ataku</d>
+  <c1>415</c1>
+  <c2>415</c2>
+  <t>damage</t>
+</item>
+<item id="3126">
+  <en>Madred's Bloodrazor</en>
+  <pl>Krwawe Szpony Madreda</pl>
+  <d>+30 obrażeń od ataku +40% szybkości ataku +25 pkt. pancerza UNIKALNE Bierne: Twoje ataki zadają magiczne obrażenia w wysokości 4% maksymalnego zdrowia celu.</d>
+  <c1>775</c1>
+  <c2>3800</c2>
+  <t>attack_speed</t>
+  <t>damage</t>
+</item>
+<item id="3106">
+  <en>Madred's Razors</en>
+  <pl>Szpony Madreda</pl>
+  <d>+15 obrażeń +23 pkt. pancerza UNIKALNE Bierne: Twoje ataki mają 15% szans na zadanie 500 dodatkowych obrażeń stworowi bądź potworowi.</d>
+  <c1>285</c1>
+  <c2>1000</c2>
+  <t>damage</t>
+  <t>armor</t>
+</item>
+<item id="3114">
+  <en>Malady</en>
+  <pl>Zaraza</pl>
+  <d>+25 pkt. mocy umiejętności +50% prędkości ataku UNIKALNE Bierne: Twoje ataki zadają dodatkowe 20 obrażeń magicznych i zmniejszają odporność na magię celu o 6 na 8 sek. (Efekt kumuluje się do 4 razy.)</d>
+  <c1>550</c1>
+  <c2>1825</c2>
+  <t>attack_speed</t>
+  <t>spell_damage</t>
+</item>
+<item id="2004">
+  <en>Mana-Encrusted Apple</en>
+  <pl>Mikstura Many</pl>
+  <d>Kliknij, aby użyć: Odnawia 100 punktów many przez 20 sekund.</d>
+  <c1>40</c1>
+  <c2>40</c2>
+  <t>consumable</t>
+</item>
+<item id="3037">
+  <en>Mana Manipulator</en>
+  <pl>Manipulator Many</pl>
+  <d>UNIKALNE Aura: Pobliscy bohaterowie regenerują 7,2 pkt. many co 5 sekund.</d>
+  <c1>115</c1>
+  <c2>475</c2>
+  <t>mana_regen</t>
+</item>
+<item id="3004">
+  <en>Manamune</en>
+  <pl>Manamune</pl>
+  <d>+350 pkt. many +7 pkt. regeneracji many co 5 sek. +20 pkt. siły ataku UNIKALNE Bierne: Zmienia 2% twojej...</d>
+  <c1>700</c1>
+  <c2>2110</c2>
+  <t>mana_regen</t>
+  <t>damage</t>
+  <t>mana</t>
+</item>
+<item id="3041">
+  <en>Mejai's Soulstealer</en>
+  <pl>Wykradacz Dusz Mejai'a</pl>
+  <d>+20 pkt. mocy umiejętności UNIKALNE Bierne: Twój bohater otrzymuje 8 mocy umiejętności za każdy...</d>
+  <c1>800</c1>
+  <c2>1235</c2>
+  <t>spell_damage</t>
+</item>
+<item id="1005">
+  <en>Meki Pendant</en>
+  <pl>Naszyjnik Meki</pl>
+  <d>+7 pkt. regeneracji many co 5 sek.</d>
+  <c1>390</c1>
+  <c2>390</c2>
+  <t>mana_regen</t>
+</item>
+<item id="3111">
+  <en>Mercury's Treads</en>
+  <pl>Obuwie Merkurego</pl>
+  <d>+25 pkt. odporności na magię UNIKALNE Bierne: Ulepszone poruszanie 2 (Efekt nie kumuluje się z innymi...</d>
+  <c1>450</c1>
+  <c2>1200</c2>
+  <t>spell_block</t>
+  <t>movement</t>
+</item>
+<item id="3170">
+  <en>Moonflair Spellblade</en>
+  <pl>Księżycowe Czaroostrze</pl>
+  <d>+50 pkt. mocy umiejętności UNIKALNE Bierne: +35 pkt. nieustępliwości (Nieustępliwość skraca czas...</d>
+  <c1>340</c1>
+  <c2>1200</c2>
+  <t>spell_damage</t>
+</item>
+<item id="3165">
+  <en>Morello's Evil Tome</en>
+  <pl>Księga Grozy Morello</pl>
+  <d>+75 pkt. mocy umiejętności +12 pkt. regeneracji many co 5 sek. UNIKALNE Bierne: +20% skrócenia czasu odnowienia</d>
+  <c1>245</c1>
+  <c2>2350</c2>
+  <t>mana_regen</t>
+  <t>spell_damage</t>
+  <t>cooldown_reduction</t>
+</item>
+<item id="3115">
+  <en>Nashor's Tooth</en>
+  <pl>Ząb Nashora</pl>
+  <d>+50% szybkości ataku +55 mocy umiejętności +10 regeneracji many co 5 sek. UNIKALNE Bierne: +25% skrócenia czasu odnowienia</d>
+  <c1>500</c1>
+  <c2>2885</c2>
+  <t>mana_regen</t>
+  <t>attack_speed</t>
+  <t>spell_damage</t>
+  <t>cooldown_reduction</t>
+</item>
+<item id="1058">
+  <en>Needlessly Large Rod</en>
+  <pl>Absurdalnie Wielka Różdżka</pl>
+  <d>+80 mocy umiejętności</d>
+  <c1>1600</c1>
+  <c2>1600</c2>
+  <t>spell_damage</t>
+</item>
+<item id="1057">
+  <en>Negatron Cloak</en>
+  <pl>Płaszcz Negacji</pl>
+  <d>+48 pkt. odporności na magię</d>
+  <c1>740</c1>
+  <c2>740</c2>
+  <t>spell_block</t>
+</item>
+<item id="3047">
+  <en>Ninja Tabi</en>
+  <pl>Tabi Ninja</pl>
+  <d>+25 pkt. pancerza +12% szans na unik UNIKALNE Bierne: Ulepszone poruszanie 2 (Efekt nie kumuluje się z innymi Butami.)</d>
+  <c1>200</c1>
+  <c2>850</c2>
+  <t>movement</t>
+  <t>armor</t>
+</item>
+<item id="1033">
+  <en>Null-Magic Mantle</en>
+  <pl>Opończa Antymagiczna</pl>
+  <d>+24 pkt. odporności na magię</d>
+  <c1>400</c1>
+  <c2>400</c2>
+  <t>spell_block</t>
+</item>
+<item id="3180">
+  <en>Odyn's Veil</en>
+  <pl>Całun Odyna</pl>
+  <d>+350 pkt. zdrowia +350 pkt. many +50 pkt. odporności na magię UNIKALNE   Zmniejsza o 10% i magazynuje...</d>
+  <c1>650</c1>
+  <c2>2715</c2>
+  <t>mana</t>
+  <t>spell_block</t>
+  <t>health</t>
+</item>
+<item id="2042">
+  <en>Oracle's Elixir</en>
+  <pl>Eliksir Wyroczni</pl>
+  <d>Kliknij, aby użyć: Daje bohaterowi zdolność wykrywania niewidzialnych jednostek do momentu śmierci.</d>
+  <c1>400</c1>
+  <c2>400</c2>
+  <t>consumable</t>
+</item>
+<item id="2047">
+  <en>Oracle's Extract</en>
+  <pl>Wyciąg Wyroczni</pl>
+  <d>Kliknij, aby użyć: Daje bohaterowi zdolność wykrywania niewidzialnych jednostek przez 5 minut lub do momentu śmierci.</d>
+  <c1>250</c1>
+  <c2>250</c2>
+  <t>consumable</t>
+</item>
+<item id="3044">
+  <en>Phage</en>
+  <pl>Pożeracz</pl>
+  <d>+225 pkt. zdrowia +18 obrażeń od ataku UNIKALNE Bierne: Twoje ataki mają 25% szans na spowolnienie celu o 30% na 2,5 sekundy.</d>
+  <c1>425</c1>
+  <c2>1315</c2>
+  <t>damage</t>
+  <t>health</t>
+</item>
+<item id="3046">
+  <en>Phantom Dancer</en>
+  <pl>Widmowy Tancerz</pl>
+  <d>+55% szybkości ataku +30% szans na trafienie krytyczne +15% prędkości ruchu</d>
+  <c1>400</c1>
+  <c2>2845</c2>
+  <t>attack_speed</t>
+  <t>movement</t>
+  <t>critical_strike</t>
+</item>
+<item id="3096">
+  <en>Philosopher's Stone</en>
+  <pl>Kamień Filozoficzny</pl>
+  <d>+18 pkt. regeneracji zdrowia co 5 sek. +8 pkt. regeneracji many co 5 sekund UNIKALNE Bierne: Otrzymujesz 5 szt. złota co 10 sekund.</d>
+  <c1>185</c1>
+  <c2>800</c2>
+  <t>mana_regen</t>
+  <t>health_regen</t>
+</item>
+<item id="1037">
+  <en>Pickaxe</en>
+  <pl>Kilof</pl>
+  <d>+25 obrażeń od ataku</d>
+  <c1>975</c1>
+  <c2>975</c2>
+  <t>damage</t>
+</item>
+<item id="2039">
+  <en>Piece of Blue Candy</en>
+  <pl>Eliksir Geniuszu</pl>
+  <d>Kliknij, aby użyć: Dodaje 20-40 pkt. mocy umiejętności (w zależności od poziomu bohatera) oraz skraca czas odnowienia umiejętności o 10% na 4 minuty.</d>
+  <c1>250</c1>
+  <c2>250</c2>
+  <t>consumable</t>
+  <t>spell_damage</t>
+  <t>cooldown_reduction</t>
+</item>
+<item id="2038">
+  <en>Piece of Green Candy</en>
+  <pl>Eliksir Zręczności</pl>
+  <d>Kliknij, aby użyć: Dodaje 12-22% szybkości ataku (w zależności od poziomu bohatera) oraz 8% szans na trafienie krytyczne na 4 minuty.</d>
+  <c1>250</c1>
+  <c2>250</c2>
+  <t>consumable</t>
+  <t>attack_speed</t>
+  <t>critical_strike</t>
+</item>
+<item id="2037">
+  <en>Piece of Red Candy</en>
+  <pl>Eliksir Waleczności</pl>
+  <d>Kliknij, aby użyć: Dodaje 140-235 zdrowia (w zależności od poziomu bohatera) oraz 10 obrażeń od ataku na 4 minuty.</d>
+  <c1>250</c1>
+  <c2>250</c2>
+  <t>consumable</t>
+  <t>damage</t>
+  <t>health</t>
+</item>
+<item id="1062">
+  <en>Prospector's Blade</en>
+  <pl>Ostrze Poszukiwacza</pl>
+  <d>+20 obrażeń od ataku +5% wykradania życia UNIKALNE Bierne: +200 pkt. zdrowia (Efekt nie kumuluje się z innymi przedmiotami Poszukiwacza.)</d>
+  <c1>950</c1>
+  <c2>950</c2>
+  <t>life_steal</t>
+  <t>damage</t>
+  <t>health</t>
+</item>
+<item id="1063">
+  <en>Prospector's Ring</en>
+  <pl>Pierścień Poszukiwacza</pl>
+  <d>+30 mocy umiejętności +7 regeneracji many co 5 sek. UNIKALNE Bierne: +200 zdrowia (Efekt nie kumuluje się z innymi przedmiotami Poszukiwacza.)</d>
+  <c1>950</c1>
+  <c2>950</c2>
+  <t>mana_regen</t>
+  <t>spell_damage</t>
+  <t>health</t>
+</item>
+<item id="3140">
+  <en>Quicksilver Sash</en>
+  <pl>Rtęciowa Szarfa</pl>
+  <d>+56 pkt. odporności na magię UNIKALNE Bierne: Usuwa wszystkie negatywne efekty z twojego bohatera (90 sek. odnowienia).</d>
+  <c1>700</c1>
+  <c2>1440</c2>
+  <t>spell_block</t>
+</item>
+<item id="3089">
+  <en>Rabadon's Deathcap</en>
+  <pl>Zabójczy Kapelusz Rabadona</pl>
+  <d>+140 pkt. mocy umiejętności UNIKALNE Bierne: Zwiększa moc umiejętności o 30%</d>
+  <c1>1140</c1>
+  <c2>3600</c2>
+  <t>spell_damage</t>
+</item>
+<item id="3143">
+  <en>Randuin's Omen</en>
+  <pl>Omen Randuina</pl>
+  <d>+350 pkt. zdrowia +75 pkt. pancerza +25 pkt. regeneracji zdrowia co 5 sek. UNIKALNE Bierne: +5% skrócenia...</d>
+  <c1>600</c1>
+  <c2>3075</c2>
+  <t>health_regen</t>
+  <t>armor</t>
+  <t>cooldown_reduction</t>
+  <t>health</t>
+</item>
+<item id="1043">
+  <en>Recurve Bow</en>
+  <pl>Wygięty Łuk</pl>
+  <d>+40% prędkości ataku</d>
+  <c1>1050</c1>
+  <c2>1050</c2>
+  <t>attack_speed</t>
+</item>
+<item id="1007">
+  <en>Regrowth Pendant</en>
+  <pl>Naszyjnik Odnowienia</pl>
+  <d>+15 pkt. regeneracji zdrowia co 5 sek.</d>
+  <c1>435</c1>
+  <c2>435</c2>
+  <t>health_regen</t>
+</item>
+<item id="1006">
+  <en>Rejuvenation Bead</en>
+  <pl>Koralik Odrodzenia</pl>
+  <d>+8 pkt. regeneracji zdrowia co 5 sek.</d>
+  <c1>250</c1>
+  <c2>250</c2>
+  <t>health_regen</t>
+</item>
+<item id="3027">
+  <en>Rod of Ages</en>
+  <pl>Różdżka Wieków</pl>
+  <d>+450 pkt. zdrowia +525 pkt. many +60 pkt. mocy umiejętności Bierne: Bohater zyskuje co minutę 18 pkt....</d>
+  <c1>850</c1>
+  <c2>3035</c2>
+  <t>spell_damage</t>
+  <t>mana</t>
+  <t>health</t>
+</item>
+<item id="1028">
+  <en>Ruby Crystal</en>
+  <pl>Rubinowy Kryształ</pl>
+  <d>+180 zdrowia</d>
+  <c1>475</c1>
+  <c2>475</c2>
+  <t>health</t>
+</item>
+<item id="3116">
+  <en>Rylai's Crystal Scepter</en>
+  <pl>Kryształowe Berło Rylai</pl>
+  <d>+500 pkt. zdrowia +80 pkt. mocy umiejętności UNIKALNE Bierne: Obrażenia magiczne spowalniają cel o 35% na 1,5 sekundy (15% dla zaklęć obszarowych i zadających obrażenia w czasie).</d>
+  <c1>700</c1>
+  <c2>3105</c2>
+  <t>spell_damage</t>
+  <t>health</t>
+</item>
+<item id="3181">
+  <en>Sanguine Blade</en>
+  <pl>Krwawe Ostrze</pl>
+  <d>+60 obrażeń od ataku +15% kradzieży życia UNIKALNE Bierne: Każdy atak daje ci premię 5 obrażeń od ataku oraz 1% kradzieży życia na 4 sekundy (kumuluje się do 7 razy).</d>
+  <c1>800</c1>
+  <c2>2900</c2>
+  <t>life_steal</t>
+  <t>damage</t>
+</item>
+<item id="1027">
+  <en>Sapphire Crystal</en>
+  <pl>Szafirowy Kryształ</pl>
+  <d>+200 many</d>
+  <c1>400</c1>
+  <c2>400</c2>
+  <t>mana</t>
+</item>
+<item id="3057">
+  <en>Sheen</en>
+  <pl>Blask</pl>
+  <d>+250 pkt. many +25 pkt. mocy umiejętności UNIKALNE Bierne: Po użyciu umiejętności, następny atak...</d>
+  <c1>425</c1>
+  <c2>1260</c2>
+  <t>spell_damage</t>
+  <t>mana</t>
+</item>
+<item id="3069">
+  <en>Shurelya's Reverie</en>
+  <pl>Marzenie Shurelyi</pl>
+  <d>+330 pkt. zdrowia +30 pkt. regeneracji zdrowia co 5 sek. +15 pkt. regeneracji many co 5 sekund UNIKALNE...</d>
+  <c1>550</c1>
+  <c2>2200</c2>
+  <t>mana_regen</t>
+  <t>health_regen</t>
+  <t>movement</t>
+  <t>cooldown_reduction</t>
+  <t>health</t>
+</item>
+<item id="2044">
+  <en>Sight Ward</en>
+  <pl>Totem Widzenia</pl>
+  <d>Kliknij, aby użyć: Umieszcza niewidzialny totem, który odkrywa pobliski obszar przez 3 minuty.</d>
+  <c1>75</c1>
+  <c2>75</c2>
+  <t>consumable</t>
+</item>
+<item id="3020">
+  <en>Sorcerer's Shoes</en>
+  <pl>Obuwie Maga</pl>
+  <d>+20 pkt. przebicia odporności UNIKALNE Bierne Ulepszone poruszanie 2 (Efekt nie kumuluje się z innymi Butami.)</d>
+  <c1>750</c1>
+  <c2>1100</c2>
+  <t>movement</t>
+</item>
+<item id="3099">
+  <en>Soul Shroud</en>
+  <pl>Całun Duszy</pl>
+  <d>+520 pkt. zdrowia UNIKALNE Aura: Pobliscy bohaterowie zyskują 10% skrócenia czasu odnowienia oraz regenerują 12 pkt. many co 5 sekund.</d>
+  <c1>485</c1>
+  <c2>2285</c2>
+  <t>mana_regen</t>
+  <t>cooldown_reduction</t>
+  <t>health</t>
+</item>
+<item id="3065">
+  <en>Spirit Visage</en>
+  <pl>Oblicze Ducha</pl>
+  <d>+30 pkt. odporności na magię +250 pkt. zdrowia UNIKALNE Bierne: +10% skrócenia czasu odnowienia UNIKALNE Bierne: Zwiększa efekty leczenia i regeneracji o 15%.</d>
+  <c1>300</c1>
+  <c2>1550</c2>
+  <t>spell_block</t>
+  <t>cooldown_reduction</t>
+  <t>health</t>
+</item>
+<item id="3050">
+  <en>Stark's Fervor</en>
+  <pl>Sztandar Starka</pl>
+  <d>+20% szybkości ataku UNIKALNE Aura: Pobliscy sojusznicy zyskują 20% wykradania zdrowia, 20% szybkości ataku i 30 regeneracji zdrowia co 5 sekund. Obniża pancerz przeciwników znajdujących się w pobliżu o 20.</d>
+  <c1>700</c1>
+  <c2>2550</c2>
+  <t>life_steal</t>
+  <t>attack_speed</t>
+  <t>health_regen</t>
+</item>
+<item id="3101">
+  <en>Stinger</en>
+  <pl>Żądełko</pl>
+  <d>+40% szybkości ataku UNIKALNE Bierne: +10% skrócenia czasu odnowienia</d>
+  <c1>300</c1>
+  <c2>1140</c2>
+  <t>attack_speed</t>
+  <t>cooldown_reduction</t>
+</item>
+<item id="3068">
+  <en>Sunfire Cape</en>
+  <pl>Słoneczna Peleryna</pl>
+  <d>+450 pkt. zdrowia +45 pkt. pancerza UNIKALNE Bierne: Zadaje 35 obrażeń magicznych co sekundę pobliskim przeciwnikom.</d>
+  <c1>800</c1>
+  <c2>2610</c2>
+  <t>armor</t>
+  <t>health</t>
+</item>
+<item id="3131">
+  <en>Sword of the Divine</en>
+  <pl>Boski Miecz</pl>
+  <d>60% szybkości ataku UNIKALNE Bierne: Co czwarty atak zadajesz dodatkowo 100 obrażeń magicznych. UNIKALNE...</d>
+  <c1>500</c1>
+  <c2>1970</c2>
+  <t>attack_speed</t>
+</item>
+<item id="3141">
+  <en>Sword of the Occult</en>
+  <pl>Okultystyczny Miecz</pl>
+  <d>+10 obrażeń od ataku UNIKALNE Bierne: Twój bohater otrzymuje 5 obrażeń od ataku za każdy ładunek,...</d>
+  <c1>954</c1>
+  <c2>1369</c2>
+  <t>damage</t>
+</item>
+<item id="3070">
+  <en>Tear of the Goddess</en>
+  <pl>Łza Bogini</pl>
+  <d>+350 pkt. many +7 pkt. regeneracji many co 5 sek. UNIKALNE Bierne: Za każdym razem, gdy twój bohater...</d>
+  <c1>205</c1>
+  <c2>995</c2>
+  <t>mana_regen</t>
+  <t>mana</t>
+</item>
+<item id="3071">
+  <en>The Black Cleaver</en>
+  <pl>Czarny Tasak</pl>
+  <d>+55 obrażeń od ataku +30% prędkości ataku UNIKALNE Bierne: Twoje ataki zmniejszają pancerz celu o 15 pkt. na 5 sekund (kumuluje się do 3 razy).</d>
+  <c1>795</c1>
+  <c2>2865</c2>
+  <t>attack_speed</t>
+  <t>damage</t>
+</item>
+<item id="3072">
+  <en>The Bloodthirster</en>
+  <pl>Krwiopijec</pl>
+  <d>+60 obrażeń od ataku +15% wykradania życia Bierne: Zyskujesz +1 obrażenie od ataku i +0,25% kradzieży życia za każde zabicie. Maksymalnie +40 obrażeń i 10% kradzieży życia. Bonusy znikają po śmierci.</d>
+  <c1>900</c1>
+  <c2>3000</c2>
+  <t>life_steal</t>
+  <t>damage</t>
+</item>
+<item id="3134">
+  <en>The Brutalizer</en>
+  <pl>Tłuczek</pl>
+  <d>+25 obrażeń od ataku UNIKALNE Bierne: +10% skrócenia czasu odnowienia UNIKALNE Bierne: +15 pkt. przebicia pancerza</d>
+  <c1>507</c1>
+  <c2>1337</c2>
+  <t>damage</t>
+  <t>cooldown_reduction</t>
+</item>
+<item id="3185">
+  <en>The Lightbringer</en>
+  <pl>Dawca Światła</pl>
+  <d>+50% prędkości ataku +20 obrażeń od ataku UNIKALNE Bierne: Twoje ataki sprawiają, że przez 5 sekund cel jest widoczny.</d>
+  <c1>285</c1>
+  <c2>1750</c2>
+  <t>attack_speed</t>
+  <t>damage</t>
+</item>
+<item id="3075">
+  <en>Thornmail</en>
+  <pl>Kolczasta Kolczuga</pl>
+  <d>+100 pkt. pancerza UNIKALNE Pasywne: Przy trafieniu zwykłymi atakami, odbijasz 30% obrażeń jako magiczne.</d>
+  <c1>1000</c1>
+  <c2>2000</c2>
+  <t>armor</t>
+</item>
+<item id="3077">
+  <en>Tiamat</en>
+  <pl>Tiamat</pl>
+  <d>+50 obrażeń od ataku +15 pkt. regeneracji zdrowia co 5 sek. +5 pkt. regeneracji many co 5 sek. Bierne: Twoje ataki rozpryskują się, zadając 50% obrażeń obszarowych wokół celu (35% w przypadku ataków dystansowych).</d>
+  <c1>250</c1>
+  <c2>2070</c2>
+  <t>mana_regen</t>
+  <t>health_regen</t>
+  <t>damage</t>
+</item>
+<item id="3078">
+  <en>Trinity Force</en>
+  <pl>Moc Trójcy</pl>
+  <d>+30 obrażeń od ataku +30 pkt. mocy umiejętności +30% szybkości ataku +15% szans na trafienie krytyczne...</d>
+  <c1>300</c1>
+  <c2>4070</c2>
+  <t>attack_speed</t>
+  <t>spell_damage</t>
+  <t>damage</t>
+  <t>mana</t>
+  <t>critical_strike</t>
+  <t>movement</t>
+  <t>health</t>
+</item>
+<item id="1053">
+  <en>Vampiric Scepter</en>
+  <pl>Wampiryczny Kostur</pl>
+  <d>+12% kradzieży życia</d>
+  <c1>450</c1>
+  <c2>450</c2>
+  <t>life_steal</t>
+</item>
+<item id="2043">
+  <en>Vision Ward</en>
+  <pl>Totem Wizji</pl>
+  <d>Kliknij, aby użyć: Umieszcza niewidzialny totem, który odkrywa pobliski obszar i wykrywa niewidzialne jednostki przez 3 minuty.</d>
+  <c1>125</c1>
+  <c2>125</c2>
+  <t>consumable</t>
+</item>
+<item id="3135">
+  <en>Void Staff</en>
+  <pl>Kostur Pustki</pl>
+  <d>+70 pkt. mocy umiejętności UNIKALNE Bierne: +40% przebicia odporności</d>
+  <c1>1000</c1>
+  <c2>2295</c2>
+  <t>spell_damage</t>
+</item>
+<item id="3082">
+  <en>Warden's Mail</en>
+  <pl>Zbroja Strażnika</pl>
+  <d>+50 pkt. pancerza +20 pkt. regeneracji zdrowia co 5 sek. UNIKALNE Bierne: 20% szans przy byciu trafionym na zmniejszenie prędkości ruchu i ataku celu o 35% na 3 sekundy.</d>
+  <c1>400</c1>
+  <c2>1350</c2>
+  <t>health_regen</t>
+  <t>armor</t>
+</item>
+<item id="3083">
+  <en>Warmog's Armor</en>
+  <pl>Plemienna Zbroja</pl>
+  <d>+920 pkt. zdrowia +30 pkt. regeneracji zdrowia co 5 sek. Bierne: Zabicia stworów przyznają 4,5 pkt....</d>
+  <c1>980</c1>
+  <c2>3000</c2>
+  <t>health_regen</t>
+  <t>health</t>
+</item>
+<item id="3152">
+  <en>Will of the Ancients</en>
+  <pl>Wola Starożytnych</pl>
+  <d>+50 pkt. mocy umiejętności UNIKALNE Aura: Pobliscy sojusznicy otrzymują 30 pkt. mocy umiejętności oraz 25% wampiryzmu zaklęć.</d>
+  <c1>465</c1>
+  <c2>2100</c2>
+  <t>spell_damage</t>
+</item>
+<item id="3091">
+  <en>Wit's End</en>
+  <pl>Koniec Rozumu</pl>
+  <d>+40% szybkości ataku +30 pkt. odporności na magię UNIKALNE Bierne: Ataki bohatera zadają dodatkowe...</d>
+  <c1>550</c1>
+  <c2>2000</c2>
+  <t>attack_speed</t>
+  <t>spell_block</t>
+</item>
+<item id="3154">
+  <en>Wriggle's Lantern</en>
+  <pl>Latarnia Wriggle</pl>
+  <d>+23 obrażeń od ataku +30 pkt. pancerza +18% kradzieży życia UNIKALNE Bierne: Twoje ataki mają 20%...</d>
+  <c1>150</c1>
+  <c2>1600</c2>
+  <t>life_steal</t>
+  <t>damage</t>
+  <t>armor</t>
+</item>
+<item id="3142">
+  <en>Youmuu's Ghostblade</en>
+  <pl>Widmowe Ostrze Youmuu</pl>
+  <d>+30 obrażeń od ataku +15% szans na trafienie krytyczne UNIKALNE Bierne: +15% skrócenia czasu odnowienia...</d>
+  <c1>600</c1>
+  <c2>2687</c2>
+  <t>attack_speed</t>
+  <t>damage</t>
+  <t>movement</t>
+  <t>critical_strike</t>
+  <t>cooldown_reduction</t>
+</item>
+<item id="3086">
+  <en>Zeal</en>
+  <pl>Zapał</pl>
+  <d>+20% szybkości ataku +10% szans na trafienie krytyczne +8% prędkości ruchu</d>
+  <c1>375</c1>
+  <c2>1195</c2>
+  <t>attack_speed</t>
+  <t>movement</t>
+  <t>critical_strike</t>
+</item>
+<item id="3157">
+  <en>Zhonya's Hourglass</en>
+  <pl>Klepsydra Zhonyi</pl>
+  <d>+100 pkt. mocy umiejętności +50 pkt. pancerza UNIKALNE Aktywne: Umieszcza bohatera w Stazie na 2 sekundy,...</d>
+  <c1>800</c1>
+  <c2>3100</c2>
+  <t>spell_damage</t>
+  <t>armor</t>
+</item>
+</items>

@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class GeneratorController extends AppController {
-    public $uses = array('Build','Champion','Skill','Ss','Rune','Item','News');
+    public $uses = array('Build','Champion','Skill','Ss','Rune','Item','News','Slider');
     public $helpers = array('Thumb','Time');
 
 
@@ -15,7 +15,7 @@ class GeneratorController extends AppController {
 
     //check if champion_id is in url, if is't show error
     private function CheckId($id){
-        if($id === false){
+        if(($id === false) || !is_numeric($id)){
             echo '<h1 style="color:red;text-align:center;"><br/>WielBlad, nie wybrano nr. ID poradnika!<br/>(powinien byc w adresie strony)</h1>';
             exit;
         }
@@ -282,6 +282,7 @@ class GeneratorController extends AppController {
 
     public function description($build_id=false){
         $this->CheckId($build_id);
+        $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Build.id'=>$build_id)));
         //after click 'next step':
         if($this->request->is('post')){
             if($this->Build->save(array(
@@ -297,7 +298,6 @@ class GeneratorController extends AppController {
         }
 
     //normal view:
-        $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Build.id'=>$build_id)));
         $champions = $this->Champion->find('all',array('recursive'=>0,'order'=>'Champion.name asc'));
         $skills = $this->Skill->find('all',array('recursive'=>-1,'conditions'=>array('Skill.champion_id'=>$build['Build']['champion_id'])));
         $items = $this->Item->find('all');
@@ -327,7 +327,7 @@ class GeneratorController extends AppController {
                 if($this->News->save(array(
                     'title'=>$build['Champion']['name'],
                     'text'=>$build['Build']['introduction'],
-                    'image'=>$build['Build']['id'], //when type = 'poradnik', image contain build_id
+                    'image'=>$build['Build']['id'], //when type = 'poradnik', 'image' contain build_id
                     'type'=>'poradnik'
                     ))
                 ){
@@ -336,13 +336,13 @@ class GeneratorController extends AppController {
                     if($this->Slider->save(array(
                         'image'=>$build['Champion']['name'],
                         'description'=>$build['Build']['introduction'],
-                        'url'=>$build['Build']['champion_id'],
+                        'url'=>$this->Dehumanize($build['Champion']['name']),
                         'type'=>'poradnik'
                         ))
                     ){
                         $this->redirect(array('action'=>'done',$build_id));
                     }else{
-                        echo 'Problem z zapisem nowego newsa [GeneratorController ->preview()]';
+                        echo 'Problem z zapisem nowego slidera [GeneratorController ->preview()]';
                         exit;
                     }
 
