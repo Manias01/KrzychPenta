@@ -6,7 +6,7 @@ class SsesController extends AppController {
         public $helpers = array('Thumb');
 
         function beforeFilter(){
-          $this->Auth->allow('*');
+//          $this->Auth->allow('*');
           parent::beforeFilter();
         }
 

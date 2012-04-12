@@ -137,8 +137,14 @@
 <div class="clear"></div>
 
 <div id="footer">
-  <hr />
   <p>&copy; Copyright 2012 | <a href="http://pentakill.pl" >Pentakill.pl</a></p>
+
+  <div id="footer-menu">
+      <?$a=0;foreach($navigation as $name=>$link):?>
+        <?=($a==0)?'':' | '?><a href="<?=$this->base.'/'.$link?>"><?=$name?></a>
+      <?$a++;endforeach?>
+  </div><!--/footer-menu-->
+    
 </div> <!--/footer-->
 
 

@@ -54,12 +54,30 @@ ul{
 div.clear{
     clear: both;
 }
+.green{
+    color: green;
+}
+.red{
+    color: red;
+}
 .cake-sql-log{
     font-size: 12px;
 }
 
 
 /*----------------=Main elementr-----------*/
+#userbox{
+    padding: 3px 10px;
+    background: #666;
+    border: 1px solid black;
+    box-shadow: 0 0 20px black;
+    top: 5px;
+    right: 0px;
+    position: absolute;
+    text-align: right;
+    opacity: 0.8;
+}
+
 #menu .done{
     display: inline;
 }

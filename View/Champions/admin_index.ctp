@@ -5,7 +5,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
-                        <th>Background</th>
+                        <th><?php echo $this->Paginator->sort('background');?></th>
 			<th><?php echo $this->Paginator->sort('rp');?></th>
 			<th><?php echo $this->Paginator->sort('ip');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>

@@ -1,6 +1,6 @@
 <div id="poradnik">
 
-    <div id="shortcut">
+    <div id="shortcut" style="background: url('<?=$this->base?>/img/lol/backgrounds/<?=$this->Thumb->Dehumanize($build['Champion']['name'])?>_background.jpg') 0 0 no-repeat;">
         <h2><?=$build['Champion']['name']?></h2>
 
         <div id="introduction">

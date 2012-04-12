@@ -5,7 +5,7 @@ class BuildsController extends AppController {
         public $helpers=array('Thumb','Text');
 
         function beforeFilter(){
-          $this->Auth->allow('*');
+//          $this->Auth->allow('*');
           parent::beforeFilter();
         }
 

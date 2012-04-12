@@ -53,11 +53,23 @@ h1,h2,h3,h4,h5,h6{
 	margin: auto;
         text-align: left;
 	background: #252525;
+        position: relative;
 }
 
 #header{
     background-color: black;
     padding-bottom: 20px;
+}
+
+#userbox{
+    padding: 3px 10px;
+    background: white;
+    border: 1px solid black;
+    box-shadow: 0 0 20px black;
+    top: 0px;
+    right: 0px;
+    position: absolute;
+    text-align: right;
 }
 
 #menu a{

@@ -1,6 +1,6 @@
 <?if(!isSet($this->params['pass'][1]))://first step:?>
 
-    <h2>Dodaj obraz tła (krok 1/2)</h2>
+    <h2>Dodaj obraz tła dla championa (krok 1/2)</h2>
 
     <?=$this->Form->create('Champion',array('type' => 'file'))?>
         <?=$this->Form->file('background')?>
@@ -9,7 +9,7 @@
 
 <?else: //second step:?>
 
-    <h2>Wytnij interesującą część (krok 2/2)</h2>
+    <h2>Wytnij interesującą część do slidera (krok 2/2)</h2>
 
 
     <script type="text/javascript">

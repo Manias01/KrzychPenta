@@ -12,7 +12,9 @@ class PagesController extends AppController {
 
     //content to 'najnowsze poradniki' for layout 'default.ctp'
       $newest = $this->Build->find('all',array('recursive'=>1,'limit'=>3,'order'=>'Build.id desc',
-          'fields'=>array('id','champion_id','Champion.name'))
+          'fields'=>array('id','champion_id','Champion.name'),
+          'conditions'=>array('Build.done'=>1)
+          )
       );
       $this->set('newest_builds',$newest);
       parent::beforeFilter();
@@ -32,7 +34,7 @@ class PagesController extends AppController {
         $sliders = $this->Slider->find('all',array('limit'=>3,'order'=>'Slider.id desc','fields'=>array('image','description','url','type')));
         foreach($sliders as &$slider){
             if($slider['Slider']['type'] == 'poradnik'){
-                $slider['Slider']['image'] = $this->base.'/img/lol/backgrounds/'.$this->Dehumanize($slider['Slider']['image']).'_background.jpg';
+                $slider['Slider']['image'] = $this->base.'/img/lol/backgrounds/'.$this->Dehumanize($slider['Slider']['image']).'_slide.jpg';
                 $slider['Slider']['url'] = $this->base.'/poradnik/'.$this->Dehumanize($slider['Slider']['url']);
             }
         }

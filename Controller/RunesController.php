@@ -6,7 +6,7 @@ class RunesController extends AppController {
 
     
         function beforeFilter(){
-          $this->Auth->allow('*');
+//          $this->Auth->allow('*');
           parent::beforeFilter();
         }
 

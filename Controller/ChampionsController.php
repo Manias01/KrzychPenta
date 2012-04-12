@@ -5,7 +5,7 @@ class ChampionsController extends AppController {
         public $helpers=array('Thumb');
 
         function beforeFilter(){
-          $this->Auth->allow('*');
+//          $this->Auth->allow('*');
           parent::beforeFilter();
         }
 
@@ -84,7 +84,7 @@ class ChampionsController extends AppController {
 		}
 
 		if ($this->request->is('post')) {
-                    print_r($this->request->data['Champion']);
+//                    print_r($this->request->data['Champion']);
 //                    exit;
                     $champ_name = $this->Champion->read('name');
                     $champ_name = $this->Dehumanize($champ_name['Champion']['name']);
@@ -112,16 +112,29 @@ class ChampionsController extends AppController {
                         $sourceWidth = $imageInfo[0];
                         $sourceHeight = $imageInfo[1];
 
+               //save background image (crop to ratio 1.7 and resize to 650x380)
+                        $widthBg = 650; $heightBg = 380;
+                        $destinationBg = imagecreatetruecolor($widthBg, $heightBg);  //create new img in slider size
+                        
+                        $sourceBg = imagecreatefromjpeg($imagePath);  //source of image to crop and resize
+                        imagecopyresampled($destinationBg, $sourceBg, 0,0,0,0, $widthBg, $heightBg, $sourceWidth, $sourceHeight);//resize img
+                        imagejpeg($destinationBg, 'img/lol/backgrounds/'.$champ_name.'_background.jpg',90); //write completed slider/background image
+
+                        chmod('img/lol/backgrounds/'.$champ_name.'_background.jpg',0777);
+//                        destroy($destinationBg);
+
+               //save slider image (crop from selected area and resize to 600x250):
                         $widthCrop = $corner['width']; $heightCrop = $corner['height'];
                         $widthResize = 600; $heightResize = 250;
-                        $destinationCrop = imagecreatetruecolor($widthCrop, $heightCrop);  //create new img in slider size
+                        $destinationCrop = imagecreatetruecolor($widthCrop, $heightCrop);  //create new in crop size
                         $destinationResize = imagecreatetruecolor($widthResize, $heightResize);  //create new img in slider size
                         
                         $source = imagecreatefromjpeg($imagePath);  //source of image to crop and resize
                         imagecopy($destinationCrop,$source,0,0, $corner['x1'],$corner['y1'], $sourceWidth, $sourceHeight);//crop selected area
                         imagecopyresized($destinationResize, $destinationCrop, 0,0,0,0, $widthResize, $heightResize, $widthCrop, $heightCrop);//resize img
-                        imagejpeg($destinationResize, 'img/lol/backgrounds/'.$champ_name.'_background.jpg',85); //write completed slider/background image
+                        imagejpeg($destinationResize, 'img/lol/backgrounds/'.$champ_name.'_slide.jpg',85); //write completed slider/background image
 
+                        chmod('img/lol/backgrounds/'.$champ_name.'_slide.jpg',0777);
                         unlink($imagePath); //delete temp file
 
                   //write to DB that champion have background:

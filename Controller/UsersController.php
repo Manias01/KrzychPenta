@@ -7,7 +7,7 @@ class UsersController extends AppController {
     function beforeFilter(){
       $this->set('css', 'admin.css');
 
-      $this->Auth->allow('*');
+      $this->Auth->allow('login');
       parent::beforeFilter();
     }
 
@@ -18,10 +18,13 @@ class UsersController extends AppController {
         } else {
             $this->Session->setFlash(__('Invalid username or password, try again'));
         }
+        $this->set('title_for_layout','Logowanie');
+        $this->set('header','Zaloguj się');
     }
 
-    public function logout() {
-        $this->redirect($this->Auth->logout());
+    public function admin_logout() {
+        $this->Auth->logout();
+        $this->redirect('/');
     }
 
 

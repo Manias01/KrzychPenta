@@ -96,6 +96,7 @@ h1{
     font-size: 30px;
     background: black url('../img/frontend/header.png') 0 0 no-repeat;
     padding: 0 0 0 15px;
+    margin: 0;
 }
 h2{
     width: 400px;
@@ -194,6 +195,7 @@ h4{
 
 /*----------------------News--------------------------*/
 #newsy{
+    padding: 10px 0 0 0;
     background-color: #190000;
 }
 div.news{
@@ -315,14 +317,24 @@ div.news{
 
 #footer{
     margin-top: 40px;
-    padding: 0px 0px 5px 0px;
-    color: #575757;
-    font-size: 0.86em;
+    padding: 20px;
+    color: #666;
+    font-size: 12px;
+    background: url('../img/frontend/footer-line.png') 0 0 no-repeat;
 }
 #footer p{
-    margin: 10px 0 10px 20px;
+    float: left;
 }
-
+#footer a{
+    color: #970000;
+}
+#footer-menu{
+    margin: 0 0 0 180px;
+    float: left;
+}
+#footer-menu a{
+    color: #970000;
+}
 
 /*----------------------------Other------------------------*/
 #pagination{
@@ -440,7 +452,7 @@ a.nivo-nextNav{
 .nivo-controlNav a {
     width: 15px;
     height: 15px;
-    position:relative;
+    position:absolute;
     z-index:9;
     cursor:pointer;
     color: black;
@@ -451,6 +463,7 @@ a.nivo-nextNav{
     border: 1px solid black;
     border-top: none;
     opacity: 0.5;
+    display: none;
 }
 .nivo-controlNav a.active {
     font-weight:bold;

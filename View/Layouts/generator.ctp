@@ -11,7 +11,12 @@
 <div id="base" base_url="<?=$this->base?>" style="display:none"></div>
     
 <div id="wrap">
-    <a href="<?=$this->base?>/admin" class="exit-generator">Powrót do panelu admina</a>
+    <br/>
+
+<div id="userbox">
+    <a href="<?=$this->base?>/admin" style="color:black">Powrót do panelu admina</a> | <?=$username?> - <a href="<?=$this->Html->url(array('controller'=>'users','action'=>'logout'))?>" style="color:black">Wyloguj się</a>
+</div><!--/userbox-->
+
 
 <div id="menu">
 

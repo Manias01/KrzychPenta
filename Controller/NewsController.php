@@ -13,7 +13,7 @@ class NewsController extends AppController {
         );
 
         function beforeFilter(){
-            $this->Auth->allow('*');
+            $this->Auth->allow('single_news','all_news');
             
         //content to 'najnowsze poradniki' for layout 'default.ctp'
             $newest = $this->Build->find('all',array('recursive'=>1,'limit'=>3,'order'=>'Build.id desc',

@@ -18,9 +18,15 @@ class AppController extends Controller {
 
         if (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') {
             $this->layout = 'admin';
+            
+            $user_data = $this->Session->read();
+            $this->set('username',$user_data['Auth']['User']['username']);
         }
         if (isset($this->params['controller']) && $this->params['controller'] == 'generator') {
             $this->layout = 'generator';
+
+            $user_data = $this->Session->read();
+            $this->set('username',$user_data['Auth']['User']['username']);
         }
     }
 

@@ -16,6 +16,7 @@ foreach($builds as &$build):
     <p>Autor: <?=$build['User']['username']?></p>
     <p>Stworzono:<br/><?=$this->Time->format('H:m:s d/m/Y',$build['Build']['created'])?></p>
     <p>Modyfikowano:<br/><?=$this->Time->format('H:m:s d/m/Y',$build['Build']['modified'])?></p>
+    <?=($build['Build']['done']==1)?'<p class="green">Opublikowany</p>':'<p class="red">W przygotowaniu</p>'?>
 </a><!--/build-->
 
 <?endforeach?>

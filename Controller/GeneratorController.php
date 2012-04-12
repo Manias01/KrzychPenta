@@ -7,8 +7,8 @@ class GeneratorController extends AppController {
 
 
     function beforeFilter(){
+//      $this->Auth->allow('*');
       parent::beforeFilter();
-      $this->Auth->allow('*');
     }
 
 
@@ -49,7 +49,8 @@ class GeneratorController extends AppController {
         $this->Build->create();
         $this->Build->save(array(
             'champion_id'=>$champion_id,
-            'name'=>'Bez nazwy'
+            'name'=>'Bez nazwy',
+            'user_id'=>$this->Auth->user('id')
         ));
         $last_id = $this->Build->find('first',array('recursive'=>-1,'order'=>'Build.id desc'));
         $this->redirect(array('action'=>'skills',$last_id['Build']['id']));
