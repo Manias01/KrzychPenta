@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 class PagesController extends AppController {
     public $name = 'Pages';
     public $helpers = array('Html','Text','Thumb');
-    public $uses = array('News','Build','Skill','Ss','Rune','Item','Slider');
+    public $uses = array('News','Build','Skill','Ss','Rune','Item','Slider','Search');
 
 
     function beforeFilter(){
@@ -122,7 +122,7 @@ class PagesController extends AppController {
                 $continue = false;
                 $this->set('empty','short');
             }
-            if(strlen(str_replace(' ','',$phrase)) > 20){
+            if(strlen(str_replace(' ','',$phrase)) > 40){
                 $continue = false;
                 $this->set('empty','long');
             }
@@ -150,6 +150,12 @@ class PagesController extends AppController {
                 //set paginate
                     $this->paginate = array('order'=>'Build.id DESC','limit'=>10,'conditions'=>$conditions);
                     $results = $this->paginate('Build');
+
+                //write in DB phrase (for admin check)
+                    $this->Search->create();
+                    $this->Search->save(array(
+                        'phrase'=>$phrase
+                    ));
 
 
                     $this->set('results',$results);
