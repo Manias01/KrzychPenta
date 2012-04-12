@@ -72,30 +72,34 @@
 </div><!--/poradnik-->
 
 
-<div id="another-builds">
-    <h4>Zobacz także</h4>
-    <?foreach($another_builds as $another):
-        $new_link = array('controller'=>'pages','action'=>'poradnik',strtolower($another['Champion']['name']));
-    ?>
-        <div class="news">
-            <h2><?=$this->Html->link($another['Build']['name'],$new_link)?></h2>
+<?if(!empty($another_builds)):?>
 
-            <?=$this->Html->link(
-                    $this->Thumb->champion($another['Champion']['id'],$new['Champion']['name'],64,'builds-thumb'),
-                    $new_link,array('escape'=>false)
-            );?>
+    <div id="another-builds">
+        <h4>Zobacz także</h4>
+        <?foreach($another_builds as $another):
+            $new_link = array('controller'=>'pages','action'=>'poradnik',strtolower($another['Champion']['name']));
+        ?>
+            <div class="news">
+                <h2><?=$this->Html->link($another['Build']['name'],$new_link)?></h2>
 
-            <div class="news-title">
-                <h3><?=$this->Html->link($another['Champion']['name'],$new_link)?></h3>
-            </div><!--/news-title-->
+                <?=$this->Html->link(
+                        $this->Thumb->champion($another['Champion']['id'],$new['Champion']['name'],64,'builds-thumb'),
+                        $new_link,array('escape'=>false)
+                );?>
 
-            <div class="news-text">
-                    <?=$this->Text->truncate($another['Build']['introduction'],200)?><br/>
-                    <?=$this->Html->link('... czytaj dalej »',$new_link)?>
-            </div>
-            <div class="clear"></div>
-        </div><!--/news-->
-    <?endforeach?>
+                <div class="news-title">
+                    <h3><?=$this->Html->link($another['Champion']['name'],$new_link)?></h3>
+                </div><!--/news-title-->
 
-</div><!--/another-builds-->
+                <div class="news-text">
+                        <?=$this->Text->truncate($another['Build']['introduction'],200)?><br/>
+                        <?=$this->Html->link('... czytaj dalej »',$new_link)?>
+                </div>
+                <div class="clear"></div>
+            </div><!--/news-->
+        <?endforeach?>
+
+    </div><!--/another-builds-->
+
+<?endif?>
 

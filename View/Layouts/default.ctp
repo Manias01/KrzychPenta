@@ -59,7 +59,7 @@
             </div>
     <?endif?>
 
-    <h1><?=$header?></h1>
+    <h1><?=($header)?$header:''?></h1>
 
     <?=$content_for_layout?>
 
@@ -67,10 +67,16 @@
 
 
 <div id="sidebar">
+
+    
     <div id="search">
         <h4>Wyszukiwarka</h4>
-        <input type="text" />
+        <?=$this->Form->create('',array('type'=>'get','url'=>array('controller'=>'pages','action'=>'search')))?>
+            <?=$this->Form->input('s',array('type'=>'text','label'=>false))?>
+        <?=$this->Form->end('Szukaj')?>
     </div><!--/search-->
+
+
 <?/*
     <div id="rotation">
         <h4>Darmowi bohaterowie</h4>
@@ -85,9 +91,11 @@
         </ul>
     </div><!--/rotation-->
 */?>
+
+
     <div id="new-builds">
         <h4>Najnowsze poradniki</h4>
-        <?foreach($newest_builds as $newest):?>
+        <?foreach($sidebar_newest_builds as $newest):?>
             <a href="<?=$this->Html->url(array('controller'=>'pages','action'=>'poradnik',strtolower($newest['Champion']['name'])))?>">
                 <?=$this->Thumb->champion($newest['Build']['champion_id'],$newest['Champion']['name'],64);?>
                 <h5><?=$newest['Champion']['name'];?></h5>
@@ -96,11 +104,13 @@
         <?endforeach?>
     </div><!--/new-builds-->
 
+
     <div id="facebook">
         <h4>Facebook</h4>
     </div><!--/facebook-->
 
-    
+
+
     <?/*advert*/?>
         <?/*$type = rand(0,1);
             if($type == 0):?>
@@ -135,6 +145,8 @@
 </div><!--/sidebar-->
 
 <div class="clear"></div>
+
+
 
 <div id="footer">
   <p>&copy; Copyright 2012 | <a href="http://pentakill.pl" >Pentakill.pl</a></p>

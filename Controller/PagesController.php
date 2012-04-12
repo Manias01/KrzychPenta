@@ -11,12 +11,12 @@ class PagesController extends AppController {
       $this->Auth->allow('*');
 
     //content to 'najnowsze poradniki' for layout 'default.ctp'
-      $newest = $this->Build->find('all',array('recursive'=>1,'limit'=>3,'order'=>'Build.id desc',
+      $sidebar_newest_builds = $this->Build->find('all',array('recursive'=>1,'limit'=>3,'order'=>'Build.id desc',
           'fields'=>array('id','champion_id','Champion.name'),
           'conditions'=>array('Build.done'=>1)
           )
       );
-      $this->set('newest_builds',$newest);
+      $this->set('sidebar_newest_builds',$sidebar_newest_builds);
       parent::beforeFilter();
     }
 
@@ -49,7 +49,8 @@ class PagesController extends AppController {
     public function all_poradnik(){
         $this->paginate = array(
             'order'=>'Build.name ASC',
-            'limit'=>10
+            'limit'=>10,
+            'conditions'=>array('Build.done'=>1)
         );
         $builds = $this->paginate('Build');
         $this->set('builds',$builds);
@@ -99,12 +100,69 @@ class PagesController extends AppController {
         );
         $this->set('skills',$skills);
 
-        //3 another builds at the bottom page
-        $another_builds = $this->Build->find('all',array('limit'=>3,'recursive'=>0,'conditions'=>array('Champion.name <>'=>$champion_name)));
+        //Three another builds at the bottom of page
+        $another_builds = $this->Build->find('all',array('limit'=>3,'recursive'=>0,
+            'conditions'=>array('Champion.name <>'=>$champion_name,'Build.done'=>1))
+        );
         $this->set('another_builds',$another_builds);
 
         $this->set('title_for_layout', $build['Champion']['name'].' - poradnik');
         $this->set('header','Poradnik');
+    }
+
+
+
+
+    public function search(){
+        if(!empty($this->request->query['s'])){
+            $phrase = $this->request->query['s'];
+
+            $continue = true;
+            if(strlen(str_replace(' ','',$phrase)) < 3){
+                $continue = false;
+                $this->set('empty','short');
+            }
+            if(strlen(str_replace(' ','',$phrase)) > 20){
+                $continue = false;
+                $this->set('empty','long');
+            }
+
+                if($continue){
+                //explode every word to search in DB separately:
+                    $phrasesOne = explode(',',$phrase);
+                    foreach($phrasesOne as $one){
+                        $phrasesTwo = explode(' ',$one);
+                        foreach($phrasesTwo as $two){
+                            if(!empty($two)) $phrases[] = $two;
+                        }
+                    }
+
+            //Search in Builds:
+                //set conditions:
+                    $conditions[] = array('Build.done'=>1);
+                    foreach($phrases as $phrase){
+                        $conditions[] = array(
+                            'OR'=>array(
+                                'Build.description LIKE'=>"%$phrase%"
+                             )
+                        );
+                    }
+                //set paginate
+                    $this->paginate = array('order'=>'Build.id DESC','limit'=>10,'conditions'=>$conditions);
+                    $results = $this->paginate('Build');
+
+
+                    $this->set('results',$results);
+                    $this->set('phrases',$phrases);
+            }
+
+
+        }else{
+            $this->set('empty','empty');
+        }
+        
+        $this->set('title_for_layout', 'Wyszukiwarka');
+        $this->set('header','Wyszukiwanie');
     }
 
 
