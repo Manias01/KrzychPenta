@@ -9,22 +9,33 @@
 
         <div id="ss-runes-panel">
             <div id="ss">
-                <?=$this->Thumb->Ss($ss[0]['Ss']['id'], $ss[0]['Ss']['name_en'], 64)?>
-                <?=$this->Thumb->Ss($ss[1]['Ss']['id'], $ss[1]['Ss']['name_en'], 64)?>
+                <div>
+                    <?=$this->Thumb->Ss($ss[0]['Ss']['id'], $ss[0]['Ss']['name_en'], 64)?>
+                    <?=$ss[0]['Ss']['name_en']?>
+                </div>
+                <div>
+                    <?=$this->Thumb->Ss($ss[1]['Ss']['id'], $ss[1]['Ss']['name_en'], 64)?>
+                    <?=$ss[1]['Ss']['name_en']?>
+                </div>
             </div><!--/ss-->
 
 
             <div id="runes">
                 <?foreach($runes as $rune){
+                    echo '<div>';
                     echo $this->Thumb->Rune($rune['Rune']['id'], $rune['Rune']['name_en']);
+                    echo $rune['Rune']['name_en'];
+                    echo '</div>';
                 }?>
             </div><!--/runes-->
         </div><!--/ss-runes-panel-->
 
 
         <div id="items">
-            <?foreach($items as $item){
-                echo $this->Thumb->Item($item['Item']['id'], $item['Item']['name_en']);
+            <?foreach($items as $key=>$item){
+                echo '<div>';
+                echo $this->Thumb->Item($item['Item']['id'], $item['Item']['name_en'],64);
+                echo '</div>';
             }?>
         </div><!--/items-->
 
@@ -49,7 +60,7 @@
 
                 <?for($lv=1;$lv<=18;$lv++):?>
                 <?if(isSet($build['Build']['skill_sequence']['lv'.$lv]) && $build['Build']['skill_sequence']['lv'.$lv] == $type) $checked = true; else $checked = false;?>
-                   <td class="sq"><?if($checked):?><img style="width:15px;height:15px;background:yellow;" /><?endif?></td>
+                   <td class="sq"><?if($checked):?><img src="<?=$this->webroot?>/img/frontend/skill_add.png" class="skill" tip_id="<?=$skills[$type]['Skill']['id']?>" alt="" /><?endif?></td>
                 <?endfor?>
 
             </tr>
@@ -65,7 +76,7 @@
 
 
     <div id="description">
-        <h4>Sposób gry</h4>
+        <h4 class="title">Sposób gry</h4>
         <p><?=$build['Build']['description']?></p>
     </div><!--/opis-->
 

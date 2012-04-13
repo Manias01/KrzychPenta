@@ -20,7 +20,8 @@
 <?//Small icons to add content in TinyMCE?>
 <div id="desc-right-column">
     <h3 style="margin: 0;">Przykładowa rozpiska</h3>
-    <p>1.walka na linii.<br/>2.team fight.<br/>3.kombinacje skilli o ile są jakieś ciekawe.<br/>
+    <p>Pamietaj aby do nagłówków używać format->"<strong>header 3</strong>"<br/>
+    1.walka na linii.<br/>2.team fight.<br/>3.kombinacje skilli o ile są jakieś ciekawe.<br/>
        W pkt.1 można napisać jakie start items. Jeżeli jungler to pkt.1 opis dżungli</p>
 
     <div id="desc-skills">

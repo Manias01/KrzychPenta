@@ -82,12 +82,27 @@ class PagesController extends AppController {
         //Runes
         $runes = unserialize($build['Build']['runes']);
         $runes = $this->Rune->find('all',array('conditions'=>array('id'=>$runes)));
-        $this->set('runes',$runes);
+            //sort runes
+        for($a=1;$a<=4;$a++){
+            foreach($runes as $rune){
+                if($rune['Rune']['type'] == $a) $sortedRunes[] = $rune;
+            }
+        }
+        $this->set('runes',$sortedRunes);
 
         //Items
         $items = unserialize($build['Build']['items']);
-        $items = $this->Item->find('all',array('conditions'=>array('id'=>$items)));
-        $this->set('items',$items);
+        $itemsData = $this->Item->find('all',array('fields'=>array('Item.id','Item.name_en'),'conditions'=>array('id'=>$items)));
+            //sort items:
+        foreach($items as $item){
+            foreach($itemsData as $data){
+                if($item == $data['Item']['id']) $sortedItems[] = $data;
+            }
+        }
+        $this->set('items',$sortedItems);
+
+
+
 
         //Skill sequence
         $skills = $this->Skill->find('all',

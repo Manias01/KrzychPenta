@@ -247,6 +247,7 @@ div.news{
 /*---------------------Poradnik(build)-page-----------------------*/
 #poradnik{
     padding: 0 15px;
+    margin: 2px 0 0 0;
     background-color: #190000;
 }
 #poradnik h4{
@@ -258,26 +259,77 @@ div.news{
 }
 #shortcut h2{
     font-size: 35px;
+    padding: 5px 0 0 15px;
     background: none;
 }
 #introduction{
-    width: 400px;
-    height: 170px;
+    width: 380px;
+    height: 150px;
+    padding: 10px;
+    color: white;
+    background: transparent url('../img/frontend/semitransparent-background.png') 0 0 repeat;
+    border: 1px solid black;
 }
 #ss-runes-panel{
-    width: 350px;
-    height: 55px;
+    width: 100%;
+    height: 80px;
+    margin: 10px 0 0 0;
+    padding: 5px 0;
+    font-size: 11px;
+    color: white;
+    text-align: center;
+    background: transparent url('../img/frontend/semitransparent-background.png') 0 0 repeat;
+    border: 1px solid black;
+    border-bottom: none;
 }
 #ss{
+    margin: 0 10px 0 0;
     float: left;
+}
+#ss div{
+    width: 70px;
+    height: 80px;
+    float: left;
+}
+#ss img{
+    width: 55px;
+    border-radius: 6px;
+    margin: 0 0 2px 0;
 }
 #runes{
     float: left;
 }
+#runes div{
+    width: 110px;
+    height: 80px;
+    float: left;
+}
+#runes img{
+    width: 35px;
+    height: 39px;
+    margin: 0 auto;
+    display: block;
+}
+
 #items{
-    width: 100%;
-    height: 70px;
+    width: auto;
+    height: 74px;
+    margin: 5px 0 0 0;
+    background: url('../img/frontend/items-background2.png') 2px 20px repeat-x;
     clear: both;
+}
+#items div{
+    width: 72px;
+    height: 72px;
+    background: url('../img/frontend/item-border.png') 0 0 no-repeat;
+    margin: 0 0 0 33px;
+    float: left;
+}
+#items div:first-child{
+    margin-left: 2px;
+}
+#items img{
+    margin: 4px;
 }
 
 #shortcut, #skill_sequence, #masteries, #description{
@@ -295,6 +347,18 @@ div.news{
 #skill_sequence td{
     width: 15px;
     height: 15px;
+    border-left: 1px solid #666;
+    text-align: center;
+    /*border-bottom: 1px solid #666;*/
+    /*border: 1px solid gray;*/
+    border-collapse: collapse;
+}
+tr.row-1, tr.row-3{
+    background: #3E1E1E;
+}
+#skill_sequence img{
+    width: 15px;
+    height: 15px;
 }
 #masteries{
     margin-top: 20px;
@@ -303,13 +367,21 @@ div.news{
 #masteries h4{
     margin-bottom: 5px;
 }
+#description{
+    padding: 0 0 40px 20px;
+}
+#description h4.title{
+    margin-left: -20px;
+    background: black url('../img/frontend/header-smaller-red.png') 0 0 no-repeat;
+}
+#description h1, #description h2, #description h3, #description h4{
+    background: none;
+    margin: 15px 0 0 -10px;
+}
 #description h4{
     margin-bottom: 10px;
 }
-#description p{
-    margin: 0 0 0 20px;
-    font-size: 15px;
-}
+
 
 #another-builds{
     width: 100%;

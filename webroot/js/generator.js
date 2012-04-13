@@ -84,22 +84,22 @@ $(document).ready(function(){
     });
 
     //--Wybór runy--
-    $('.rune').click(function(){
+    $('.rune-column').click(function(){
       if($(this).parent('div').attr('id')=='rune-1'){
         $('#Build1').attr('value', $(this).attr('title'));
-        $('.rune').removeClass('highlight-rune');
+        $('.rune-column').removeClass('highlight-rune');
       }
       if($(this).parent('div').attr('id')=='rune-2'){
         $('#Build2').attr('value', $(this).attr('title'));
-        $('.rune').removeClass('highlight-rune');
+        $('.rune-column').removeClass('highlight-rune');
       }
       if($(this).parent('div').attr('id')=='rune-3'){
         $('#Build3').attr('value', $(this).attr('title'));
-        $('.rune').removeClass('highlight-rune');
+        $('.rune-column').removeClass('highlight-rune');
       }
       if($(this).parent('div').attr('id')=='rune-4'){
         $('#Build4').attr('value', $(this).attr('title'));
-        $('.rune').removeClass('highlight-rune');
+        $('.rune-column').removeClass('highlight-rune');
       }
       $(this).addClass('highlight-rune');
     });
