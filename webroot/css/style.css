@@ -315,7 +315,7 @@ div.news{
     width: auto;
     height: 74px;
     margin: 5px 0 0 0;
-    background: url('../img/frontend/items-background2.png') 2px 20px repeat-x;
+    background: url('../img/frontend/items-background.png') 2px 20px repeat-x;
     clear: both;
 }
 #items div{
