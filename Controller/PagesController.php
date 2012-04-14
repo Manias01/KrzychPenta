@@ -115,10 +115,16 @@ class PagesController extends AppController {
         );
         $this->set('skills',$skills);
 
-        //Three another builds at the bottom of page
-        $another_builds = $this->Build->find('all',array('limit'=>3,'recursive'=>0,
-            'conditions'=>array('Champion.name <>'=>$champion_name,'Build.done'=>1))
-        );
+    //Three another builds at the bottom of page
+        if(is_numeric($champion_name)){
+            $another_builds = $this->Build->find('all',array('limit'=>3,'recursive'=>0,
+                'conditions'=>array('Build.id <>'=>$champion_name,'Build.done'=>1))
+            );
+        }else{
+            $another_builds = $this->Build->find('all',array('limit'=>3,'recursive'=>0,
+                'conditions'=>array('Champion.name <>'=>$champion_name,'Build.done'=>1))
+            );
+        }
         $this->set('another_builds',$another_builds);
 
         $this->set('title_for_layout', $build['Champion']['name'].' - poradnik');
@@ -194,6 +200,14 @@ class PagesController extends AppController {
         $this->set('header','Skontakuj się z nami');
     }
 
+
+
+
+    public function rotation(){
+
+        
+        $this->redirect(array('controller'=>'pages', 'action'=>'home'));
+    }
 
     
 }

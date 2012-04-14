@@ -38,7 +38,7 @@ class ThumbHelper extends AppHelper {
     public function SS($id,$ss_name,$size=64,$class=false){
         $ss = $this->Dehumanize($ss_name);//.'_'.$size
         $img_url = $this->base.'/img/lol/ss/'.$ss.'.png';
-        $img_full = '<img src="'.$img_url.'" alt="'.$ss_name.'" tip_id="'.$id.'" class="ss'.(($class)?' '.$class:'').'" />';
+        $img_full = '<img src="'.$img_url.'" width="'.$size.'" height="'.$size.'" alt="'.$ss_name.'" tip_id="'.$id.'" class="ss'.(($class)?' '.$class:'').'" />';
 
         return($img_full);
     }

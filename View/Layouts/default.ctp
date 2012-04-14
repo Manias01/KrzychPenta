@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
 <head>
 <title><?=$title_for_layout?> | Pentakill.pl</title>
+<meta name="description" content="<?=(!empty($build['Build']['introduction'])?$this->Text->Truncate($build['Build']['introduction'],200):'')?>" />
 <?=$this->Html->charset()."\n"?>
 <?=$this->Html->css(array('style.css','tooltip.css'))."\n"?>
 <?=$this->Html->script(array('jquery-1.7.2.min.js','jquery.nivo.slider.pack.js','jquery.tooltip.min.js','tooltip.js'))?>

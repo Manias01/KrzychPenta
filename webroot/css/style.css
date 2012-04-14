@@ -1,11 +1,11 @@
-/*@font-face{
+@font-face{
     font-weight: normal;
     font-style: normal;
     font-variant: normal;
 
-    font-family: 'Charlemagne Bold';
-    src: url('charlb.ttf') format('truetype');
-}*/
+    font-family: 'Berylium';
+    src: url('../Berylium.ttf') format('truetype');
+}
 /*----Reset styles----*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -81,7 +81,7 @@ ul{
     clear: both;
 }
 h1,h2,h3,h4,h5,h6{
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: Berylium,Georgia, "Times New Roman", Times, serif;
     color: white;
     font-size: 20px;
     font-weight: 100;
@@ -132,9 +132,10 @@ h4{
     text-align: center;
 }
 #header-nav{
-    margin: 0 0 10px 0;
+    margin: 5px 0 5px 0;
 }
 #header-nav a{
+    font-family: Berylium,Georgia,'Times New Roman',serif;
     font-size: 20px;
     color: white;
     text-transform: uppercase;
@@ -187,6 +188,7 @@ h4{
     color: white;
     display: block;
     border-radius: 3px;
+    margin: 0 0 3px 0;
 }
 #new-builds a:hover{
     text-decoration: none;
@@ -258,14 +260,15 @@ div.news{
     height: 380px;
 }
 #shortcut h2{
-    font-size: 35px;
-    padding: 5px 0 0 15px;
+    font-size: 50px;
+    padding: 15px 0 0 15px;
     background: none;
 }
 #introduction{
-    width: 380px;
-    height: 150px;
-    padding: 10px;
+    width: 250px;
+    height: 110px;
+    padding: 15px;
+    font-size: 14px;
     color: white;
     background: transparent url('../img/frontend/semitransparent-background.png') 0 0 repeat;
     border: 1px solid black;
@@ -273,7 +276,7 @@ div.news{
 #ss-runes-panel{
     width: 100%;
     height: 80px;
-    margin: 10px 0 0 0;
+    margin: 30px 0 0 0;
     padding: 5px 0;
     font-size: 11px;
     color: white;
@@ -292,7 +295,6 @@ div.news{
     float: left;
 }
 #ss img{
-    width: 55px;
     border-radius: 6px;
     margin: 0 0 2px 0;
 }
@@ -305,10 +307,12 @@ div.news{
     float: left;
 }
 #runes img{
-    width: 35px;
-    height: 39px;
     margin: 0 auto;
     display: block;
+}
+#runes img:last-child{
+    width: 34px;
+    height: 34px;
 }
 
 #items{
@@ -338,10 +342,13 @@ div.news{
     background: black url('../img/frontend/news-background.png') 0 100% repeat-x;
 }
 #skill_sequence{
-    width: 100%;
+    width: 605px;
     background: black;
 }
 #skill_sequence th{
+    line-height: 14px;
+    font-size: 12px;
+    text-align: left;
     width: 100px;
 }
 #skill_sequence td{
@@ -349,17 +356,16 @@ div.news{
     height: 15px;
     border-left: 1px solid #666;
     text-align: center;
-    /*border-bottom: 1px solid #666;*/
-    /*border: 1px solid gray;*/
     border-collapse: collapse;
 }
 tr.row-1, tr.row-3{
-    background: #3E1E1E;
+    background: #300000;
 }
 #skill_sequence img{
     width: 15px;
     height: 15px;
 }
+
 #masteries{
     margin-top: 20px;
     margin-bottom: 0;
@@ -392,7 +398,7 @@ tr.row-1, tr.row-3{
 /*--------------------------- Footer ---------------------------*/
 
 #footer{
-    margin-top: 40px;
+    margin: 40px 0;
     padding: 20px;
     color: #666;
     font-size: 12px;
@@ -410,6 +416,11 @@ tr.row-1, tr.row-3{
 }
 #footer-menu a{
     color: #970000;
+}
+
+/*----------------------Styling build description text------------------*/
+span.ss-desc{
+    color: #F7E268;
 }
 
 /*----------------------------Other------------------------*/
@@ -430,6 +441,8 @@ tr.row-1, tr.row-3{
     font-size: 90%;
     margin: 6px 0 10px 0;
 }
+
+
 
 
 

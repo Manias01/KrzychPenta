@@ -10,11 +10,11 @@
         <div id="ss-runes-panel">
             <div id="ss">
                 <div>
-                    <?=$this->Thumb->Ss($ss[0]['Ss']['id'], $ss[0]['Ss']['name_en'], 64)?>
+                    <?=$this->Thumb->Ss($ss[0]['Ss']['id'], $ss[0]['Ss']['name_en'], 55)?>
                     <?=$ss[0]['Ss']['name_en']?>
                 </div>
                 <div>
-                    <?=$this->Thumb->Ss($ss[1]['Ss']['id'], $ss[1]['Ss']['name_en'], 64)?>
+                    <?=$this->Thumb->Ss($ss[1]['Ss']['id'], $ss[1]['Ss']['name_en'], 55)?>
                     <?=$ss[1]['Ss']['name_en']?>
                 </div>
             </div><!--/ss-->
@@ -60,7 +60,7 @@
 
                 <?for($lv=1;$lv<=18;$lv++):?>
                 <?if(isSet($build['Build']['skill_sequence']['lv'.$lv]) && $build['Build']['skill_sequence']['lv'.$lv] == $type) $checked = true; else $checked = false;?>
-                   <td class="sq"><?if($checked):?><img src="<?=$this->webroot?>/img/frontend/skill_add.png" class="skill" tip_id="<?=$skills[$type]['Skill']['id']?>" alt="" /><?endif?></td>
+                   <td class="sq"><?if($checked):?><img src="<?=$this->base?>/img/frontend/skill_add.png" class="skill" tip_id="<?=$skills[$type]['Skill']['id']?>" alt="" /><?endif?></td>
                 <?endfor?>
 
             </tr>
@@ -94,7 +94,7 @@
                 <h2><?=$this->Html->link($another['Build']['name'],$new_link)?></h2>
 
                 <?=$this->Html->link(
-                        $this->Thumb->champion($another['Champion']['id'],$new['Champion']['name'],64,'builds-thumb'),
+                        $this->Thumb->champion($another['Champion']['id'],$another['Champion']['name'],64,'builds-thumb'),
                         $new_link,array('escape'=>false)
                 );?>
 

@@ -18,7 +18,7 @@ $(document).ready(function(){
     $('#BuildIntroduction').keyup(function(e) {
         var tval = $('textarea').val(),
         tlength = tval.length,
-        set = 140,
+        set = 150,
         remain = parseInt(set - tlength);
         $('p.counter').text(remain);
         if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
@@ -87,19 +87,19 @@ $(document).ready(function(){
     $('.rune-column').click(function(){
       if($(this).parent('div').attr('id')=='rune-1'){
         $('#Build1').attr('value', $(this).attr('title'));
-        $('.rune-column').removeClass('highlight-rune');
+        $('#rune-1 div.rune-column').removeClass('highlight-rune');
       }
       if($(this).parent('div').attr('id')=='rune-2'){
         $('#Build2').attr('value', $(this).attr('title'));
-        $('.rune-column').removeClass('highlight-rune');
+        $('#rune-2 div.rune-column').removeClass('highlight-rune');
       }
       if($(this).parent('div').attr('id')=='rune-3'){
         $('#Build3').attr('value', $(this).attr('title'));
-        $('.rune-column').removeClass('highlight-rune');
+        $('#rune-3 div.rune-column').removeClass('highlight-rune');
       }
       if($(this).parent('div').attr('id')=='rune-4'){
         $('#Build4').attr('value', $(this).attr('title'));
-        $('.rune-column').removeClass('highlight-rune');
+        $('#rune-4 div.rune-column').removeClass('highlight-rune');
       }
       $(this).addClass('highlight-rune');
     });

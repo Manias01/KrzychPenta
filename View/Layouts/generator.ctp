@@ -14,7 +14,7 @@
     <br/>
 
 <div id="userbox">
-    <a href="<?=$this->base?>/admin" style="color:black">Powrót do panelu admina</a> | <?=$username?> - <a href="<?=$this->Html->url(array('controller'=>'users','action'=>'logout'))?>" style="color:black">Wyloguj się</a>
+    <a href="<?=$this->base?>/admin" style="color:black">Powrót do panelu admina</a> | <?=$username?> - <a href="<?=$this->Html->url(array('controller'=>'users','action'=>'logout','admin'=>true))?>" style="color:black">Wyloguj się</a>
 </div><!--/userbox-->
 
 

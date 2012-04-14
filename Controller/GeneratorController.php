@@ -302,11 +302,13 @@ class GeneratorController extends AppController {
         $champions = $this->Champion->find('all',array('recursive'=>0,'order'=>'Champion.name asc'));
         $skills = $this->Skill->find('all',array('recursive'=>-1,'conditions'=>array('Skill.champion_id'=>$build['Build']['champion_id'])));
         $items = $this->Item->find('all');
+        $ss = $this->Ss->find('all');
 
         $this->set('build',$build);
         $this->set('champions',$champions);
         $this->set('skills',$skills);
         $this->set('items',$items);
+        $this->set('ss',$ss);
     }
 
 
