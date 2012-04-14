@@ -43,6 +43,11 @@
         Router::connect('/poradniki', array('controller' => 'pages', 'action' => 'all_poradnik'));
         Router::connect('/poradnik/*', array('controller' => 'pages', 'action' => 'poradnik'));
 
+        Router::connect('/championi', array('controller' => 'champions', 'action' => 'all_champions'));
+        Router::connect('/champion/*', array('controller' => 'champions', 'action' => 'champion'));
+
+        Router::connect('/rotacja', array('controller' => 'champions', 'action' => 'rotation'));
+
 
 
 //        Router::connect('/*', array('controller' => 'pages', 'action' => 'guide'));

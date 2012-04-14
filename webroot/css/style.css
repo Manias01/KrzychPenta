@@ -171,6 +171,23 @@ h4{
     float: left;
 }
 
+#rotation a{
+    height: 38px;
+    color: white;
+    display: block;
+    margin: 0 0 2px 0;
+}
+#rotation a:hover{
+    box-shadow: 0 0 5px #ccc;
+}
+#rotation img{
+    float: left;
+    margin: 0 10px 0 0;
+}
+#rotation h5{
+    line-height: 38px;
+}
+
 #new-builds img{
     float: left;
 }
@@ -192,9 +209,9 @@ h4{
 }
 #new-builds a:hover{
     text-decoration: none;
-    box-shadow: 0 0 5px #ccc;
-    
+    box-shadow: 0 0 5px #ccc;  
 }
+
 #facebook h4{
     background: black url('../img/frontend/header-smaller-blue.png') 0 0 no-repeat;
 }
@@ -210,7 +227,7 @@ div.news{
     min-height: 100px;
     background: black url('../img/frontend/news-background.png') 0 100% repeat-x;
     padding: 0 0 20px 0;
-    margin: 0 0 20px 20px;
+    margin: 0 0 10px 20px;
 }
 .news h2 a{
     color: white;
@@ -283,7 +300,6 @@ div.news{
     text-align: center;
     background: transparent url('../img/frontend/semitransparent-background.png') 0 0 repeat;
     border: 1px solid black;
-    border-bottom: none;
 }
 #ss{
     margin: 0 10px 0 0;

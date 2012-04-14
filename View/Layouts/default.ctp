@@ -1,13 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
 <head>
-<title><?=$title_for_layout?> | Pentakill.pl</title>
-<meta name="description" content="<?=(!empty($build['Build']['introduction'])?$this->Text->Truncate($build['Build']['introduction'],200):'')?>" />
-<?=$this->Html->charset()."\n"?>
-<?=$this->Html->css(array('style.css','tooltip.css'))."\n"?>
-<?=$this->Html->script(array('jquery-1.7.2.min.js','jquery.nivo.slider.pack.js','jquery.tooltip.min.js','tooltip.js'))?>
-<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-
+    <title><?=$title_for_layout?> | Pentakill.pl</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="<?=(!empty($build['Build']['introduction'])?$this->Text->Truncate($build['Build']['introduction'],200):'')?>" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <?=$this->Html->charset()."\n"?>
+    <?=$this->Html->css(array('style.css','tooltip.css'))."\n"?>
+    <?=$this->Html->script(array('jquery-1.7.2.min.js','jquery.nivo.slider.pack.js','jquery.tooltip.min.js','tooltip.js'))?>
 </head>
 <body>
 <div id="base" base_url="<?=$this->base?>" style="display:none"></div>
@@ -27,7 +28,7 @@
             'Home'=>'',
             'Nowości'=>'nowosci',
             'Poradniki'=>'poradniki',
-            '<span style="color:#454545">Championi</span>'=>'',
+            '<span style="color:#454545">Championi</span>'=>'championi',
             'Kontakt'=>'kontakt'
         );
         foreach($navigation as $name=>$link):?>
@@ -78,27 +79,27 @@
     </div><!--/search-->
 
 
-<?/*
+
     <div id="rotation">
-        <h4>Darmowi bohaterowie</h4>
+        <h4>Aktualna rotacja</h4>
         <ul>
-            <li>Caithlyn</li>
-            <li>Master YI</li>
-            <li>Volibear</li>
-            <li>Nunu</li>
-            <li>Tristana</li>
-            <li>Lulu</li>
-            <li>Akali</li>
+            <?foreach($sidebar_rotation as $rotation):?>
+                <a href="<?=$this->Html->url(array('controller'=>'champions','action'=>'champion',strtolower($rotation['Champion']['name'])))?>">
+                   
+                    <?=$this->Thumb->Champion($rotation['Champion']['id'],$rotation['Champion']['name'],38);?>
+                    <h5><?=$rotation['Champion']['name']?></h5>
+                </a>
+            <?endforeach?>
         </ul>
     </div><!--/rotation-->
-*/?>
+
 
 
     <div id="new-builds">
-        <h4>Najnowsze poradniki</h4>
+        <h4>Ostatnie poradniki</h4>
         <?foreach($sidebar_newest_builds as $newest):?>
-            <a href="<?=$this->Html->url(array('controller'=>'pages','action'=>'poradnik',strtolower($newest['Champion']['name'])))?>">
-                <?=$this->Thumb->champion($newest['Build']['champion_id'],$newest['Champion']['name'],64);?>
+            <a href="<?=$this->Html->url(array('controller'=>'champions','action'=>'champion',strtolower($newest['Champion']['name'])))?>">
+                <?=$this->Thumb->Champion($newest['Build']['champion_id'],$newest['Champion']['name'],64);?>
                 <h5><?=$newest['Champion']['name'];?></h5>
             </a>
         <div class="clear"></div>
@@ -108,6 +109,8 @@
 
     <div id="facebook">
         <h4>Facebook</h4>
+        <div id="fb-root"></div>
+        <script src="http://connect.facebook.net/pl_PL/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/pages/Pentakill/230716520284492" width="300" colorscheme="dark" show_faces="true" border_color="#000000" stream="false" header="false"></fb:like-box>
     </div><!--/facebook-->
 
 

@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 class PagesController extends AppController {
     public $name = 'Pages';
     public $helpers = array('Html','Text','Thumb');
-    public $uses = array('News','Build','Skill','Ss','Rune','Item','Slider','Search');
+    public $uses = array('News','Build','Skill','Ss','Rune','Item','Slider','Search','Rotation');
 
 
     function beforeFilter(){
@@ -16,7 +16,10 @@ class PagesController extends AppController {
           'conditions'=>array('Build.done'=>1)
           )
       );
+      $sidebar_rotation = $this->Rotation->find('all',array('recursive'=>1,'fields'=>array('Champion.id','Champion.name')));
+      
       $this->set('sidebar_newest_builds',$sidebar_newest_builds);
+      $this->set('sidebar_rotation',$sidebar_rotation);
       parent::beforeFilter();
     }
 
@@ -201,13 +204,6 @@ class PagesController extends AppController {
     }
 
 
-
-
-    public function rotation(){
-
-        
-        $this->redirect(array('controller'=>'pages', 'action'=>'home'));
-    }
 
     
 }

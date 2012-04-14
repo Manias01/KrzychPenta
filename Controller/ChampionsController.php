@@ -3,9 +3,10 @@ App::uses('AppController', 'Controller');
 
 class ChampionsController extends AppController {
         public $helpers=array('Thumb');
+        public $uses=array('Champion','Rotation');
 
         function beforeFilter(){
-//          $this->Auth->allow('*');
+//          $this->Auth->allow('rotation');
           parent::beforeFilter();
         }
 
@@ -162,8 +163,58 @@ class ChampionsController extends AppController {
 		}
         }
 
+
+
+        public function rotation(){
+            $codeWeb = file_get_contents('http://pl.leagueoflegends.wikia.com/wiki/Szablon:Current_champion_rotation');
+            $pattern = '/(<meta name="keywords" content=)("League of Legends Wiki,plleagueoflegends,Szablon:Current champion rotation,)(.*)(" \/>)/';
+            preg_match($pattern, $codeWeb, $champs);
+
+            $rotation = explode(',',$champs[3]);
+
+            print_r($rotation);
+            echo '<br/>';
+
+            $a=1;   //always rewrite the same id numbers in DB (10 values)
+            foreach($rotation as $rot){
+                $champ_id = $this->Champion->find('first',array('conditions'=>array('Champion.name'=>$rot),'fields'=>array('Champion.id')));
+                if(empty($champ_id)){
+                    echo "BŁĄD! Nie znaleziono championa o nazwie: '$rot' <br/>";
+                }
+                $this->Rotation->create();  //clear input, NOT create new record
+                if(!$this->Rotation->save(array(
+                    'id'=>$a,
+                    'champion_id'=>$champ_id['Champion']['id']
+                ))) echo "BŁĄD! Nie udało się zapisać championa o id='$champ_id' i nazwie='$rot' <br/>";
+
+                echo $rot.' zapisano <br/>';
+                $a++;
+            }
+            
+
+            exit;
+            $this->redirect(array('controller'=>'pages', 'action'=>'home'));
+        }
+
+
+
+
+        public function champion($champion_name){
+
+            $this->redirect(array('controller'=>'pages', 'action'=>'home'));
+        }
+
+
+
+        public function all_champions(){
+
+            $this->redirect(array('controller'=>'pages', 'action'=>'home'));
+        }
+
+
         
 
+        
         public function GetChampionsName() {
         //Pobranie nazw postaci
             $codeWeb = file_get_contents('http://www.mobafire.com/league-of-legends/champions');

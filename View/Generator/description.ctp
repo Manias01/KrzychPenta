@@ -7,7 +7,7 @@
     <?$a++;endforeach?>
         
     <?$a=1;foreach($champions as $champion):?>
-        var champ<?=$a?> = '<a href="<?=$this->Html->url(array('controller'=>'champions', 'action'=>'champion_page',$this->Thumb->Dehumanize($champion['Champion']['name'])))?>" class="<?=$this->Thumb->Dehumanize($champion['Champion']['name'])?>"><?=$this->Thumb->Champion($champion['Champion']['id'],str_replace("'",'',$champion['Champion']['name']),20)?> <?=str_replace("'",'&#39;',$champion['Champion']['name'])?></a>';
+        var champ<?=$a?> = '<a href="<?=$this->Html->url(array('controller'=>'champions', 'action'=>'champion',$this->Thumb->Dehumanize($champion['Champion']['name'])))?>" class="<?=$this->Thumb->Dehumanize($champion['Champion']['name'])?>"><?=$this->Thumb->Champion($champion['Champion']['id'],str_replace("'",'',$champion['Champion']['name']),20)?> <?=str_replace("'",'&#39;',$champion['Champion']['name'])?></a>';
     <?$a++;endforeach?>
 
     <?$a=1;foreach($ss as $s):?>
