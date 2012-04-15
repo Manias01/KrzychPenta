@@ -166,8 +166,8 @@ class ChampionsController extends AppController {
 
 
         public function rotation(){
-            $codeWeb = file_get_contents('http://pl.leagueoflegends.wikia.com/wiki/Szablon:Current_champion_rotation');
-            $pattern = '/(<meta name="keywords" content=)("League of Legends Wiki,plleagueoflegends,Szablon:Current champion rotation,)(.*)(" \/>)/';
+            $codeWeb = file_get_contents('http://leagueoflegends.wikia.com/wiki/Template:Current_champion_rotation');
+            $pattern = '/(<meta name="keywords" content=)("League of Legends Wiki,leagueoflegends,Template:Current champion rotation,)(.*)(" \/>)/';
             preg_match($pattern, $codeWeb, $champs);
 
             $rotation = explode(',',$champs[3]);
@@ -195,22 +195,6 @@ class ChampionsController extends AppController {
             exit;
             $this->redirect(array('controller'=>'pages', 'action'=>'home'));
         }
-
-
-
-
-        public function champion($champion_name){
-
-            $this->redirect(array('controller'=>'pages', 'action'=>'home'));
-        }
-
-
-
-        public function all_champions(){
-
-            $this->redirect(array('controller'=>'pages', 'action'=>'home'));
-        }
-
 
         
 

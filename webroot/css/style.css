@@ -132,7 +132,7 @@ h4{
     text-align: center;
 }
 #header-nav{
-    margin: 5px 0 5px 0;
+    margin: 5px 0 5px -50px;
 }
 #header-nav a{
     font-family: Berylium,Georgia,'Times New Roman',serif;
@@ -374,7 +374,7 @@ div.news{
     text-align: center;
     border-collapse: collapse;
 }
-tr.row-1, tr.row-3{
+tr.row-0, tr.row-2{
     background: #300000;
 }
 #skill_sequence img{
@@ -410,6 +410,54 @@ tr.row-1, tr.row-3{
     height: auto;
     background: black;
 }
+#another-builds a.another-champ{
+    width: 300px;
+    height: 70px;
+    margin: 5px;
+    padding: 5px 0;
+    color: white;
+    border: 1px solid #2B2B2B;
+    border-radius: 3px;
+    float: left;
+}
+#another-builds a.another-champ:hover{
+    box-shadow: 0 0 15px #ccc;
+}
+#another-builds .another-champ h2{
+    margin-bottom: 5px;
+}
+#another-builds .another-champ h2 a{
+    font-size: 16px;
+    color: white;
+}
+
+/*-----------------------=Champion-page-------------------------*/
+#champion-price{
+    width: 130px;
+    height: 80px;
+    padding: 10px;
+    margin: 50px 0 0 0px;
+    color: white;
+    background: transparent url('../img/frontend/semitransparent-background.png') 0 0 repeat;
+    border: 1px solid black;
+}
+#champion-price div{
+    margin: 0 6px;
+    text-align: center;
+    float: left;
+}
+#champion-skills{
+    width: 100%;
+    height: 110px;
+    margin: 60px 0 0 0;
+    background: transparent url('../img/frontend/semitransparent-background.png') 0 0 repeat;
+    border: 1px solid black;
+}
+#champion-skills img{
+    margin: 0 28px;
+}
+
+
 
 /*--------------------------- Footer ---------------------------*/
 

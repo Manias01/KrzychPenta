@@ -12,7 +12,9 @@ class ThumbHelper extends AppHelper {
         $string4 = str_replace('\'','',$string3);
         $string5 = str_replace(".",'',$string4);
         $string6 = str_replace(':','',$string5);
-        return($string6);
+        $string = str_replace(",",'',$string6);
+        $string = str_replace("!",'',$string);
+        return($string);
     }
 
 //return thumbnail image for champion

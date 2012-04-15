@@ -26,9 +26,9 @@
     <div id="header-nav">
         <?$navigation=array(
             'Home'=>'',
-            'Nowości'=>'nowosci',
+            //'Nowości'=>'nowosci',
             'Poradniki'=>'poradniki',
-            '<span style="color:#454545">Championi</span>'=>'championi',
+            'Championi'=>'championi',
             'Kontakt'=>'kontakt'
         );
         foreach($navigation as $name=>$link):?>
@@ -84,7 +84,7 @@
         <h4>Aktualna rotacja</h4>
         <ul>
             <?foreach($sidebar_rotation as $rotation):?>
-                <a href="<?=$this->Html->url(array('controller'=>'champions','action'=>'champion',strtolower($rotation['Champion']['name'])))?>">
+                <a href="<?=$this->Html->url(array('controller'=>'pages','action'=>'champion',strtolower($rotation['Champion']['name'])))?>">
                    
                     <?=$this->Thumb->Champion($rotation['Champion']['id'],$rotation['Champion']['name'],38);?>
                     <h5><?=$rotation['Champion']['name']?></h5>
@@ -96,9 +96,9 @@
 
 
     <div id="new-builds">
-        <h4>Ostatnie poradniki</h4>
+        <h4>Najnowsze poradniki</h4>
         <?foreach($sidebar_newest_builds as $newest):?>
-            <a href="<?=$this->Html->url(array('controller'=>'champions','action'=>'champion',strtolower($newest['Champion']['name'])))?>">
+            <a href="<?=$this->Html->url(array('controller'=>'pages','action'=>'poradnik',strtolower($newest['Champion']['name'])))?>">
                 <?=$this->Thumb->Champion($newest['Build']['champion_id'],$newest['Champion']['name'],64);?>
                 <h5><?=$newest['Champion']['name'];?></h5>
             </a>

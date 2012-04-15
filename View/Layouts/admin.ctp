@@ -22,7 +22,7 @@
 
 
 <div id="userbox">
-    <a href="<?=$this->base?>" style="color:black">Strona główna</a> | <?=$username?> - <a href="<?=$this->Html->url(array('controller'=>'users','action'=>'logout'))?>" style="color:black">Wyloguj się</a>
+    <a href="<?=$this->Html->url(array('controller'=>'pages','action'=>'home','admin'=>false))?>" style="color:black">Strona główna</a> | <?=$username?> - <a href="<?=$this->Html->url(array('controller'=>'users','action'=>'logout'))?>" style="color:black">Wyloguj się</a>
 </div><!--/userbox-->
 
 

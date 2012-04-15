@@ -51,7 +51,7 @@
             <?endfor?>
         </tr>
 
-        <?for($type=1;$type<=4;$type++):?>
+        <?for($type=0;$type<=3;$type++):?>
             <tr class="row-<?=$type?>">
                 <th class="skill">
                     <?=$this->Thumb->Skill($build['Champion']['name'],$skills[$type]['Skill']['id'],$skills[$type]['Skill']['name_en'],20)?>

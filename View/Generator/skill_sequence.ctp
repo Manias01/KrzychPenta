@@ -17,7 +17,7 @@
             <?endfor?>
         </tr>
 
-    <?for($type=1;$type<=4;$type++):?>
+    <?for($type=0;$type<=3;$type++):?>
 
         <tr class="row-<?=$type?>">
             <td class="skill">

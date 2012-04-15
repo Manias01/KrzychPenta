@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 class PagesController extends AppController {
     public $name = 'Pages';
     public $helpers = array('Html','Text','Thumb');
-    public $uses = array('News','Build','Skill','Ss','Rune','Item','Slider','Search','Rotation');
+    public $uses = array('News','Champion','Build','Skill','Ss','Rune','Item','Slider','Search','Rotation');
 
 
     function beforeFilter(){
@@ -68,7 +68,8 @@ class PagesController extends AppController {
     public function poradnik($champion_name){
         //build
         if(is_numeric($champion_name)){
-            $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Build.id'=>$champion_name)));
+            $build = $this->Build->find('first',array('recursive'=>1,
+                'conditions'=>array('Build.id'=>$champion_name)));
         }else $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Champion.name'=>$champion_name)));
 
         //check if build don't exist
@@ -121,17 +122,48 @@ class PagesController extends AppController {
     //Three another builds at the bottom of page
         if(is_numeric($champion_name)){
             $another_builds = $this->Build->find('all',array('limit'=>3,'recursive'=>0,
-                'conditions'=>array('Build.id <>'=>$champion_name,'Build.done'=>1))
+                'conditions'=>array('Build.id <>'=>$champion_name,'Build.done'=>1),
+                'order'=>'rand()')
             );
         }else{
             $another_builds = $this->Build->find('all',array('limit'=>3,'recursive'=>0,
-                'conditions'=>array('Champion.name <>'=>$champion_name,'Build.done'=>1))
+                'conditions'=>array('Champion.name <>'=>$champion_name,'Build.done'=>1),
+                'order'=>'rand()')
             );
         }
         $this->set('another_builds',$another_builds);
 
         $this->set('title_for_layout', $build['Champion']['name'].' - poradnik');
         $this->set('header','Poradnik');
+    }
+
+
+
+    public function champion($champion_name){
+        $champion = $this->Champion->find('first',array('conditions'=>array('Champion.name'=>$champion_name))
+        );
+        $skills = $this->Skill->find('all',array('recursive'=>-1,'fields'=>array('Skill.id','Skill.name_en'),
+         'conditions'=>array('Skill.champion_id'=>$champion['Champion']['id']))
+        );
+
+        $this->set('champion',$champion);
+
+        $another_champions = $this->Champion->find('all',array('limit'=>6,'recursive'=>0,
+            'conditions'=>array('Champion.name <>'=>$champion_name),
+            'order'=>'rand()')
+        );
+
+        $this->set('another_champions',$another_champions);
+
+        $this->set('title_for_layout', 'Champion - '.$champion['Champion']['name']);
+        $this->set('header',$champion['Champion']['name']);
+    }
+
+
+
+    public function all_champions(){
+
+        $this->redirect(array('controller'=>'pages', 'action'=>'home'));
     }
 
 

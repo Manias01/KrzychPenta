@@ -28,8 +28,8 @@
 
         
 
-	Router::connect('/', array('controller' => 'pages', 'action' => 'home', 'home'));
-        Router::connect('/home', array('controller' => 'pages', 'action' => 'home', 'home'));
+	Router::connect('/', array('controller' => 'pages', 'action' => 'home'));
+        Router::connect('/home', array('controller' => 'pages', 'action' => 'home'));
 
         Router::connect('/login', array('controller' => 'users', 'action' => 'login','admin'=>false));
         Router::connect('/admin/:controller/login', array('controller' => 'users', 'action' => 'login','admin'=>false));
@@ -43,8 +43,8 @@
         Router::connect('/poradniki', array('controller' => 'pages', 'action' => 'all_poradnik'));
         Router::connect('/poradnik/*', array('controller' => 'pages', 'action' => 'poradnik'));
 
-        Router::connect('/championi', array('controller' => 'champions', 'action' => 'all_champions'));
-        Router::connect('/champion/*', array('controller' => 'champions', 'action' => 'champion'));
+        Router::connect('/championi', array('controller' => 'pages', 'action' => 'all_champions'));
+        Router::connect('/champion/*', array('controller' => 'pages', 'action' => 'champion'));
 
         Router::connect('/rotacja', array('controller' => 'champions', 'action' => 'rotation'));
 
