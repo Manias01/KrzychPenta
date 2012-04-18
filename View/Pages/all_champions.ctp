@@ -1,0 +1,1 @@
+<?=$this->element('champions',array('champions'=>$champions));?>

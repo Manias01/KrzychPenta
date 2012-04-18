@@ -169,7 +169,7 @@ $(document).ready(function(){
 
             // Theme options - button# indicated the row# only
             theme_advanced_buttons1 : "newdocument,|,bold,italic,underline,|,justifyleft,justifycenter,justifyright,fontselect,fontsizeselect,formatselect",
-            theme_advanced_buttons2 : "cut,copy,paste,|,bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,anchor,image,|,code,preview,|,forecolor,backcolor,|,advhr,removeformat",
+            theme_advanced_buttons2 : "cut,copy,paste,|,bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,anchor,image,|,code,preview,|,forecolor,backcolor,|,advhr,removeformat,|",
             theme_advanced_toolbar_location : "top",
             theme_advanced_toolbar_align : "left",
             theme_advanced_statusbar_location : "bottom",
@@ -178,7 +178,7 @@ $(document).ready(function(){
             force_p_newlines : false,
             forced_root_block : '',
             relative_urls : false,
-            extended_valid_elements  : "img[tip_id|tip_id=|longdesc|usemap|src|border|alt=|title|hspace|vspace|width|height|align|class=]",
+            extended_valid_elements  : "img[tip_id|tip_id=|longdesc|usemap|src|border|alt=|title|hspace|vspace|width|height|align|class=]"
         });
     }
     

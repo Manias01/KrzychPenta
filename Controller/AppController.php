@@ -44,15 +44,18 @@ class AppController extends Controller {
             return($output);
     }
 
-//Normuje nazwy
-    public function Dehumanize($string){
-        $string1 = strtolower($string);
-        $string2 = str_replace("'",'',$string1);
-        $string3 = str_replace(" ",'-',$string2);
-        $string4 = str_replace('\'','',$string3);
-        $string5 = str_replace(".",'',$string4);
-        $string6 = str_replace(':','',$string5);
-        return($string6);
+
+//From normal form to computer form
+    public function Dehumanize($string){//the same function as helper is in ThumbHelper
+        $string = strtolower($string);
+        $string = str_replace("'",'',$string);
+        $string = str_replace(" ",'-',$string);
+        $string = str_replace('\'','',$string);
+        $string = str_replace(".",'',$string);
+        $string = str_replace(':','',$string);
+        $string = str_replace(",",'',$string);
+        $string = str_replace("!",'',$string);
+        return($string);
     }
 
 

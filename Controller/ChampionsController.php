@@ -6,7 +6,7 @@ class ChampionsController extends AppController {
         public $uses=array('Champion','Rotation');
 
         function beforeFilter(){
-//          $this->Auth->allow('rotation');
+          $this->Auth->allow('GetChampions');
           parent::beforeFilter();
         }
 
@@ -196,48 +196,67 @@ class ChampionsController extends AppController {
             $this->redirect(array('controller'=>'pages', 'action'=>'home'));
         }
 
-        
+
+
+
 
         
-        public function GetChampionsName() {
-        //Pobranie nazw postaci
+        public function GetChampions() {//Name
+        //Get champion name + if from official site, output tab $champions:
+            $html = file_get_contents('http://eune.leagueoflegends.com/champions');
+
+            $pattern = '/(<h1 class="champion_name">)(.*)(<\/h1>)/';
+            preg_match_all($pattern, $html, $champs_names);
+
+            $pattern = '/(href="\/champions\/)([0-9]+)(\/)/';
+            preg_match_all($pattern, $html, $champs_ids);
+
+            for($a=0;$a<count($champs_names[2]);$a++){
+                $champions[$a]['id'] = $champs_ids[2][$a];
+                $champions[$a]['name'] = $champs_names[2][$a];
+            }
+
+        //Get id_mobafire + rp + ip
             $codeWeb = file_get_contents('http://www.mobafire.com/league-of-legends/champions');
             $codeWeb = explode('champ-box',$codeWeb);
 
             //tutaj trzeba juz pobrac wczesniej dane uzywajac starego generatora poradnikow
-            $lol_id = simplexml_load_string(file_get_contents('files/champions.xml'));
+            //$lol_id = simplexml_load_string(file_get_contents('files/champions.xml'));
 
             for($a=1;$a<(count($codeWeb)-2);$a++){
-              $tab['name'][$a] = $this->Tnij($codeWeb[$a],'<div class="champ-name">','</div>');
-              $tab['nr'][$a] = $this->Tnij($codeWeb[$a],",i:'","'");
-              $tab['rp'][$a] = $this->Tnij($codeWeb[$a],'<img src="http://edge1.mobafire.com/images/interface/riot-points.png" style="width:20px;" />','<br />');
-              $tab['ip'][$a] = $this->Tnij($codeWeb[$a],'<img src="http://edge1.mobafire.com/images/interface/influence-points.png" style="width:20px; margin-left:5px;" />','</div>');
+              $moba['name'][$a] = $this->Tnij($codeWeb[$a],'<div class="champ-name">','</div>');
+              $moba['nr'][$a] = $this->Tnij($codeWeb[$a],",i:'","'");
+              $moba['rp'][$a] = $this->Tnij($codeWeb[$a],'<img src="http://edge1.mobafire.com/images/interface/riot-points.png" style="width:20px;" />','<br />');
+              $moba['ip'][$a] = $this->Tnij($codeWeb[$a],'<img src="http://edge1.mobafire.com/images/interface/influence-points.png" style="width:20px; margin-left:5px;" />','</div>');
 
-        //usuniecie spacji itp.
-              $tab['rp'][$a][1] = intval($tab['rp'][$a][1]);
-              $tab['ip'][$a][1] = intval($tab['ip'][$a][1]);
-              
-       //porownanie nazwy postaci aby zdobyc id z oficjalnej strony:
-              for($b=0;$b<=count($lol_id->name);$b++){
-//                  echo $tab['name'][$a][1]."-".$lol_id->name[$b]."\n";
-                    if($tab['name'][$a][1] == $lol_id->name[$b]){
-                        $tab['id'][$a] = $lol_id->name[$b]['nr'];
+        //removes spaces etc.
+              $moba['nr'][$a] = intval($moba['nr'][$a][1]);
+              $moba['rp'][$a] = intval($moba['rp'][$a][1]);
+              $moba['ip'][$a] = intval($moba['ip'][$a][1]);
+
+        //get another champion_id from moba
+              for($b=0;$b<=count($champions);$b++){
+//                  echo $moba['name'][$a][1]."-".$lol_id->name[$b]."\n";
+                    if($moba['name'][$a][1] == $champions[$b]['name']){
+                        $moba['id_normal'][$a] = $champions[$b]['id'];
                         break;
                     }
                }
+               print_r($moba);
+               exit;
 
        //zapis do bazy danych:
               $this->Champion->create();
               $this->Champion->save(array(  //a nie 'set'?
-                  'id' => $tab['id'][$a],
-                  'name' => $tab['name'][$a][1],
-                  'mobafire_id' => $tab['nr'][$a][1],
-                  'rp' => $tab['rp'][$a][1],
-                  'ip' => $tab['ip'][$a][1]
+                  'id' => $moba['id_normal'][$a],
+                  'name' => $moba['name'][$a][1],
+                  'mobafire_id' => $moba['nr'][$a],
+                  'rp' => $moba['rp'][$a],
+                  'ip' => $moba['ip'][$a]
                   )
               );
               $this->Champion->save();
-            }
+            }//endfor:$a
 
             $this->render('admin_index');
         }

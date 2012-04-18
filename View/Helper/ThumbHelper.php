@@ -5,7 +5,7 @@ class ThumbHelper extends AppHelper {
 
 
 //Normuje nazwy
-    public function Dehumanize($string){
+    public function Dehumanize($string){//the same function forcontrollers is in AppController
         $string1 = strtolower($string);
         $string2 = str_replace("'",'',$string1);
         $string3 = str_replace(" ",'-',$string2);

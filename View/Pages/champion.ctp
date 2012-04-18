@@ -44,6 +44,17 @@
                 <h3><?=$another['Champion']['name']?></h3>
             </div><!--/another-champ-->
 
+            <div id="champions-price">
+                <div>
+                    <img src="<?=$this->base?>/img/frontend/ip.png" alt=""/><h3><?=$another['Champion']['ip']?></h3>
+                </div>
+                <div>
+                    <br/>lub
+                </div>
+                <div>
+                    <img src="<?=$this->base?>/img/frontend/rp.png" alt=""/><h3><?=$another['Champion']['rp']?></h3>
+                </div>
+            </div><!--/champions-price-->
             
             <div class="clear"></div>
         </a><!--/another-champ-->

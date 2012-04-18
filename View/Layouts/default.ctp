@@ -8,7 +8,8 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <?=$this->Html->charset()."\n"?>
     <?=$this->Html->css(array('style.css','tooltip.css'))."\n"?>
-    <?=$this->Html->script(array('jquery-1.7.2.min.js','jquery.nivo.slider.pack.js','jquery.tooltip.min.js','tooltip.js'))?>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" ></script>
+    <?=$this->Html->script(array(/*'jquery-1.7.2.min.js',*/'jquery.nivo.slider.pack.js','jquery.tooltip.min.js','tooltip.js'))?>
 </head>
 <body>
 <div id="base" base_url="<?=$this->base?>" style="display:none"></div>
@@ -50,13 +51,14 @@
             $(window).load(function(){
                 $('#slider').nivoSlider({
                     prevText: '',
-                    nextText: ''
+                    nextText: '',
+                    pauseTime: 4000
                 });
             });
         </script>
             <div id="slider" class="nivoSlider">
                 <?foreach($sliders as $slider):?>
-                    <a href="<?=$slider['Slider']['url']?>"><img src="<?=$slider['Slider']['image']?>" alt="" title="<?=$this->Text->truncate($slider['Slider']['description'],100)?>" /></a>
+                    <a href="<?=$slider['Slider']['url']?>"><img src="<?=$slider['Slider']['image']?>" alt="" title="<?=$this->Text->truncate($slider['Slider']['description'],180)?>" /></a>
                 <?endforeach?>
             </div>
     <?endif?>
@@ -84,7 +86,7 @@
         <h4>Aktualna rotacja</h4>
         <ul>
             <?foreach($sidebar_rotation as $rotation):?>
-                <a href="<?=$this->Html->url(array('controller'=>'pages','action'=>'champion',strtolower($rotation['Champion']['name'])))?>">
+                <a href="<?=$this->Html->url(array('controller'=>'pages','action'=>'champion',$this->Thumb->Dehumanize($rotation['Champion']['name'])))?>">
                    
                     <?=$this->Thumb->Champion($rotation['Champion']['id'],$rotation['Champion']['name'],38);?>
                     <h5><?=$rotation['Champion']['name']?></h5>
@@ -98,7 +100,7 @@
     <div id="new-builds">
         <h4>Najnowsze poradniki</h4>
         <?foreach($sidebar_newest_builds as $newest):?>
-            <a href="<?=$this->Html->url(array('controller'=>'pages','action'=>'poradnik',strtolower($newest['Champion']['name'])))?>">
+            <a href="<?=$this->Html->url(array('controller'=>'pages','action'=>'poradnik',$this->Thumb->Dehumanize($newest['Champion']['name'])))?>">
                 <?=$this->Thumb->Champion($newest['Build']['champion_id'],$newest['Champion']['name'],64);?>
                 <h5><?=$newest['Champion']['name'];?></h5>
             </a>
@@ -107,6 +109,8 @@
     </div><!--/new-builds-->
 
 
+ <?if($this->base != '/KrzychPenta')://if it is NOT localhost:?>
+    
     <div id="facebook">
         <h4>Facebook</h4>
         <div id="fb-root"></div>
@@ -116,7 +120,9 @@
 
 
     <?/*advert*/?>
-        <?/*$type = rand(0,1);
+<cake:nocache>
+
+        <?$type = rand(0,1);
             if($type == 0):?>
                 <script type="text/javascript"><!--
                 google_ad_client = "ca-pub-4638937189329374";
@@ -141,9 +147,12 @@
                 <script type="text/javascript"
                 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
                 </script>
-            <?endif*/?>
+            <?endif?>
 
+</cake:nocache>
     <?/*end advert*/?>
+
+<?endif;//end if it is NOT localhost?>
 
 
 </div><!--/sidebar-->
@@ -169,6 +178,24 @@
 </div> <!--/wrap-->
 
 <?php echo $this->element('sql_dump'); ?>
+
+<?if($this->base != '/KrzychPenta')://if it is NOT localhost:?>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-24389295-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+<?endif;//end if it is NOT localhost?>
 
 </body>
 </html>

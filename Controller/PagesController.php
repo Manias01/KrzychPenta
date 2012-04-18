@@ -28,7 +28,7 @@ class PagesController extends AppController {
     public function home() {
         $this->paginate = array(
             'order'=>'News.id DESC',
-            'limit'=>3
+            'limit'=>10
         );
         $news = $this->paginate('News');
         $this->set('news', $news);
@@ -49,6 +49,7 @@ class PagesController extends AppController {
 
 
 
+
     public function all_poradnik(){
         $this->paginate = array(
             'order'=>'Build.name ASC',
@@ -58,9 +59,10 @@ class PagesController extends AppController {
         $builds = $this->paginate('Build');
         $this->set('builds',$builds);
 
-        $this->set('title_for_layout', 'Poradniki');
+        $this->set('title_for_layout', 'Lista poradników');
         $this->set('header','Poradniki');
     }
+
 
 
 
@@ -70,7 +72,21 @@ class PagesController extends AppController {
         if(is_numeric($champion_name)){
             $build = $this->Build->find('first',array('recursive'=>1,
                 'conditions'=>array('Build.id'=>$champion_name)));
-        }else $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Champion.name'=>$champion_name)));
+        }else{
+            if(preg_match("/(_|-)/",$champion_name)){
+                $words = explode('-',$champion_name);
+                foreach($words as $word){
+                    $conditionsName[] = array(
+                        'OR'=>array(
+                            'Champion.name LIKE'=>"%$word%"
+                         )
+                    );
+                }
+                $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>$conditionsName));
+            }else{
+                $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Champion.name'=>$champion_name)));
+            }
+        }
 
         //check if build don't exist
         if(!$build) $this->redirect(array('controller'=>'pages', 'action'=>'home'));
@@ -139,9 +155,25 @@ class PagesController extends AppController {
 
 
 
+
+
     public function champion($champion_name){
-        $champion = $this->Champion->find('first',array('conditions'=>array('Champion.name'=>$champion_name))
-        );
+
+        if(preg_match("/(_|-)/",$champion_name)){
+            $words = explode('-',$champion_name);
+            foreach($words as $word){
+                $conditionsName[] = array(
+                    'OR'=>array(
+                        'Champion.name LIKE'=>"%$word%"
+                     )
+                );
+            }
+            $champion = $this->Champion->find('first',array('conditions'=>$conditionsName));
+        }else{
+            $champion = $this->Champion->find('first',array('conditions'=>array('Champion.name'=>$champion_name)));
+        }
+
+        
         $skills = $this->Skill->find('all',array('recursive'=>-1,'fields'=>array('Skill.id','Skill.name_en'),
          'conditions'=>array('Skill.champion_id'=>$champion['Champion']['id']))
         );
@@ -161,10 +193,20 @@ class PagesController extends AppController {
 
 
 
-    public function all_champions(){
 
-        $this->redirect(array('controller'=>'pages', 'action'=>'home'));
+
+    public function all_champions(){
+        $this->paginate = array(
+            'order'=>'Champion.name ASC',
+            'limit'=>30
+        );
+        $champions = $this->paginate('Champion');
+        $this->set('champions',$champions);
+
+        $this->set('title_for_layout', 'Lista championów');
+        $this->set('header','Championi');
     }
+
 
 
 
@@ -197,15 +239,24 @@ class PagesController extends AppController {
                 //set conditions:
                     $conditions[] = array('Build.done'=>1);
                     foreach($phrases as $phrase){
-                        $conditions[] = array(
+                        $conditionsBuild[] = array(
                             'OR'=>array(
                                 'Build.description LIKE'=>"%$phrase%"
                              )
                         );
+                        $conditionsChampion[] = array(
+                            'OR'=>array(
+                                'Champion.name LIKE'=>"%$phrase%"
+                             )
+                        );
                     }
                 //set paginate
-                    $this->paginate = array('order'=>'Build.id DESC','limit'=>10,'conditions'=>$conditions);
-                    $results = $this->paginate('Build');
+                    $this->paginate = array('order'=>'Build.id DESC','limit'=>10,'conditions'=>$conditionsBuild);
+                    $results['builds'] = $this->paginate('Build');
+                    
+                    $this->paginate = array('order'=>'Champion.id DESC','limit'=>10,'conditions'=>$conditionsChampion);
+                    $results['champions'] = $this->paginate('Champion');
+
 
                 //write in DB phrase (for admin check)
                     $this->Search->create();

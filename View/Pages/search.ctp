@@ -7,7 +7,11 @@
 <?else:?>
     <h5>Znalezione strony dla słów: "<?foreach($phrases as $phrase){echo $phrase.' ';}?>"</h5>
 
-    <?=$this->element('builds',array('builds'=>$results));?>
+    <h2>Poradniki</h2>
+    <?=$this->element('builds',array('builds'=>$results['builds']));?>
+
+    <h2>Championi</h2>
+    <?=$this->element('champions',array('champions'=>$results['champions']));?>
 
 <?endif?>
 
