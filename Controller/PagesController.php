@@ -16,7 +16,18 @@ class PagesController extends AppController {
           'conditions'=>array('Build.done'=>1)
           )
       );
-      $sidebar_rotation = $this->Rotation->find('all',array('recursive'=>1,'fields'=>array('Champion.id','Champion.name')));
+      $join = array(
+          array(
+              'table'=>'builds',
+              'alias'=>'Build',
+              'type'=>'left',
+              'foreignKey' => 'champion_id',
+              'conditions'=>array(
+                  'Build.champion_id = Rotation.champion_id'
+              )
+          )
+      );
+      $sidebar_rotation = $this->Rotation->find('all',array('recursive'=>0,'joins'=>$join,'fields'=>array('Champion.id','Champion.name','Build.id')));
       
       $this->set('sidebar_newest_builds',$sidebar_newest_builds);
       $this->set('sidebar_rotation',$sidebar_rotation);
@@ -68,6 +79,8 @@ class PagesController extends AppController {
 
 
     public function poradnik($champion_name){
+        if(!$champion_name) $this->redirect(array('controller'=>'pages', 'action'=>'home'));
+        
         //build
         if(is_numeric($champion_name)){
             $build = $this->Build->find('first',array('recursive'=>1,
@@ -158,30 +171,19 @@ class PagesController extends AppController {
 
 
     public function champion($champion_name){
+        if(!$champion_name) $this->redirect(array('controller'=>'pages', 'action'=>'home'));
+        $champion_name = $this->Dehumanize($champion_name);
 
-        if(preg_match("/(_|-)/",$champion_name)){
-            $words = explode('-',$champion_name);
-            foreach($words as $word){
-                $conditionsName[] = array(
-                    'OR'=>array(
-                        'Champion.name LIKE'=>"%$word%"
-                     )
-                );
-            }
-            $champion = $this->Champion->find('first',array('conditions'=>$conditionsName));
-        }else{
-            $champion = $this->Champion->find('first',array('conditions'=>array('Champion.name'=>$champion_name)));
-        }
+        $champion = $this->Champion->find('first',array('conditions'=>array('Champion.slug'=>$champion_name)));
 
-        
-        $skills = $this->Skill->find('all',array('recursive'=>-1,'fields'=>array('Skill.id','Skill.name_en'),
-         'conditions'=>array('Skill.champion_id'=>$champion['Champion']['id']))
-        );
+        //if build don't exist:
+        if(!$champion) $this->redirect(array('controller'=>'pages', 'action'=>'home'));
 
         $this->set('champion',$champion);
 
+        //Another champions suggestion:
         $another_champions = $this->Champion->find('all',array('limit'=>6,'recursive'=>0,
-            'conditions'=>array('Champion.name <>'=>$champion_name),
+            'conditions'=>array('Champion.slug <>'=>$champion_name),
             'order'=>'rand()')
         );
 
@@ -246,7 +248,8 @@ class PagesController extends AppController {
                         );
                         $conditionsChampion[] = array(
                             'OR'=>array(
-                                'Champion.name LIKE'=>"%$phrase%"
+                                'Champion.name LIKE'=>"%$phrase%",
+                                'Champion.slug LIKE'=>"%$phrase%"
                              )
                         );
                     }

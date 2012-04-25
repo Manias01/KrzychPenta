@@ -1,6 +1,12 @@
 <?php
 App::uses('AppModel', 'Model');
-
+/**
+ * Champion Model
+ *
+ * @property Mobafire $Mobafire
+ * @property Build $Build
+ * @property Skill $Skill
+ */
 class Champion extends AppModel {
 /**
  * Display field
@@ -14,12 +20,32 @@ class Champion extends AppModel {
  * @var array
  */
 	public $validate = array(
+		'mobafire_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Nazwa nie może być pusta',
-				'allowEmpty' => false,
-				'required' => true,
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'slug' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
@@ -27,8 +53,8 @@ class Champion extends AppModel {
 		'rp' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				'message' => 'RP musi być liczbą',
-				'allowEmpty' => true,
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
@@ -37,8 +63,18 @@ class Champion extends AppModel {
 		'ip' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				'message' => 'IP musi być liczbą',
-				'allowEmpty' => true,
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'background' => array(
+			'boolean' => array(
+				'rule' => array('boolean'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
@@ -54,6 +90,19 @@ class Champion extends AppModel {
  * @var array
  */
 	public $hasMany = array(
+		'Build' => array(
+			'className' => 'Build',
+			'foreignKey' => 'champion_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 		'Skill' => array(
 			'className' => 'Skill',
 			'foreignKey' => 'champion_id',

@@ -176,9 +176,17 @@ h4{
     color: white;
     display: block;
     margin: 0 0 2px 0;
+    position: relative;
+}
+#rotation a.rotation-poradnik-border{
+    border: 1px dotted #666;
 }
 #rotation a:hover{
     box-shadow: 0 0 5px #ccc;
+    text-decoration: none;
+}
+#rotation a:hover h5{
+    text-decoration: underline;
 }
 #rotation img{
     float: left;
@@ -186,6 +194,20 @@ h4{
 }
 #rotation h5{
     line-height: 38px;
+}
+#rotation h5.rotation-poradnik{
+    color: red;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    top: 0;
+    right: 10px;
+    position: absolute;
+    margin: 5px 0 0 0;
+}
+#rotation a:hover h5.rotation-poradnik{
+    color: yellow;
+    text-decoration: none;
 }
 
 #new-builds img{
@@ -444,12 +466,33 @@ a.another-champ:hover{
     color: white;
     background: transparent url('../img/frontend/semitransparent-background.png') 0 0 repeat;
     border: 1px solid black;
+    float: left;
 }
 #champion-price div{
     margin: 0 6px;
     text-align: center;
     float: left;
 }
+
+#champion-poradnik-link{
+    width: 150px;
+    height: 100px;
+    text-align: center;
+    margin: 50px 0 0 30px;
+    background: transparent url('../img/frontend/semitransparent-background.png') 0 0 repeat;
+    border: 1px solid black;
+    float: left;
+}
+#champion-poradnik-link a{
+    color: yellow;
+    padding: 20px 0;
+    display: block;
+}
+#champion-poradnik-link:hover{
+    border: 1px solid white;
+    background: rgba(255,255,255,0.3);
+}
+
 #champion-skills{
     width: 100%;
     height: 110px;
@@ -461,6 +504,20 @@ a.another-champ:hover{
     margin: 0 28px;
 }
 
+#lore{
+    margin: 0 0 30px 0;
+}
+#lore p{
+    padding: 0 10px;
+    font-style: italic;
+}
+#lore p.source{
+    font-size: 12px;
+    font-style: normal;
+    float: right;
+}
+
+/*---Another champions---*/
 #champions-price{
     width: 140px;
     height: 50px;

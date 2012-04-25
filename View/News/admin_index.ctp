@@ -14,7 +14,7 @@
 	<?php
 	foreach ($news as $news):?>
             <?if($news['News']['type']=='poradnik'){
-                $img_url = $this->base.'/img/lol/champions/'.strtolower($news['News']['title'].'/'.$news['News']['title'].'_64.png');
+                $img_url = $this->base.'/img/lol/champions/'.$this->Thumb->Dehumanize($news['News']['title'].'/'.$news['News']['title']).'_64.png';
             }else{
                 $img_url = $this->base.'/img/news/'.$news['News']['image'];
             }?>

@@ -47,10 +47,11 @@
         Router::connect('/champion/*', array('controller' => 'pages', 'action' => 'champion'));
 
         Router::connect('/rotacja', array('controller' => 'champions', 'action' => 'rotation'));
+        Router::connect('/reset', array('controller' => 'users', 'action' => 'resetCache'));
 
 
 
-//        Router::connect('/*', array('controller' => 'pages', 'action' => 'guide'));
+//        Router::connect('/*', array('controller' => 'pages', 'action' => 'home'));
 
 
 /**

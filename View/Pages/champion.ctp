@@ -16,6 +16,16 @@
             </div>
         </div><!--/champion-price-->
 
+        
+        <?if(!empty($champion['Build'][0]['id'])): //show button 'go to build' if build exist?>
+            <div id="champion-poradnik-link">
+                <h5><a href="<?=$this->Html->url(array('controller'=>'pages','action'=>'poradnik',$champion['Champion']['name']))?>">Zobacz poradnik</a></h5>
+            </div><!--/champion-poradnik-link-->
+        <?endif?>
+
+        <div class="clear"></div>
+
+        
         <div id="champion-skills">
             <h3>Umiejętności</h3>
             <?
@@ -29,6 +39,14 @@
     </div><!--/shortcut-->
 </div><!--/poradnik-->
 
+
+<?if(!empty($champion['Champion']['description'])):?>
+    <div id="lore">
+        <h2>Historia</h2>
+        <p>"<?=$champion['Champion']['description']?>"</p>
+        <p class="source">Źródło: leagueoflegends.com</p>
+    </div><!--/lore-->
+<?endif?>
 
 
 <div id="another-builds">

@@ -90,5 +90,12 @@ class UsersController extends AppController {
 
 
 
+    public function resetCache(){
+        Cache::delete();
+    }
+
+
+
+
 
 }

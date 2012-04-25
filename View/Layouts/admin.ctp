@@ -35,9 +35,10 @@
     'Skills'=>'skills',
     'Items'=>'items',
     'Runes'=>'runes',
-    'Summoner Spells'=>'sses',
+    'S.Spells'=>'sses',
     'Users'=>'users',
-    'Builds'=>'builds'
+    'Builds'=>'builds',
+    'Searches'=>'searches'
   );?>
   <?foreach($linksAdmin as $nazwa=>$link):?>
     <a href="<?=$this->Html->url(array('controller'=>$link))?>" <?=($link==strtolower($this->name))?'class="active"':''?> ><?=$nazwa?></a>

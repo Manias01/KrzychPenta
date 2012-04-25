@@ -14,6 +14,7 @@ class AppController extends Controller {
 
 
 
+
     public function beforeFilter() {
 
         if (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') {
@@ -29,6 +30,15 @@ class AppController extends Controller {
             $this->set('username',$user_data['Auth']['User']['username']);
         }
     }
+
+
+
+
+    public function appError($error) {
+        $this->redirect('/');
+    }
+
+
 
     
 //Wyciąga interesujący nas ciąg znaków

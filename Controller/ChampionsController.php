@@ -201,8 +201,8 @@ class ChampionsController extends AppController {
 
 
         
-        public function GetChampions() {//Name
-        //Get champion name + if from official site, output tab $champions:
+        public function GetAllChampions(){
+        //Get champion name + id from official site, output tab $champions:
             $html = file_get_contents('http://eune.leagueoflegends.com/champions');
 
             $pattern = '/(<h1 class="champion_name">)(.*)(<\/h1>)/';
@@ -225,6 +225,7 @@ class ChampionsController extends AppController {
 
             for($a=1;$a<(count($codeWeb)-2);$a++){
               $moba['name'][$a] = $this->Tnij($codeWeb[$a],'<div class="champ-name">','</div>');
+              $moba['name'][$a] = $moba['name'][$a][1];
               $moba['nr'][$a] = $this->Tnij($codeWeb[$a],",i:'","'");
               $moba['rp'][$a] = $this->Tnij($codeWeb[$a],'<img src="http://edge1.mobafire.com/images/interface/riot-points.png" style="width:20px;" />','<br />');
               $moba['ip'][$a] = $this->Tnij($codeWeb[$a],'<img src="http://edge1.mobafire.com/images/interface/influence-points.png" style="width:20px; margin-left:5px;" />','</div>');
@@ -236,28 +237,27 @@ class ChampionsController extends AppController {
 
         //get another champion_id from moba
               for($b=0;$b<=count($champions);$b++){
-//                  echo $moba['name'][$a][1]."-".$lol_id->name[$b]."\n";
-                    if($moba['name'][$a][1] == $champions[$b]['name']){
+                    if($moba['name'][$a] == $champions[$b]['name']){
                         $moba['id_normal'][$a] = $champions[$b]['id'];
                         break;
                     }
                }
-               print_r($moba);
-               exit;
 
        //zapis do bazy danych:
+              $this->Champion->validate = false;
               $this->Champion->create();
-              $this->Champion->save(array(  //a nie 'set'?
+              $this->Champion->save(array(
                   'id' => $moba['id_normal'][$a],
-                  'name' => $moba['name'][$a][1],
+                  'name' => $moba['name'][$a],
+                  'slug' => $this->Dehumanize($moba['name'][$a]),
                   'mobafire_id' => $moba['nr'][$a],
                   'rp' => $moba['rp'][$a],
                   'ip' => $moba['ip'][$a]
                   )
               );
-              $this->Champion->save();
-            }//endfor:$a
+            }
 
+            echo 'Zapis wszystkich Championow do tabeli "champions" zakonczony powodzeniem';
             $this->render('admin_index');
         }
 

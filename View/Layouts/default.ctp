@@ -86,10 +86,19 @@
         <h4>Aktualna rotacja</h4>
         <ul>
             <?foreach($sidebar_rotation as $rotation):?>
-                <a href="<?=$this->Html->url(array('controller'=>'pages','action'=>'champion',$this->Thumb->Dehumanize($rotation['Champion']['name'])))?>">
+                <a href="
+                <?if(!empty($rotation['Build']['id'])){ //poradnik is available
+                    echo $this->Html->url(array('controller'=>'pages','action'=>'poradnik',$this->Thumb->Dehumanize($rotation['Champion']['name'])));
+                    $class = 'rotation-poradnik-border';
+                  }else{    //poradnik don't exist
+                    echo $this->Html->url(array('controller'=>'pages','action'=>'champion',$this->Thumb->Dehumanize($rotation['Champion']['name'])));
+                    $class = '';
+                  }?>
+                   " class="<?=$class?>">
                    
                     <?=$this->Thumb->Champion($rotation['Champion']['id'],$rotation['Champion']['name'],38);?>
                     <h5><?=$rotation['Champion']['name']?></h5>
+                    <?=(!empty($rotation['Build']['id']))?'<h5 class="rotation-poradnik">Mamy<br/>poradnik!</h5>':'';?>
                 </a>
             <?endforeach?>
         </ul>
