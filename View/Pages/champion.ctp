@@ -17,9 +17,9 @@
         </div><!--/champion-price-->
 
         
-        <?if(!empty($champion['Build'][0]['id'])): //show button 'go to build' if build exist?>
+        <?if(!empty($champion['Build'][0]['id']) && $champion['Build'][0]['done'] == 1): //show button 'go to build' if build exist?>
             <div id="champion-poradnik-link">
-                <h5><a href="<?=$this->Html->url(array('controller'=>'pages','action'=>'poradnik',$champion['Champion']['name']))?>">Zobacz poradnik</a></h5>
+                <h5><a href="<?=$this->Html->url(array('controller'=>'pages','action'=>'poradnik',$this->Thumb->Dehumanize($champion['Champion']['name'])))?>">Zobacz poradnik</a></h5>
             </div><!--/champion-poradnik-link-->
         <?endif?>
 

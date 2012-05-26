@@ -137,6 +137,36 @@ class GeneratorController extends AppController {
     public function masteries($build_id=false){
         $this->CheckId($build_id);
 
+        if($this->request->is('post')){ //if add new masteries image
+            $tempFile = 'img/upload_temp/'.$this->Dehumanize($this->data['Build']['name']).'.jpg';
+            $destinationFile = 'img/lol/masteries/'.$this->data['Build']['type'].'/'.$this->Dehumanize($this->data['Build']['name']).'.jpg';
+            
+            if($this->request->data['Build']['img']['type']!='image/jpeg'){
+                echo 'Zły format pliku. Musi być *.jpg!';
+                exit;
+            }
+
+            if(move_uploaded_file(
+                    $this->request->data['Build']['img']['tmp_name'],
+                    $tempFile
+            )){
+                //resize and save 'masteries' img:
+                list($sourceWidth,$sourceHeight) = getimagesize($tempFile);
+                $destination = imagecreatetruecolor(600, 348);
+                $source = imagecreatefromjpeg($tempFile);
+                imagecopyresampled($destination, $source, 0,0,0,0, 600, 348, $sourceWidth, $sourceHeight);//resize img
+                imagejpeg($destination, $destinationFile,90); //write completed slider/background image
+
+                chmod($destinationFile,0777);
+                unlink($tempFile);  //delete temorary file
+                
+            }else{
+                echo 'Problem z zapisaniem wysłanej grafiki. Spróbuj jeszcze raz';
+                exit;
+            }
+
+        }
+
         $build = $this->Build->find('first',array('recursive'=>-1,'conditions'=>array('Build.id'=>$build_id)));
 
         $types = scandir('img/lol/masteries/');
@@ -147,6 +177,8 @@ class GeneratorController extends AppController {
         foreach($folders as $folder){
           $masteries->$folder = scandir('img/lol/masteries/'.$folder.'/');
         }
+
+        $this->set('folders',$folders);
         $this->set('build',$build);
         $this->set('masteries',$masteries);
     }

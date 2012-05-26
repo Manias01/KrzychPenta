@@ -267,6 +267,15 @@ select.sspells{
 .masteries{
     border-bottom: 1px solid gray;
 }
+#BuildMasteriesForm div{
+    float: left;
+    margin: 0 20px 0 0;
+}
+#BuildMasteriesForm .submit input{
+    width: 100px;
+    height: 30px;
+    margin: 0;
+}
 .masteries a{
     margin: 20px;
     border: 1px solid transparent;

@@ -3,10 +3,10 @@ App::uses('AppController', 'Controller');
 
 class ChampionsController extends AppController {
         public $helpers=array('Thumb');
-        public $uses=array('Champion','Rotation');
+        public $uses=array('Champion','Skill','Rotation');
 
         function beforeFilter(){
-          $this->Auth->allow('GetChampions');
+//          $this->Auth->allow();
           parent::beforeFilter();
         }
 
@@ -106,7 +106,7 @@ class ChampionsController extends AppController {
                             exit;
                         }
                     }else{
-               //if stop two: resize, save in folder, write name in DB
+               //if step two: resize, save in folder, write name in DB
                         $corner = $this->request->data['Champion'];
                         $imagePath = 'img/upload_temp/'.$champ_name.'_background.jpg';
                         $imageInfo = getimagesize($imagePath);
@@ -150,16 +150,7 @@ class ChampionsController extends AppController {
                     }
 
                     $this->redirect(array($id,$champ_name.'_background'));
-                    /*
-			if ($this->Champion->save($this->request->data)) {
-				$this->Session->setFlash(__('The champion has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The champion could not be saved. Please, try again.'));
-			}
-                    */
-		} else {
-			//$this->request->data = $this->Champion->read(null, $id);
+
 		}
         }
 
@@ -175,20 +166,20 @@ class ChampionsController extends AppController {
             print_r($rotation);
             echo '<br/>';
 
-            $a=1;   //always rewrite the same id numbers in DB (10 values)
+            
+            $this->Rotation->deleteAll('1=1',false);   //clear 'rotations' table
+
             foreach($rotation as $rot){
                 $champ_id = $this->Champion->find('first',array('conditions'=>array('Champion.name'=>$rot),'fields'=>array('Champion.id')));
                 if(empty($champ_id)){
                     echo "BŁĄD! Nie znaleziono championa o nazwie: '$rot' <br/>";
                 }
-                $this->Rotation->create();  //clear input, NOT create new record
+                $this->Rotation->create();  //create new record
                 if(!$this->Rotation->save(array(
-                    'id'=>$a,
                     'champion_id'=>$champ_id['Champion']['id']
                 ))) echo "BŁĄD! Nie udało się zapisać championa o id='$champ_id' i nazwie='$rot' <br/>";
 
                 echo $rot.' zapisano <br/>';
-                $a++;
             }
             
 
@@ -201,7 +192,7 @@ class ChampionsController extends AppController {
 
 
         
-        public function GetAllChampions(){
+        public function GetAllChampions(){  //clear 'Champions' table and download a new one
         //Get champion name + id from official site, output tab $champions:
             $html = file_get_contents('http://eune.leagueoflegends.com/champions');
 
@@ -216,37 +207,36 @@ class ChampionsController extends AppController {
                 $champions[$a]['name'] = $champs_names[2][$a];
             }
 
-        //Get id_mobafire + rp + ip
+        //Get mobafire_id + rp + ip
             $codeWeb = file_get_contents('http://www.mobafire.com/league-of-legends/champions');
             $codeWeb = explode('champ-box',$codeWeb);
 
-            //tutaj trzeba juz pobrac wczesniej dane uzywajac starego generatora poradnikow
-            //$lol_id = simplexml_load_string(file_get_contents('files/champions.xml'));
+            $this->Champion->deleteAll('1=1',false);    //clear table
 
             for($a=1;$a<(count($codeWeb)-2);$a++){
-              $moba['name'][$a] = $this->Tnij($codeWeb[$a],'<div class="champ-name">','</div>');
-              $moba['name'][$a] = $moba['name'][$a][1];
-              $moba['nr'][$a] = $this->Tnij($codeWeb[$a],",i:'","'");
-              $moba['rp'][$a] = $this->Tnij($codeWeb[$a],'<img src="http://edge1.mobafire.com/images/interface/riot-points.png" style="width:20px;" />','<br />');
-              $moba['ip'][$a] = $this->Tnij($codeWeb[$a],'<img src="http://edge1.mobafire.com/images/interface/influence-points.png" style="width:20px; margin-left:5px;" />','</div>');
+                $moba['name'][$a] = $this->Tnij($codeWeb[$a],'<div class="champ-name">','</div>');
+                $moba['name'][$a] = $moba['name'][$a][1];
+                $moba['nr'][$a] = $this->Tnij($codeWeb[$a],",i:'","'");
+                $moba['rp'][$a] = $this->Tnij($codeWeb[$a],'<img src="http://edge1.mobafire.com/images/interface/riot-points.png" style="width:20px;" />','<br />');
+                $moba['ip'][$a] = $this->Tnij($codeWeb[$a],'<img src="http://edge1.mobafire.com/images/interface/influence-points.png" style="width:20px; margin-left:5px;" />','</div>');
 
-        //removes spaces etc.
-              $moba['nr'][$a] = intval($moba['nr'][$a][1]);
-              $moba['rp'][$a] = intval($moba['rp'][$a][1]);
-              $moba['ip'][$a] = intval($moba['ip'][$a][1]);
+                //removes spaces etc.
+                $moba['nr'][$a] = intval($moba['nr'][$a][1]);
+                $moba['rp'][$a] = intval($moba['rp'][$a][1]);
+                $moba['ip'][$a] = intval($moba['ip'][$a][1]);
 
-        //get another champion_id from moba
-              for($b=0;$b<=count($champions);$b++){
+                //get another champion_id from mobafire
+                for($b=0;$b<=count($champions);$b++){
                     if($moba['name'][$a] == $champions[$b]['name']){
                         $moba['id_normal'][$a] = $champions[$b]['id'];
                         break;
                     }
-               }
+                }
 
-       //zapis do bazy danych:
-              $this->Champion->validate = false;
-              $this->Champion->create();
-              $this->Champion->save(array(
+                //zapis do bazy danych:
+                $this->Champion->validate = false;
+                $this->Champion->create();
+                $this->Champion->save(array(
                   'id' => $moba['id_normal'][$a],
                   'name' => $moba['name'][$a],
                   'slug' => $this->Dehumanize($moba['name'][$a]),
@@ -254,11 +244,63 @@ class ChampionsController extends AppController {
                   'rp' => $moba['rp'][$a],
                   'ip' => $moba['ip'][$a]
                   )
-              );
+                );
             }
 
             echo 'Zapis wszystkich Championow do tabeli "champions" zakonczony powodzeniem';
             $this->render('admin_index');
+        }
+
+
+
+        public function AddChampion($champion_name){
+            if(!$champion_name){
+                echo 'Wybierz najpierw championa';
+                exit;
+            }
+            
+        /*----get new champion id:----*/
+            //download champions names and IDs
+/*
+            $ch = curl_init('http://eune.leagueoflegends.com/champions');
+            curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.1) Gecko/20061204 Firefox/2.0.0.1");
+            curl_setopt($ch, CURLINFO_TOTAL_TIME, 3);
+            curl_exec($ch);
+            if (curl_errno($ch)) {
+                echo 'Błąd #' . curl_errno($ch) . ': ' . curl_error($ch);
+            }
+            curl_close($ch);
+
+            print_r($ch);
+            exit;
+*/
+            $stronaEN = file_get_contents('http://eune.leagueoflegends.com/champions');
+
+            $pattern = '/<span class="highlight"><a href="\/champions\/(.*)\/(.*)">(.*)<\/a><\/span>/';
+            preg_match_all($pattern, $stronaEN, $preg_output);
+            list(, $site_ids, , $site_names) = $preg_output;
+
+            for($a=0;$a<=count($site_names);$a++){  //search name
+                if(strtolower($site_names[$a]) == strtolower($champion_name)){
+                    $champion_id = $site_ids[$a];
+                    break;
+                }
+            }
+            if($champion_id){
+                echo 'ID championa to: '.$champion_id;
+            }else{
+                echo 'Nie ma szukanego bohatera. Upewnij się, że nazwa została wpisana poprawnie';
+                exit;
+            }
+
+        /*--------*/
+
+
+
+
+            //print_r($preg_output);
+            exit;
+            
         }
 
 

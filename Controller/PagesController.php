@@ -23,11 +23,13 @@ class PagesController extends AppController {
               'type'=>'left',
               'foreignKey' => 'champion_id',
               'conditions'=>array(
-                  'Build.champion_id = Rotation.champion_id'
+                  'Build.champion_id = Rotation.champion_id',
+                  'Build.done'=>1,
               )
           )
       );
-      $sidebar_rotation = $this->Rotation->find('all',array('recursive'=>0,'joins'=>$join,'fields'=>array('Champion.id','Champion.name','Build.id')));
+      $sidebar_rotation = $this->Rotation->find('all',array('recursive'=>0,'joins'=>$join,
+          'fields'=>array('Champion.id','Champion.name','Build.id')));
       
       $this->set('sidebar_newest_builds',$sidebar_newest_builds);
       $this->set('sidebar_rotation',$sidebar_rotation);

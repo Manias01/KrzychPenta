@@ -84,22 +84,47 @@ class SkillsController extends AppController {
 
 
 
+
+        public function GetLore($champion_id){
+           if(!$champion_id){
+                echo 'Brakuje id championa';
+                exit;
+            }
+            $stronaPL = file_get_contents('http://eune.leagueoflegends.com/pl/champions/'.$champion_id);
+            
+           //get data for 'lore' in 'champions' table:
+            $pattern = '/<td class="champion_description">(.*)<\/td>/';
+            preg_match($pattern, $stronaPL, $lore);
+
+            //save 'description'(lore) to 'champions' table
+            $this->Champion->validate = false;  //avoid validation from model, just updating data
+            $this->Champion->create();   //clear input data, NOT make a new row
+            if(!$this->Champion->save(array(
+                'id'=>$champion_id,
+                'description'=>$lore[1] //write with "<br/>"
+                ))
+            ){
+                echo '<span style="color:red">Blad przy zapisywaniu col "description" w tabeli "champions"</span>';
+                exit;
+            }
+            echo 'Lore dla postaci '.$champion_slug.' zapisane poprawnie';
+            exit;
+        }
+
+
+
+
+
         public function GetSkillNameAndLore($champion_id,$champion_slug){
             if(!$champion_id || !$champion_slug){
                 echo 'Brakuje id championa lub slug championa';
                 exit;
             }
-echo '<br/>-'.$champion_id.'|'.$champion_slug.'<br/>';
-echo 'GetSkillNameAndLore';
-            //$sizes = array(20,38,64); //sizes to resize champions images
+            $sizes = array(20,38,64); //sizes to resize champions images
 
             //get data for skills from web:
-$test = 'http://eune.leagueoflegends.com/champions/'.$champion_id;
-            $stronaEN = file_get_contents($test);
-echo '<br/>po 1 file_get_content<br/>';
-exit;
+            $stronaEN = file_get_contents('http://eune.leagueoflegends.com/champions/'.$champion_id);
             $stronaPL = file_get_contents('http://eune.leagueoflegends.com/pl/champions/'.$champion_id);
-echo 'po 2 fle_get_content';
 
             $skill_namePL = $this->Tnij($stronaPL,'<span class="ability_name">', '</span>');
             $skill_nameEN = $this->Tnij($stronaEN,'<span class="ability_name">', '</span>');
@@ -110,10 +135,9 @@ echo 'po 2 fle_get_content';
             //get data for 'lore' in 'champions' table:
             $pattern = '/<td class="champion_description">(.*)<\/td>/';
             preg_match($pattern, $stronaPL, $lore);
-echo 'pre-save';
 
             //save 'description'(lore) to 'champions' table
-            $this->Champion->validate = false;  //avoid validation from model, cos we'r just updating data
+            $this->Champion->validate = false;  //avoid validation from model, just updating data
             $this->Champion->create();   //clear input data, NOT make a new row
             if(!$this->Champion->save(array(
                 'id'=>$champion_id,
@@ -123,9 +147,9 @@ echo 'pre-save';
                 echo '<span style="color:red">Blad przy zapisywaniu col "description" w tabeli "champions"</span>';
                 exit;
             }
+            echo '<br/>Lore dla postaci '.$champion_slug.' zapisane poprawnie';
 
-echo 'pre-delete';
-            //delete from 'skills' table existing skills to rewrite them later:
+            //delete from 'skills' table existing skills to rewrite them:
             $existing_skills = $this->Skill->find('all',array(
                 'limit'=>99,'recursive'=>-1,
                 'conditions'=>array('Skill.champion_id'=>$champion_id),
@@ -152,8 +176,7 @@ echo 'pre-delete';
                   )
                 );
                 $this->Skill->save();
-                }
-/*
+
                 //download, resize and save skill images (3 sizes foreach)
                 $img_url = 'http://edge1.mobafire.com/images/ability/'.$champion_slug.'-'.$this->Dehumanize($skill_nameEN[$a]).'.png';
                 for($b=0;$b<3;$b++){
@@ -173,8 +196,7 @@ echo 'pre-delete';
                 }
             }
             echo '<br/><strong>Pobranie i zapisanie ('.($a-1).') na nowo skilli dla postaci o id:'.$champion_id.' zakonczone sukcesem</strong> <br/>';
-
-           
+         
 
             
             //portrain image, download, resize and save
@@ -196,9 +218,6 @@ echo 'pre-delete';
                 imagePng($img_resized, $ico_img);		//zapisz nowy obrazek na dysku
             }
             echo 'Zapisano portret postaci <br/>';
-*/
-
-
         }
 
 
@@ -242,6 +261,8 @@ echo 'pre-delete';
                 $this->GetSkillNameAndLore($champion['Champion']['id']);
             }
         }
+
+
 
 
 

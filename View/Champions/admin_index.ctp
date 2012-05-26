@@ -5,7 +5,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
-                        <th><?php echo $this->Paginator->sort('background');?></th>
+                        <th>Background</th>
 			<th><?php echo $this->Paginator->sort('rp');?></th>
 			<th><?php echo $this->Paginator->sort('ip');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
@@ -20,7 +20,7 @@
                     <?php echo h($champion['Champion']['name']); ?>&nbsp;
                 </td>
                 <td>
-                    <?if($champion['Champion']['background']):?>
+                    <?if(file_exists('img/lol/backgrounds/'.$img_url.'_background.jpg')):?>
                         <img src="<?=$this->base?>/img/lol/backgrounds/<?=$img_url?>_background.jpg" width="150" alt="" />
                     <?endif?>
                 </td>
