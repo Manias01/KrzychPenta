@@ -169,17 +169,18 @@ class ChampionsController extends AppController {
             
             $this->Rotation->deleteAll('1=1',false);   //clear 'rotations' table
 
-            foreach($rotation as $rot){
-                $champ_id = $this->Champion->find('first',array('conditions'=>array('Champion.name'=>$rot),'fields'=>array('Champion.id')));
+            foreach($rotation as $name){
+                $champ_id = $this->Champion->find('first',array('conditions'=>array('Champion.name'=>$name),'fields'=>array('Champion.id')));
                 if(empty($champ_id)){
-                    echo "BŁĄD! Nie znaleziono championa o nazwie: '$rot' <br/>";
+                    $this->GetChampion($name);
+                    //echo "BŁĄD! Nie znaleziono championa o nazwie: '$name' <br/>";
                 }
                 $this->Rotation->create();  //create new record
                 if(!$this->Rotation->save(array(
                     'champion_id'=>$champ_id['Champion']['id']
-                ))) echo "BŁĄD! Nie udało się zapisać championa o id='$champ_id' i nazwie='$rot' <br/>";
+                ))) echo "BŁĄD! Nie udało się zapisać championa o id='$champ_id' i nazwie='$name' <br/>";
 
-                echo $rot.' zapisano <br/>';
+                echo $name.' zapisano <br/>';
             }
             
 
@@ -191,8 +192,138 @@ class ChampionsController extends AppController {
 
 
 
+        public function GetSkills($champion_id,$champion_slug){
+            if(!$champion_id || !$champion_slug){
+                echo 'Brakuje id championa lub slug championa';
+                exit;
+            }
+            $sizes = array(20,38,64); //sizes to resize champions images
+
+            //get data for skills from web:
+            $stronaEN = file_get_contents('http://eune.leagueoflegends.com/champions/'.$champion_id);
+            $stronaPL = file_get_contents('http://eune.leagueoflegends.com/pl/champions/'.$champion_id);
+
+            $skill_namePL = $this->Tnij($stronaPL,'<span class="ability_name">', '</span>');
+            $skill_nameEN = $this->Tnij($stronaEN,'<span class="ability_name">', '</span>');
+            $skill_descPL = $this->Tnij($stronaPL,'<div class="ability_effect">', '</div>');
+            $passive_descPL = $this->Tnij($stronaPL,'<span class="ability_description">', '</span>');
+            $skill_descPL[5] = $passive_descPL[5];
+
+            //delete from 'skills' table existing skills to rewrite them:
+            $existing_skills = $this->Skill->find('all',array(
+                'limit'=>99,
+                'recursive'=>-1,
+                'conditions'=>array('Skill.champion_id'=>$champion_id),
+                'fields'=>array('Skill.id')
+                )
+            );
+            foreach($existing_skills as $skill){
+                $this->Skill->delete($skill['Skill']['id'],false);
+            }
+            echo '<br/>Skasowano pomyślnie dotychczasowe ('.count($existing_skills).') skille dla postaci o id:'.$champion_id.'<br/> Zapis nowych... <br/>';
+
+            //save new skills to 'skills' table:
+            for($a=1;$a<=5;$a++){
+                $skill_id = intval($champion_id.$a);
+                $this->Skill->create();
+                $this->Skill->save(array(
+                    'id'=>$skill_id,
+                    'champion_id' => $champion_id,
+                    'name_pl' => $skill_namePL[$a],
+                    'name_en' => $skill_nameEN[$a],
+                    'desc_pl' => $skill_descPL[$a],
+                    /*'cooldown' => ,
+                    'cost' => ,
+                    'range' => ,*/
+                    'type' => $a
+                    )
+                );
+                $this->Skill->save();
+
+                //download, resize and save skill images (3 sizes foreach)
+                $img_url = 'http://edge1.mobafire.com/images/ability/'.$champion_slug.'-'.$this->Dehumanize($skill_nameEN[$a]).'.png';
+                for($b=0;$b<3;$b++){
+                    $img_source_size = getImageSize($img_url);
+                    $img_source = imageCreateFromPng($img_url);
+
+                    $img_resized = imagecreatetruecolor($sizes[$b],$sizes[$b]);
+                    $abc = imageCopyResampled($img_resized,$img_source,0,0,0,0,$sizes[$b],$sizes[$b],$img_source_size[0],$img_source_size[1]);
+
+
+                    $dir_url = "img/lol/champions/".$champion_slug;
+                    if(!is_dir($dir_url)){
+                      if(!mkdir($dir_url, 0777)) echo "Nie udalo sie utworzyc katalogu: ".$dir_ul;
+                    }
+                    $ico_img = $dir_url.'/'.$this->Dehumanize($skill_nameEN[$a]).'_'.$sizes[$b].'.png';
+                    imagePng($img_resized, $ico_img);		//zapisz nowy obrazek na dysku
+                }
+
+            }
+            if(empty($skill_namePL[0]) && empty($skill_nameEN[0])){
+                echo '<br/><strong>Pobranie i zapisanie ('.($a-1).') na nowo skilli dla postaci o id:'.$champion_id.' zakonczone sukcesem</strong> <br/>';
+            }else{
+                echo '<br/><p style="color:red">Pobrano puste skille, coś poszło nie tak :-(</p>';
+            }
+
+
+            //portrain image, download, resize and save
+            $img_url = "http://edge2.mobafire.com/images/champion/icon/".$champion_slug.".png";
+
+            for($a=0;$a<3;$a++){
+                $img_source_size = getImageSize($img_url);
+                $img_source = imageCreateFromPng($img_url);
+
+                $img_resized = imagecreatetruecolor($sizes[$a],$sizes[$a]);
+                $abc = imageCopyResampled($img_resized,$img_source,0,0,0,0,$sizes[$a],$sizes[$a],$img_source_size[0],$img_source_size[1]);
+
+
+                $dir_url = "img/lol/champions/".$champion_slug;
+                if(!is_dir($dir_url)){
+                  if(!mkdir($dir_url, 0777)) echo "Nie udalo sie utworzyc katalogu: ".$dir_ul;
+                }
+                $ico_img = $dir_url.'/'.$champion_slug.'_'.$sizes[$a].'.png';
+                imagePng($img_resized, $ico_img);		//zapisz nowy obrazek na dysku
+            }
+            echo 'Zapisano portret postaci <br/>';
+
+            echo 'Pobrano grafiki i skille postaci<br/><a href="/">Strona główna</a>';
+
+        }
+
+
+
+/*
+        public function GetLore($champion_id){
+           if(!$champion_id){
+                echo 'Brakuje id championa';
+                exit;
+            }
+            $stronaPL = file_get_contents('http://eune.leagueoflegends.com/pl/champions/'.$champion_id);
+
+           //get data for 'lore' in 'champions' table:
+            $pattern = '/<td class="champion_description">(.*)<\/td>/';
+            preg_match($pattern, $stronaPL, $lore);
+
+            //save 'description'(lore) to 'champions' table
+            $this->Champion->validate = false;  //avoid validation from model, just updating data
+            $this->Champion->create();   //clear input data, NOT make a new row
+            if(!$this->Champion->save(array(
+                'id'=>$champion_id,
+                'description'=>$lore[1] //write with "<br/>"
+                ))
+            ){
+                echo '<span style="color:red">Blad przy zapisywaniu col "description" w tabeli "champions"</span>';
+                exit;
+            }
+            echo 'Lore dla postaci '.$champion_slug.' zapisane poprawnie';
+            exit;
+        }
+*/
+
+
+
         
-        public function GetAllChampions(){  //clear 'Champions' table and download a new one
+        public function GetChampion($name='all'){  //$name='all' => download all champions, OR $name = $champion_name
         //Get champion name + id from official site, output tab $champions:
             $html = file_get_contents('http://eune.leagueoflegends.com/champions');
 
@@ -211,7 +342,7 @@ class ChampionsController extends AppController {
             $codeWeb = file_get_contents('http://www.mobafire.com/league-of-legends/champions');
             $codeWeb = explode('champ-box',$codeWeb);
 
-            $this->Champion->deleteAll('1=1',false);    //clear table
+            if($name=='all') $this->Champion->deleteAll('1=1',false);    //clear table
 
             for($a=1;$a<(count($codeWeb)-2);$a++){
                 $moba['name'][$a] = $this->Tnij($codeWeb[$a],'<div class="champ-name">','</div>');
@@ -233,74 +364,53 @@ class ChampionsController extends AppController {
                     }
                 }
 
-                //zapis do bazy danych:
-                $this->Champion->validate = false;
-                $this->Champion->create();
-                $this->Champion->save(array(
-                  'id' => $moba['id_normal'][$a],
-                  'name' => $moba['name'][$a],
-                  'slug' => $this->Dehumanize($moba['name'][$a]),
-                  'mobafire_id' => $moba['nr'][$a],
-                  'rp' => $moba['rp'][$a],
-                  'ip' => $moba['ip'][$a]
-                  )
-                );
-            }
+                //save to database:
+                if($name=='all'){
+                    //erase and save a new one list, without lore
+                    $this->Champion->validate = false;
+                    $this->Champion->create();
+                    $this->Champion->save(array(
+                      'id' => $moba['id_normal'][$a],
+                      'name' => $moba['name'][$a],
+                      'slug' => $this->Dehumanize($moba['name'][$a]),
+                      'mobafire_id' => $moba['nr'][$a],
+                      'rp' => $moba['rp'][$a],
+                      'ip' => $moba['ip'][$a]
+                      )
+                    );
+                }elseif(strtolower($name) == strtolower($moba['name'][$a])){
+                    // add/update only one champion, with lore
+                    //get 'lore':
+                    echo 'name: '.$moba['name'][$a].'<br/>id: '.$moba['id_normal'][$a].'<br/>';
+                    $stronaPL = file_get_contents('http://eune.leagueoflegends.com/pl/champions/'.$moba['id_normal'][$a]);
+                    $pattern = '/<td class="champion_description">(.*)<\/td>/';
+                    preg_match($pattern, $stronaPL, $lore);
 
-            echo 'Zapis wszystkich Championow do tabeli "champions" zakonczony powodzeniem';
-            $this->render('admin_index');
-        }
+                    $this->Champion->validate = false;
+                    $this->Champion->create();
+                    $this->Champion->save(array(
+                        'id' => $moba['id_normal'][$a],
+                        'name' => $moba['name'][$a],
+                        'slug' => $this->Dehumanize($moba['name'][$a]),
+                        'mobafire_id' => $moba['nr'][$a],
+                        'rp' => $moba['rp'][$a],
+                        'ip' => $moba['ip'][$a],
+                        'description'=>$lore[1] //write with "<br/>"
+                      )
+                    );
+                    //download images and skills:
+                    $this->GetSkills($moba['id_normal'][$a],$this->Dehumanize($moba['name'][$a]));
 
-
-
-        public function AddChampion($champion_name){
-            if(!$champion_name){
-                echo 'Wybierz najpierw championa';
-                exit;
-            }
-            
-        /*----get new champion id:----*/
-            //download champions names and IDs
-/*
-            $ch = curl_init('http://eune.leagueoflegends.com/champions');
-            curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.1) Gecko/20061204 Firefox/2.0.0.1");
-            curl_setopt($ch, CURLINFO_TOTAL_TIME, 3);
-            curl_exec($ch);
-            if (curl_errno($ch)) {
-                echo 'Błąd #' . curl_errno($ch) . ': ' . curl_error($ch);
-            }
-            curl_close($ch);
-
-            print_r($ch);
-            exit;
-*/
-            $stronaEN = file_get_contents('http://eune.leagueoflegends.com/champions');
-
-            $pattern = '/<span class="highlight"><a href="\/champions\/(.*)\/(.*)">(.*)<\/a><\/span>/';
-            preg_match_all($pattern, $stronaEN, $preg_output);
-            list(, $site_ids, , $site_names) = $preg_output;
-
-            for($a=0;$a<=count($site_names);$a++){  //search name
-                if(strtolower($site_names[$a]) == strtolower($champion_name)){
-                    $champion_id = $site_ids[$a];
-                    break;
+                    echo '<p style="color:green">Pobranie championa, skilli i grafik dla: '.$moba['name'][$a].' zakonczone pomyslnie</p>';
                 }
             }
-            if($champion_id){
-                echo 'ID championa to: '.$champion_id;
-            }else{
-                echo 'Nie ma szukanego bohatera. Upewnij się, że nazwa została wpisana poprawnie';
-                exit;
+
+     /*
+            if($name=='all'){
+                echo 'Zapis wszystkich Championow do tabeli "champions" zakonczony powodzeniem';
             }
-
-        /*--------*/
-
-
-
-
-            //print_r($preg_output);
+    */
             exit;
-            
         }
 
 

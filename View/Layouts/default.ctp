@@ -127,43 +127,16 @@
     </div><!--/facebook-->
 
 
-
     <?/*advert*/?>
-<cake:nocache>
-
-        <?$type = rand(0,1);
-            if($type == 0):?>
-                <script type="text/javascript"><!--
-                google_ad_client = "ca-pub-4638937189329374";
-                <?// Pentakill-widget-graficzna?>
-                google_ad_slot = "6946897739";
-                google_ad_width = 160;
-                google_ad_height = 600;
-                //-->
-                </script>
-                <script type="text/javascript"
-                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-                </script>
-            <?else:?>
-                <script type="text/javascript"><!--
-                google_ad_client = "ca-pub-4638937189329374";
-                <?//Pentakill-graf-MenuR?>
-                google_ad_slot = "5335428888";
-                google_ad_width = 250;
-                google_ad_height = 250;
-                //-->
-                </script>
-                <script type="text/javascript"
-                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-                </script>
-            <?endif?>
-
-</cake:nocache>
+    <cake:nocache>
+        <?=(isSet($ads['side']['Ad']['code']))?$ads['side']['Ad']['code']:'';?>
+    </cake:nocache>
     <?/*end advert*/?>
 
-<?endif;//end if it is NOT localhost?>
+<?endif;//end NOT localhost?>
 
 
+    
 </div><!--/sidebar-->
 
 <div class="clear"></div>
@@ -191,7 +164,6 @@
 <?if($this->base != '/KrzychPenta')://if it is NOT localhost:?>
 
     <script type="text/javascript">
-
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-24389295-1']);
       _gaq.push(['_trackPageview']);
@@ -201,10 +173,31 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
-
     </script>
 
 <?endif;//end if it is NOT localhost?>
+
+
+
+
+    <?/*bottom-line-advert*/?>
+<?if($this->base != '/KrzychPenta')://if it's NOT localhost:?>
+    <?if(isSet($ads['bottom']['Ad']['code']) && (!isSet($sliders[0]))):?>
+        <div class="dodatek-bottom">
+            <div class="dodatek-close">x</div>
+            <cake:nocache>
+                <?=$ads['bottom']['Ad']['code']?>
+            </cake:nocache>
+        </div><!--/dodatek-bottom-->
+        <script type="text/javascript">
+            $('.dodatek-close').click(function(){
+                $('.dodatek-bottom').fadeOut(500);
+            });
+        </script>
+    <?endif?>
+<?endif//if it's NOT localhost:?>
+    <?/*end advert*/?>
+
 
 </body>
 </html>

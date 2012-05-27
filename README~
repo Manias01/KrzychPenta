@@ -1,3 +1,8 @@
+27.05.2012
+- Adverts module
+- Skill_id is combination of 'champion_id' and 'type'
+- Merged functions which download a new champion
+
 25.04.2012
 - Add search(major searchbox on sidebar) history in admin panel
 - Link from actual rotation (sidebar) and single champion site to build site (if exist)

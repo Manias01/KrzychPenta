@@ -74,6 +74,17 @@
         <img src="<?=$this->base?>/img/lol/masteries/<?=$build['Build']['masteries']?>" alt="<?=str_replace('.jpg','',$build['Build']['masteries'])?>" />
     </div><!--/masteries-->
 
+    
+    <?/*advert*/?>
+<?if($this->base != '/KrzychPenta')://if it's NOT localhost:?>
+    <div class="dodatek-horizontal">
+        <cake:nocache>
+            <?=(isSet($ads['horizontal']['Ad']['code']))?$ads['horizontal']['Ad']['code']:''?>
+        </cake:nocache>
+    </div><!--/dodatek-horizontal-->
+<?endif//if it's NOT localhost:?>
+    <?/*end advert*/?>
+
 
     <div id="description">
         <h4 class="title">Sposób gry</h4>

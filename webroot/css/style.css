@@ -584,7 +584,31 @@ span.ss-desc{
     font-size: 90%;
     margin: 6px 0 10px 0;
 }
-
+.dodatek-horizontal{
+    width: 100%;
+    margin: 0 0 8px 0;
+    text-align: center;
+}
+.dodatek-bottom{
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.8);
+}
+.dodatek-bottom .dodatek-close{
+    width: 20px;
+    height: 20px;
+    color: red;
+    font-size: 18px;
+    cursor: pointer;
+    float: right;
+}
+.dodatek-bottom .dodatek-close:hover{
+    color: white;
+}
 
 
 

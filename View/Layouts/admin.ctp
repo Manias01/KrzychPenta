@@ -29,6 +29,19 @@
 <div id="menu">
     
 <?$linksAdmin = array(
+    'Reklamy'=>'ads',
+    'Szukane'=>'searches'
+  );?>
+  <?foreach($linksAdmin as $nazwa=>$link):?>
+    <a href="<?=$this->Html->url(array('controller'=>$link))?>" <?=($link==strtolower($this->name))?'class="active"':''?> ><?=$nazwa?></a>
+  <?endforeach?>
+    <a href="<?=$this->base?>/generator/index">Generator</a>
+    
+</div><!--/menu-->
+
+<div id="menu">
+
+<?$linksAdmin = array(
     'News'=>'news',
     'Sliders'=>'sliders',
     'Champions'=>'champions',
@@ -37,14 +50,12 @@
     'Runes'=>'runes',
     'S.Spells'=>'sses',
     'Users'=>'users',
-    'Builds'=>'builds',
-    'Searches'=>'searches'
+    'Builds'=>'builds'
   );?>
   <?foreach($linksAdmin as $nazwa=>$link):?>
     <a href="<?=$this->Html->url(array('controller'=>$link))?>" <?=($link==strtolower($this->name))?'class="active"':''?> ><?=$nazwa?></a>
   <?endforeach?>
-    <a href="<?=$this->base?>/generator/index">Generator</a>
-    
+
 </div><!--/menu-->
 
 

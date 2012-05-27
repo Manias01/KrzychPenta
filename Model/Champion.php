@@ -109,7 +109,7 @@ class Champion extends AppModel {
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => '',
+			'order' => 'Skill.id ASC',
 			'limit' => '',
 			'offset' => '',
 			'exclusive' => '',

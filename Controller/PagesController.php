@@ -4,11 +4,21 @@ App::uses('AppController', 'Controller');
 class PagesController extends AppController {
     public $name = 'Pages';
     public $helpers = array('Html','Text','Thumb');
-    public $uses = array('News','Champion','Build','Skill','Ss','Rune','Item','Slider','Search','Rotation');
+    public $uses = array('News','Champion','Build','Skill','Ss','Rune','Item','Slider','Search','Rotation','Ad');
 
 
     function beforeFilter(){
       $this->Auth->allow('*');
+
+      //random advert on site(always only 1)
+      $ad_number = rand(1,3);
+      switch($ad_number){
+          case 1: $ads['horizontal'] = $this->Ad->find('first',array('conditions'=>array('Ad.type'=>'hori'),'order'=>'rand()')); break;
+          case 2: $ads['bottom'] = $this->Ad->find('first',array('conditions'=>array('Ad.type'=>'hori'),'order'=>'rand()')); break;
+          case 3: $ads['side'] = $this->Ad->find('first',array('conditions'=>array('Ad.type'=>'side'),'order'=>'rand()')); break;
+      }
+      $this->set('ads',$ads);
+      
 
     //content to 'najnowsze poradniki' for layout 'default.ctp'
       $sidebar_newest_builds = $this->Build->find('all',array('recursive'=>1,'limit'=>3,'order'=>'Build.id desc',
@@ -99,7 +109,7 @@ class PagesController extends AppController {
                 }
                 $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>$conditionsName));
             }else{
-                $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Champion.name'=>$champion_name)));
+                $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Champion.name'=>$champion_name,'Build.done'=>1)));
             }
         }
 

@@ -75,6 +75,7 @@ h1,h2,h3,h4,h5,h6{
 #menu a{
     display: inline-block;
     padding: 2px 18px;
+    margin: 3px 0;
     color: white;
     border: 1px solid black;
     border-bottom: none;
