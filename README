@@ -1,3 +1,6 @@
+15.06.2012
+- Backups save in webroot and sends on e-mail after every build ('poradnik') publish
+
 27.05.2012
 - Adverts module
 - Skill_id is combination of 'champion_id' and 'type'

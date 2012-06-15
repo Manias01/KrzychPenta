@@ -1,7 +1,10 @@
+15.06.2012
+- Backups sends on e-mail after every build ('poradnik') publish
+
 27.05.2012
 - Adverts module
 - Skill_id is combination of 'champion_id' and 'type'
-- Merged functions which download a new champion
+- Merged functions which download a new champion (now in ChampionsController)
 
 25.04.2012
 - Add search(major searchbox on sidebar) history in admin panel

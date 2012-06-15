@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 
 class GeneratorController extends AppController {
     public $uses = array('Build','Champion','Skill','Ss','Rune','Item','News','Slider');
@@ -19,6 +20,64 @@ class GeneratorController extends AppController {
             echo '<h1 style="color:red;text-align:center;"><br/>WielBlad, nie wybrano nr. ID poradnika!<br/>(powinien byc w adresie strony)</h1>';
             exit;
         }
+    }
+
+
+    //not stricle Cake-PHP function, but rarely used. Didn't write by me.
+    private function Backup_db_tables($host,$user,$pass,$name,$tables,$filename){
+        $link = mysql_connect($host,$user,$pass);
+        mysql_select_db($name,$link);
+        $return = '';
+
+        //get all of the tables
+        if($tables == '*')
+        {
+            $tables = array();
+            $result = mysql_query('SHOW TABLES');
+            while($row = mysql_fetch_row($result))
+            {
+                $tables[] = $row[0];
+            }
+        }
+        else
+        {
+            $tables = is_array($tables) ? $tables : explode(',',$tables);
+        }
+
+        //cycle through each table and format the data
+        foreach($tables as $table)
+        {
+            $result = mysql_query('SELECT * FROM '.$table);
+            $num_fields = mysql_num_fields($result);
+
+            //$return.= 'DROP TABLE '.$table.';';
+            $row2 = mysql_fetch_row(mysql_query('SHOW CREATE TABLE '.$table));
+            $return.= "\n\n".$row2[1].";\n\n";
+
+            for ($i = 0; $i < $num_fields; $i++)
+            {
+                while($row = mysql_fetch_row($result))
+                {
+                    $return.= 'INSERT INTO '.$table.' VALUES(';
+                    for($j=0; $j<$num_fields; $j++)
+                    {
+                        $row[$j] = addslashes($row[$j]);
+                        $row[$j] = ereg_replace("\n","\\n",$row[$j]);
+                        if (isset($row[$j])) { $return.= '"'.$row[$j].'"' ; } else { $return.= '""'; }
+                        if ($j<($num_fields-1)) { $return.= ','; }
+                    }
+                    $return.= ");\n";
+                }
+            }
+            $return.="\n\n\n";
+        }
+
+        //save the file
+        $filename = $filename.'.sql';
+        $gz = gzopen($filename.'.gz','w9');
+        gzwrite($gz, $return);
+        gzclose($gz);
+        chmod($filename.'.gz',0777);
     }
 
 
@@ -357,34 +416,36 @@ class GeneratorController extends AppController {
                 'done'=>1
                 ))
             ){
-            //write new news
-                $this->News->create();
-                if($this->News->save(array(
-                    'title'=>$build['Champion']['name'],
-                    'text'=>$build['Build']['introduction'],
-                    'image'=>$build['Build']['id'], //when type = 'poradnik', 'image' contain build_id
-                    'type'=>'poradnik'
-                    ))
-                ){
-            //write new slider
-                    $this->Slider->create();
-                    if($this->Slider->save(array(
-                        'image'=>$build['Champion']['name'],
-                        'description'=>$build['Build']['introduction'],
-                        'url'=>$this->Dehumanize($build['Champion']['name']),
+                if($build['Build']['done'] != 1){ //if this is 1st publish of this build do:
+                //write new news
+                    $this->News->create();
+                    if($this->News->save(array(
+                        'title'=>$build['Champion']['name'],
+                        'text'=>$build['Build']['introduction'],
+                        'image'=>$build['Build']['id'], //when type = 'poradnik', 'image' contain build_id
                         'type'=>'poradnik'
                         ))
                     ){
-                        $this->redirect(array('action'=>'done',$build_id));
+                //write new slider
+                        $this->Slider->create();
+                        if(!$this->Slider->save(array(
+                            'image'=>$build['Champion']['name'],
+                            'description'=>$build['Build']['introduction'],
+                            'url'=>$this->Dehumanize($build['Champion']['name']),
+                            'type'=>'poradnik'
+                            ))
+                        ){
+                            echo 'Problem z zapisem nowego slidera [GeneratorController ->preview()]';
+                            exit;
+                        }
+
                     }else{
-                        echo 'Problem z zapisem nowego slidera [GeneratorController ->preview()]';
+                        echo 'Problem z zapisem nowego newsa [GeneratorController ->preview()]';
                         exit;
                     }
-
-                }else{
-                    echo 'Problem z zapisem nowego newsa [GeneratorController ->preview()]';
-                    exit;
                 }
+
+                $this->redirect(array('action'=>'done',$build_id,$build['Champion']['name']));
                 
             }else{
                 echo 'Problem z zapisem poradnika [GeneratorController ->preview()]';
@@ -401,9 +462,26 @@ class GeneratorController extends AppController {
 
 
 
-    public function done($build_id=false){
+    public function done($build_id=false,$champion_name=false){
         $this->CheckId($build_id);
+
+    //make backup of 'builds' table:
+        require_once('../Config/database.php');
+        $db = new DATABASE_CONFIG();
+        $filename = 'backups_builds/pentakill-'.date('d.m.Y-G:i:s');
+        $this->Backup_db_tables('localhost',$db->default['login'],$db->default['password'],$db->default['database'],'builds',$filename);
+
+    //send email with this backup:
+        $email = new CakeEmail();
+        $email->from(array('info@pentakill.pl' => 'Backupy Pentakill.pl'))
+            ->to('info@pentakill.pl')
+            ->subject('Poradnik do '.$champion_name.' na Pentakill.pl - backup tabeli "builds"')
+            ->attachments($filename.'.sql.gz')
+            ->send('Poradnik o id'.$build_id.', do postaci "'.$champion_name.'" na Pentakill.pl.'."\n".' W załączeniu backup tabeli "builds"');
+        
+        echo 'Wszystko w porządku';
     }
+
 
  
 }

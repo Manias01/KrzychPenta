@@ -35,7 +35,7 @@ class AppController extends Controller {
 
 
     public function appError($error) {
-        $this->redirect('/');
+//        $this->redirect('/');
     }
 
 
