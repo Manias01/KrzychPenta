@@ -37,7 +37,6 @@
 
         Router::connect('/kontakt', array('controller' => 'pages', 'action' => 'contact'));
 
-//        Router::connect('/nowosci', array('controller' => 'news', 'action' => 'all_news'));
         Router::connect('/nowosc/*', array('controller' => 'news', 'action' => 'single_news'));
 
         Router::connect('/poradniki/*', array('controller' => 'pages', 'action' => 'all_poradnik'));
@@ -51,7 +50,6 @@
 
 
 
-//        Router::connect('/*', array('controller' => 'pages', 'action' => 'home'));
 
 
 /**

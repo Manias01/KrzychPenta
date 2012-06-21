@@ -8,6 +8,8 @@ class UsersController extends AppController {
       $this->set('css', 'admin.css');
 
       $this->Auth->allow('login');
+
+      
       parent::beforeFilter();
     }
 

@@ -1,3 +1,5 @@
+<h2 style="color:red;text-align:center"><?=$this->Session->flash();?></h2>
+
 <h2>Stwórz nowy poradnik:</h2>
 <?=$this->Html->link('-> Stwórz nowy poradnik',array('action'=>'new_build'))?>
 

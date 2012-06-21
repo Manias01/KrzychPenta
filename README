@@ -1,5 +1,8 @@
+21.06.2012
+- Users permissions. Editors can only use 'generator' and write/edit only own 'builds'
+
 15.06.2012
-- Backups save in webroot and sends on e-mail after every build ('poradnik') publish
+- Save backups in webroot and sends it on e-mail after every publish build ('poradnik')
 
 27.05.2012
 - Adverts module

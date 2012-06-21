@@ -498,7 +498,7 @@ span.ss-desc{
 }
 #preview-accept{
     position: fixed;
-    top: 30px;
+    top: 50px;
     right: 60px;
 }
 #preview-accept .submit input{

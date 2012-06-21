@@ -1,12 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
 <head>
-<title><?=$title_for_layout?> | Admin - Pentakill.pl</title>
-<?=$this->Html->charset()."\n"?>
-<?=$this->Html->css(array('admin.css','tooltip.css','imgarea-css/imgareaselect-default.css'))."\n"?>
-<?=$this->Html->script(array('jquery-1.7.2.min.js','jquery.imgareaselect.min','jquery.tooltip.min.js','tooltip.js'))?>
-<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-
+    <title><?=$title_for_layout?> | Admin - Pentakill.pl</title>
+    <?=$this->Html->charset()."\n"?>
+    <?=$this->Html->css(array('admin.css','tooltip.css','imgarea-css/imgareaselect-default.css'))."\n"?>
+    <?=$this->Html->script(array('jquery-1.7.2.min.js','jquery.imgareaselect.min','jquery.tooltip.min.js','tooltip.js'))?>
 </head>
 <body>
 <div id="base" base_url="<?=$this->base?>" style="display:none"></div>

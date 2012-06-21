@@ -8,16 +8,41 @@ class GeneratorController extends AppController {
 
 
     function beforeFilter(){
-//      $this->Auth->allow('*');
-      parent::beforeFilter();
+        parent::beforeFilter();
+
+        //users type permissions for 'generator' controller:
+        if($this->params['action'] != 'index' && $this->params['action'] != 'new_build' && $this->params['action'] != 'save_new_build'){
+            if($this->params['permissions'] != 0){  //if logged user (not SuperAdmin) want to save:
+
+                //user can only save own 'builds':
+                $beforeF_champion_id = $this->params['pass'][0];
+                $build = $this->Build->find('first',array(
+                    'recursive'=>-1,
+                    'conditions'=>array('id'=>$beforeF_champion_id),
+                    'fields'=>array('user_id')
+                ));
+
+                
+                //check if user is 'build' owner:
+                if($build['Build']['user_id'] == $this->params['user_id']){ //have access:
+                    //normal users can't publish, so they have different 'preview' action and view
+                    if($this->params['action'] == 'preview') $this->redirect(array('action'=>'preview_user',$this->params['pass'][0]));
+                }else{  //don't have access:
+                    $this->Session->setFlash('Możesz edytować jedynie napisane przez siebie poradniki');
+                    $this->redirect(array('controller'=>'generator','action'=>'index'));
+                }
+            }
+        }
+
+
     }
 
 
 
-    //check if champion_id is in url, if is't show error
+    //check if champion_id is in url, if isn't - show error
     private function CheckId($id){
         if(($id === false) || !is_numeric($id)){
-            echo '<h1 style="color:red;text-align:center;"><br/>WielBlad, nie wybrano nr. ID poradnika!<br/>(powinien byc w adresie strony)</h1>';
+            echo '<h1 style="color:red;text-align:center;"><br/>Blad, nie wybrano nr. ID poradnika!<br/>(powinien byc w adresie strony)</h1>';
             exit;
         }
     }
@@ -85,11 +110,17 @@ class GeneratorController extends AppController {
 
     public function index(){    //Choose an existing build or make a new one
         $this->paginate = array(
-            'limit' => 25,
+            'limit' => 24,
             'recursive' => 0,
             'field' => array('Build.name','Build.champion_id','Build.user_id','Build.created','Build.modified'),
             'order' => 'Build.created desc',
         );
+        if($this->params['permissions'] != 0){
+        //user only see own 'builds', (except SuperAdmin):
+            $user_id = $this->params['user_id'];
+            $this->paginate = array('conditions'=>array('user_id'=>$user_id)); 
+        }
+
         $builds = $this->paginate('Build');
         $this->set('builds',$builds);
     }
@@ -120,6 +151,7 @@ class GeneratorController extends AppController {
 
     public function skills($build_id=false){
         $this->CheckId($build_id);
+        $this->set('permissions',$this->params['permissions']);
         
         //save skills:
         if($this->request->is('post')){
@@ -130,7 +162,7 @@ class GeneratorController extends AppController {
             }
         }
 
-        //pass page content:
+        //normal view:
         $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Build.id'=>$build_id)));
         $skills = $this->Skill->find('all',
                 array(
@@ -151,10 +183,14 @@ class GeneratorController extends AppController {
                 echo 'Zatrzymuje działanie';
                 exit;
             }else{
-            //Edit existence build
-                $this->Build->save($this->request->data);
-                $this->Session->setFlash('<span style="color:orange">Zmiana nazwy poradnika ustawiona poprawnie</span>');
-                $this->redirect(array('action'=>'skills',$this->request->data['Build']['id']));
+            //edit current build
+                if($this->Build->save($this->request->data)){
+                    $this->Session->setFlash('<span style="color:orange">Zmiana nazwy poradnika ustawiona poprawnie</span>');
+                    $this->redirect(array('action'=>'skills',$this->request->data['Build']['id']));
+                }else{
+                    $this->Session->setFlash('<span style="color:red">Błąd przy aktualizacji nazwy poradnika. Upewnij się czy edytujesz swój poradnik</span>');
+                    $this->redirect(array('action'=>'skills',$this->request->data['Build']['id']));
+                }
             }
         }
     }
@@ -403,12 +439,12 @@ class GeneratorController extends AppController {
     }
 
 
-
+//preview for admins only, can publish 'build' here:
     public function preview($build_id=false){
         $this->CheckId($build_id);
         $build = $this->Build->find('first',array('recursive'=>1,'conditions'=>array('Build.id'=>$build_id)));
         
-     //after click 'next step':
+     //after click 'publish':
         if($this->request->is('post')){
         //write build
             if($this->Build->save(array(
@@ -462,6 +498,23 @@ class GeneratorController extends AppController {
 
 
 
+//preview only for non-admin users, can send 'build' to moderation to admin
+    public function preview_user($build_id=false){
+        $this->CheckId($build_id);
+        $build = $this->Build->find('first',array('recursive'=>1,'conditions'=>array('Build.id'=>$build_id)));
+
+     //after click 'give to moderation':
+        if($this->request->is('post')){
+            $this->redirect(array('action'=>'done_user',$build_id,$build['Champion']['name']));
+        }
+
+        $this->set('build_id',$build_id);
+    }
+
+
+
+
+//done function for admins only
     public function done($build_id=false,$champion_name=false){
         $this->CheckId($build_id);
 
@@ -478,8 +531,20 @@ class GeneratorController extends AppController {
             ->subject('Poradnik do '.$champion_name.' na Pentakill.pl - backup tabeli "builds"')
             ->attachments($filename.'.sql.gz')
             ->send('Poradnik o id'.$build_id.', do postaci "'.$champion_name.'" na Pentakill.pl.'."\n".' W załączeniu backup tabeli "builds"');
-        
-        echo 'Wszystko w porządku';
+    }
+
+
+
+
+//done function only for non-admin users
+    public function done_user($build_id=false,$champion_name=false){
+        $this->CheckId($build_id);
+
+        $email = new CakeEmail();
+        $email->from(array('info@pentakill.pl' => 'Poradniki Pentakill.pl'))
+            ->to('info@pentakill.pl')
+            ->subject('Nowy poradnik do '.$champion_name.' na Pentakill.pl')
+            ->send('Nowy poradnik do postaci '.$champion_name.' czeka na moderację. Wejdź na http://pentakill.pl/generator/ aby go opublikować');
     }
 
 

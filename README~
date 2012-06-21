@@ -1,5 +1,5 @@
 15.06.2012
-- Backups sends on e-mail after every build ('poradnik') publish
+- Save backups in webroot and sends it on e-mail after every publish build ('poradnik')
 
 27.05.2012
 - Adverts module

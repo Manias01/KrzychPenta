@@ -1,3 +1,4 @@
+<?$options = Configure::read('select_users_type'); //load table with types of users?>
 <div class="users index">
 	<h2><?php __('Users');?></h2>
 	<table cellpadding="0" cellspacing="0">
@@ -5,6 +6,7 @@
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('username');?></th>
 			<th><?php echo $this->Paginator->sort('password');?></th>
+                        <th><?php echo $this->Paginator->sort('type');?></th>
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -18,7 +20,8 @@
 	<tr<?php echo $class;?>>
 		<td><?php echo $user['User']['id']; ?>&nbsp;</td>
 		<td><?php echo $user['User']['username']; ?>&nbsp;</td>
-		<td><?php echo $user['User']['password']; ?>&nbsp;</td>
+		<td><?php echo '******' ?>&nbsp;</td>
+                <td><?php echo $options[$user['User']['type']];?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $user['User']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $user['User']['id'])); ?>
