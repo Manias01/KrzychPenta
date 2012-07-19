@@ -12,7 +12,7 @@ class GeneratorController extends AppController {
 
         //users type permissions for 'generator' controller:
         if($this->params['action'] != 'index' && $this->params['action'] != 'new_build' && $this->params['action'] != 'save_new_build'){
-            if($this->params['permissions'] != 0){  //if logged user (not SuperAdmin) want to save:
+            if($this->params['permissions'] != 0 AND $this->params['permissions'] != 1){  //if logged user (not SuperAdmin) want to save:
 
                 //user can only save own 'builds':
                 $beforeF_champion_id = $this->params['pass'][0];
@@ -115,7 +115,7 @@ class GeneratorController extends AppController {
             'field' => array('Build.name','Build.champion_id','Build.user_id','Build.created','Build.modified'),
             'order' => 'Build.created desc',
         );
-        if($this->params['permissions'] != 0){
+        if($this->params['permissions'] != 0 AND $this->params['permissions'] != 1){
         //user only see own 'builds', (except SuperAdmin):
             $user_id = $this->params['user_id'];
             $this->paginate = array('conditions'=>array('user_id'=>$user_id)); 

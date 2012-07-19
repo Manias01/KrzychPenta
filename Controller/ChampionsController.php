@@ -6,7 +6,7 @@ class ChampionsController extends AppController {
         public $uses=array('Champion','Skill','Rotation');
 
         function beforeFilter(){
-//          $this->Auth->allow();
+          $this->Auth->allow('rotation');
           parent::beforeFilter();
         }
 
@@ -170,10 +170,11 @@ class ChampionsController extends AppController {
             $this->Rotation->deleteAll('1=1',false);   //clear 'rotations' table
 
             foreach($rotation as $name){
+                $name = str_replace('.', '. ', $name);  //to get Dr.Mundo correctly
                 $champ_id = $this->Champion->find('first',array('conditions'=>array('Champion.name'=>$name),'fields'=>array('Champion.id')));
                 if(empty($champ_id)){
-                    $this->GetChampion($name);
-                    //echo "BŁĄD! Nie znaleziono championa o nazwie: '$name' <br/>";
+                    //$this->GetChampion($name);
+                    echo "BŁĄD! Nie znaleziono championa o nazwie: '$name' <br/>";
                 }
                 $this->Rotation->create();  //create new record
                 if(!$this->Rotation->save(array(
@@ -289,36 +290,6 @@ class ChampionsController extends AppController {
             echo 'Pobrano grafiki i skille postaci<br/><a href="/">Strona główna</a>';
 
         }
-
-
-
-/*
-        public function GetLore($champion_id){
-           if(!$champion_id){
-                echo 'Brakuje id championa';
-                exit;
-            }
-            $stronaPL = file_get_contents('http://eune.leagueoflegends.com/pl/champions/'.$champion_id);
-
-           //get data for 'lore' in 'champions' table:
-            $pattern = '/<td class="champion_description">(.*)<\/td>/';
-            preg_match($pattern, $stronaPL, $lore);
-
-            //save 'description'(lore) to 'champions' table
-            $this->Champion->validate = false;  //avoid validation from model, just updating data
-            $this->Champion->create();   //clear input data, NOT make a new row
-            if(!$this->Champion->save(array(
-                'id'=>$champion_id,
-                'description'=>$lore[1] //write with "<br/>"
-                ))
-            ){
-                echo '<span style="color:red">Blad przy zapisywaniu col "description" w tabeli "champions"</span>';
-                exit;
-            }
-            echo 'Lore dla postaci '.$champion_slug.' zapisane poprawnie';
-            exit;
-        }
-*/
 
 
 

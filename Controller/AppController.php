@@ -49,9 +49,6 @@ class AppController extends Controller {
 
 
     public function appError($error) {
-//        print_r($this->params);
-//        print_r($error);
-//        exit;
         $this->redirect('/');
     }
 

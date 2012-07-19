@@ -25,8 +25,7 @@
 <div id="desc-right-column">
     <h3 style="margin: 0;">Przykładowa rozpiska</h3>
     <p>Pamietaj aby do nagłówków używać format->"<strong>header 3</strong>"<br/>
-    1.walka na linii.<br/>2.team fight.<br/>3.kombinacje skilli o ile są jakieś ciekawe.<br/>
-       W pkt.1 można napisać jakie start items. Jeżeli jungler to pkt.1 opis dżungli</p>
+    1.Wstęp(bez nagłowka).<br/>2.Early game(start items)/jungle.<br/>3.Team Fight.<br/>4. Combo<br/>5.Podsumowanie(opcjonalne)<br/>
 
     <div id="desc-skills">
         <h3 style="margin: 0;">Skille</h3>

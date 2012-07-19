@@ -168,7 +168,7 @@ $(document).ready(function(){
             plugins : "advhr,preview,wordcount",
 
             // Theme options - button# indicated the row# only
-            theme_advanced_buttons1 : "newdocument,|,bold,italic,underline,|,justifyleft,justifycenter,justifyright,fontselect,fontsizeselect,formatselect",
+            theme_advanced_buttons1 : "newdocument,|,bold,italic,underline,|,justifyleft,justifycenter,justifyright,formatselect",
             theme_advanced_buttons2 : "cut,copy,paste,|,bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,anchor,image,|,code,preview,|,forecolor,backcolor,|,advhr,removeformat,|",
             theme_advanced_toolbar_location : "top",
             theme_advanced_toolbar_align : "left",

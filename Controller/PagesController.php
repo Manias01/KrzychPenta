@@ -251,7 +251,7 @@ class PagesController extends AppController {
 
             //Search in Builds:
                 //set conditions:
-                    $conditions[] = array('Build.done'=>1);
+                    $conditionsBuild[] = array('Build.done'=>1);
                     foreach($phrases as $phrase){
                         $conditionsBuild[] = array(
                             'OR'=>array(

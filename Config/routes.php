@@ -45,7 +45,7 @@
         Router::connect('/championi/*', array('controller' => 'pages', 'action' => 'all_champions'));
         Router::connect('/champion/*', array('controller' => 'pages', 'action' => 'champion'));
 
-        Router::connect('/rotacja', array('controller' => 'champions', 'action' => 'rotation'));
+        Router::connect('/rotacjaa', array('controller' => 'champions', 'action' => 'rotation'));
         Router::connect('/reset', array('controller' => 'users', 'action' => 'resetCache'));
 
 
