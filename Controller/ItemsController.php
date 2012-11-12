@@ -8,8 +8,8 @@ class ItemsController extends AppController {
 
 
     function beforeFilter(){
-      parent::beforeFilter();
-//      $this->Auth->allow('*');
+        $this->Auth->allow('GetItems');
+        parent::beforeFilter();
     }
 
 
@@ -80,8 +80,43 @@ class ItemsController extends AppController {
 	}
 
 
-//items from *.xml to data base
-        public function items_to_db(){
+
+        public function GetItems(){
+
+            include('../Controller/items_test.php');
+
+            $this->Item->deleteAll('1=1',false);   //clear 'items' table
+
+            $itemsClass = new GetItems();
+            $items = $itemsClass->CreateObject();
+            
+            $id=1;
+            foreach($items as $item){
+                $this->Item->create();
+                $this->Item->set(array(
+                    'id'=>$id,
+                    'name_pl'=>$item['name_pl'],
+                    'name_en'=>$item['name_en'],
+                    'price1'=>intval($item['cost1']),
+                    'price2'=>intval($item['cost2']),
+                    'desc_pl'=>$item['desc_pl']
+                    )
+                );
+                $this->Item->save();
+                //don't save tags
+                
+                $id++;
+            }
+
+            $itemsClass->GetAllImages(20);
+            $itemsClass->GetAllImages(38);
+            $itemsClass->GetAllImages(64);
+
+            echo 'Wszystko poszlo ok';
+            exit();
+
+
+/*
             $items = simplexml_load_string(file_get_contents('files/items.xml'));
 
             $id=1;
@@ -113,7 +148,7 @@ class ItemsController extends AppController {
                 $id++;
             }
             exit;
-
+*/
         }
 
 

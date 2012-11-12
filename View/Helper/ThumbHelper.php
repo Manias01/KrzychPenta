@@ -14,6 +14,8 @@ class ThumbHelper extends AppHelper {
         $string6 = str_replace(':','',$string5);
         $string = str_replace(",",'',$string6);
         $string = str_replace("!",'',$string);
+        $string = str_replace("/-",'',$string);
+        $string = str_replace("/",'',$string);
         return($string);
     }
 

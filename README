@@ -1,3 +1,8 @@
+12.11.2012 (moved on new server)
+- Fixed download champions with theirs lore and skills (with images)
+- 'Download all champions' now work properly
+- Extended users table, added: login amount and last login date
+
 19.07.2012
 - Some minor bugs eliminated
 

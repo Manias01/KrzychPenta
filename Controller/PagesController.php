@@ -68,6 +68,7 @@ class PagesController extends AppController {
         
         $this->set('title_for_layout', 'Witamy');
         $this->set('header','Aktualności');
+
     }
 
 
@@ -106,10 +107,11 @@ class PagesController extends AppController {
                             'Champion.name LIKE'=>"%$word%"
                          )
                     );
+                    
                 }
                 $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>$conditionsName));
             }else{
-                $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Champion.name'=>$champion_name,'Build.done'=>1)));
+                $build = $this->Build->find('first',array('recursive'=>0,'conditions'=>array('Champion.slug'=>$champion_name,'Build.done'=>1)));
             }
         }
 

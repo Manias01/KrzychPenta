@@ -16,6 +16,11 @@ class UsersController extends AppController {
 
     public function login() {
         if ($this->Auth->login()) {
+            $user = $this->Session->read();
+            //login_amount +1 and new 'modified' value (last login information)
+            $user['Auth']['User']['login_amount'] = $user['Auth']['User']['login_amount'] + 1;
+            $this->User->save(array('id'=>$user['Auth']['User']['id'], 'login_amount'=>$user['Auth']['User']['login_amount']));
+            
             $this->redirect($this->Auth->redirect());
         } else {
             $this->Session->setFlash(__('Invalid username or password, try again'));

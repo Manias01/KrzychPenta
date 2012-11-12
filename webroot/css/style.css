@@ -1,10 +1,21 @@
-@font-face{
+/*@font-face{
     font-weight: normal;
     font-style: normal;
     font-variant: normal;
 
     font-family: 'Berylium';
     src: url('../Berylium.ttf') format('truetype');
+}*/
+@font-face {
+    font-family: 'Berylium';
+    src: url('gothic_ultra_ot-webfont.eot');
+    src: url('gothic_ultra_ot-webfont.eot?#iefix') format('embedded-opentype'),
+         url('gothic_ultra_ot-webfont.woff') format('woff'),
+         url('gothic_ultra_ot-webfont.ttf') format('truetype'),
+         url('gothic_ultra_ot-webfont.svg#GothicUltraOTRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
 /*----Reset styles----*/
 html, body, div, span, applet, object, iframe,
@@ -83,7 +94,7 @@ ul{
 h1,h2,h3,h4,h5,h6{
     font-family: Berylium,Georgia, "Times New Roman", Times, serif;
     color: white;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 100;
     line-height: 130%;
     text-transform: uppercase;
@@ -268,7 +279,7 @@ div.news{
 }
 .news div.news-title a{
     color: white;
-    font-size: 16px;
+    font-size: 18px;
 }
 .news div.news-text{
     width: 380px;

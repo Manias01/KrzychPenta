@@ -1,3 +1,9 @@
+19.07.2012
+- Some minor bugs eliminated
+
+21.06.2012
+- Users permissions. Editors can only use 'generator' and write/edit only own 'builds'
+
 15.06.2012
 - Save backups in webroot and sends it on e-mail after every publish build ('poradnik')
 

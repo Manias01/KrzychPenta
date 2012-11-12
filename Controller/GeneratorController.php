@@ -280,7 +280,7 @@ class GeneratorController extends AppController {
 
     public function save_masteries($build_id=false,$name='error'){
         $this->CheckId($build_id);
-        if($this->Build->save(array('id'=>$build_id,'masteries'=>str_replace('-','/',$name)))){
+        if($this->Build->save(array('id'=>$build_id,'masteries'=>$name))){
             $this->redirect(array('action'=>'ss',$build_id));
         }else{
             echo 'Problem z zapisem masteries [GeneratorController -> save_masteries()]';

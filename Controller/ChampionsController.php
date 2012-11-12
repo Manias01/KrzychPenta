@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 
 class ChampionsController extends AppController {
         public $helpers=array('Thumb');
@@ -157,6 +158,7 @@ class ChampionsController extends AppController {
 
 
         public function rotation(){
+            $message = '';
             $codeWeb = file_get_contents('http://leagueoflegends.wikia.com/wiki/Template:Current_champion_rotation');
             $pattern = '/(<meta name="keywords" content=)("League of Legends Wiki,leagueoflegends,Template:Current champion rotation,)(.*)(" \/>)/';
             preg_match($pattern, $codeWeb, $champs);
@@ -173,17 +175,25 @@ class ChampionsController extends AppController {
                 $name = str_replace('.', '. ', $name);  //to get Dr.Mundo correctly
                 $champ_id = $this->Champion->find('first',array('conditions'=>array('Champion.name'=>$name),'fields'=>array('Champion.id')));
                 if(empty($champ_id)){
-                    //$this->GetChampion($name);
-                    echo "BŁĄD! Nie znaleziono championa o nazwie: '$name' <br/>";
+                    $message .= "BŁĄD! Nie znaleziono championa o nazwie: '$name'. Próba pobrania go ... <br/>";
+                    $this->GetChampion($name);
                 }
                 $this->Rotation->create();  //create new record
                 if(!$this->Rotation->save(array(
                     'champion_id'=>$champ_id['Champion']['id']
-                ))) echo "BŁĄD! Nie udało się zapisać championa o id='$champ_id' i nazwie='$name' <br/>";
+                ))) $message .= "BŁĄD! Nie udało się zapisać do rotacji championa o id='$champ_id' i nazwie='$name' <br/>";
 
-                echo $name.' zapisano <br/>';
+                $message .= $name.' zapisano <br/>';
             }
-            
+
+
+            $email = new CakeEmail();
+            $email->from(array('info@pentakill.pl' => 'Rotacja - Pentakill.pl'))
+                ->to('info@pentakill.pl')
+                ->subject('Pobranie rotacji z dnia'.date('d.m.Y'))
+                ->send($message);
+
+            echo $message;
 
             exit;
             $this->redirect(array('controller'=>'pages', 'action'=>'home'));
@@ -241,8 +251,28 @@ class ChampionsController extends AppController {
                 );
                 $this->Skill->save();
 
-                //download, resize and save skill images (3 sizes foreach)
-                $img_url = 'http://edge1.mobafire.com/images/ability/'.$champion_slug.'-'.$this->Dehumanize($skill_nameEN[$a]).'.png';
+
+            //exceptions:
+                $renamed = '';
+                switch($this->Dehumanize($skill_nameEN[$a])){
+                    case 'final-spark':
+                        $renamed = 'finales-funkeln';
+                        break;
+                    case 'chronoshift':
+                        $renamed = 'chrono-shift';
+                        break;
+                    case 'hyper-kinetic-position-reverser':
+                        $renamed = 'hyper-kinetic-position-reverse';
+                        break;
+                }
+
+                
+
+                if(empty($renamed)) $renamed = $skill_nameEN[$a];
+                
+
+                //download, resize and save skill images (3 sizes)
+                $img_url = 'http://edge1.mobafire.com/images/ability/'.$champion_slug.'-'.$this->Dehumanize($renamed).'.png';
                 for($b=0;$b<3;$b++){
                     $img_source_size = getImageSize($img_url);
                     $img_source = imageCreateFromPng($img_url);
@@ -313,7 +343,10 @@ class ChampionsController extends AppController {
             $codeWeb = file_get_contents('http://www.mobafire.com/league-of-legends/champions');
             $codeWeb = explode('champ-box',$codeWeb);
 
-            if($name=='all') $this->Champion->deleteAll('1=1',false);    //clear table
+            if($name=='all'){
+                $this->Champion->deleteAll('1=1',false);    //clear table
+                $this->Skill->deleteAll('1=1',false);    //clear table
+            }
 
             for($a=1;$a<(count($codeWeb)-2);$a++){
                 $moba['name'][$a] = $this->Tnij($codeWeb[$a],'<div class="champ-name">','</div>');
@@ -329,7 +362,7 @@ class ChampionsController extends AppController {
 
                 //get another champion_id from mobafire
                 for($b=0;$b<=count($champions);$b++){
-                    if($moba['name'][$a] == $champions[$b]['name']){
+                    if(isSet($moba['name'][$a]) && isSet($champions[$b]['name']) && ($moba['name'][$a] == $champions[$b]['name'])){
                         $moba['id_normal'][$a] = $champions[$b]['id'];
                         break;
                     }
@@ -337,18 +370,31 @@ class ChampionsController extends AppController {
 
                 //save to database:
                 if($name=='all'){
-                    //erase and save a new one list, without lore
-                    $this->Champion->validate = false;
-                    $this->Champion->create();
-                    $this->Champion->save(array(
-                      'id' => $moba['id_normal'][$a],
-                      'name' => $moba['name'][$a],
-                      'slug' => $this->Dehumanize($moba['name'][$a]),
-                      'mobafire_id' => $moba['nr'][$a],
-                      'rp' => $moba['rp'][$a],
-                      'ip' => $moba['ip'][$a]
-                      )
-                    );
+                        if(isSet($moba['id_normal'][$a])){
+
+    //joyce is little bugged, to fix later:
+    if($moba['id_normal'][$a] ==126) continue;
+    
+                            //get 'lore':
+                            $stronaPL = file_get_contents('http://eune.leagueoflegends.com/pl/champions/'.$moba['id_normal'][$a]);
+                            $pattern = '/<td class="champion_description">(.*)<\/td>/';
+                            preg_match($pattern, $stronaPL, $lore);
+
+                            //erase and save a new one list
+                            $this->Champion->validate = false;
+                            $this->Champion->create();
+                            $this->Champion->save(array(
+                              'id' => $moba['id_normal'][$a],
+                              'name' => $moba['name'][$a],
+                              'slug' => $this->Dehumanize($moba['name'][$a]),
+                              'mobafire_id' => $moba['nr'][$a],
+                              'rp' => $moba['rp'][$a],
+                              'ip' => $moba['ip'][$a],
+                              'description'=>$lore[1] //write with "<br/>"
+                              )
+                            );
+                            //$this->GetSkills($moba['id_normal'][$a],$this->Dehumanize($moba['name'][$a]));
+                        }
                 }elseif(strtolower($name) == strtolower($moba['name'][$a])){
                     // add/update only one champion, with lore
                     //get 'lore':
