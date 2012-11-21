@@ -172,7 +172,7 @@ class ChampionsController extends AppController {
             $this->Rotation->deleteAll('1=1',false);   //clear 'rotations' table
 
             foreach($rotation as $name){
-                $name = str_replace('.', '. ', $name);  //to get Dr.Mundo correctly
+                $name = str_replace('Dr ', 'Dr. ', $name);  //to get Dr.Mundo correctly
                 $champ_id = $this->Champion->find('first',array('conditions'=>array('Champion.name'=>$name),'fields'=>array('Champion.id')));
                 if(empty($champ_id)){
                     $message .= "BŁĄD! Nie znaleziono championa o nazwie: '$name'. Próba pobrania go ... <br/>";
@@ -182,7 +182,6 @@ class ChampionsController extends AppController {
                 if(!$this->Rotation->save(array(
                     'champion_id'=>$champ_id['Champion']['id']
                 ))) $message .= "BŁĄD! Nie udało się zapisać do rotacji championa o id='$champ_id' i nazwie='$name' <br/>";
-
                 $message .= $name.' zapisano <br/>';
             }
 
@@ -190,12 +189,13 @@ class ChampionsController extends AppController {
             $email = new CakeEmail();
             $email->from(array('info@pentakill.pl' => 'Rotacja - Pentakill.pl'))
                 ->to('info@pentakill.pl')
-                ->subject('Pobranie rotacji z dnia'.date('d.m.Y'))
+                ->subject('Pobranie rotacji z dnia '.date('d.m.Y'))
+                ->emailFormat('both')
                 ->send($message);
 
             echo $message;
 
-            exit;
+//            exit;
             $this->redirect(array('controller'=>'pages', 'action'=>'home'));
         }
 

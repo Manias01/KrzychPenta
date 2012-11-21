@@ -1,8 +1,8 @@
 <?php
 class GetItems {
   public $xml_url = 'gen/xml/items.xml';
-  public $source_url = 'items_test_en';
-  public $source_url_pl = 'items_test_pl';
+  public $source_url = 'http://eune.leagueoflegends.com/items';
+  public $source_url_pl = 'http://eune.leagueoflegends.com/pl/items';
   public $items_list;
   public $items_list_pl;
   public $string;
@@ -129,12 +129,14 @@ class GetItems {
   }
 
   function GetAllImages($size){
+    $out = array();
     $temp = $this->items_list;
 //$this->num_items
-    for($a=0;$a<=$this->num_items;$a++){
+    for($a=0;$a<=($this->num_items-1);$a++){
       $b=$a+1;
       $sciezka = 'img/lol/items/'.$this->NormalizeName($this->NameEN($temp[$b])).'_'.$size.'.gif';
-      $out[$a] = imageGif($this->ResizeImage($this->UrlImage($temp[$b]), $size), $sciezka);	//zapisz nowy obrazek na dysku
+      if(!file_exists($sciezka))
+        $out[$a] = imageGif($this->ResizeImage($this->UrlImage($temp[$b]), $size), $sciezka);	//zapisz nowy obrazek na dysku
     }
 
   return($out);

@@ -85,27 +85,26 @@ class ItemsController extends AppController {
 
             include('../Controller/items_test.php');
 
-            $this->Item->deleteAll('1=1',false);   //clear 'items' table
+            //$this->Item->deleteAll('1=1',false);   //clear 'items' table
 
             $itemsClass = new GetItems();
             $items = $itemsClass->CreateObject();
             
-            $id=1;
             foreach($items as $item){
-                $this->Item->create();
-                $this->Item->set(array(
-                    'id'=>$id,
-                    'name_pl'=>$item['name_pl'],
-                    'name_en'=>$item['name_en'],
-                    'price1'=>intval($item['cost1']),
-                    'price2'=>intval($item['cost2']),
-                    'desc_pl'=>$item['desc_pl']
-                    )
-                );
-                $this->Item->save();
-                //don't save tags
-                
-                $id++;
+                $exists = $this->Item->find('first',array('conditions'=>array('Item.name_en'=>$item['name_en'])));
+                if(empty($exists)){
+                    $this->Item->create();
+                    $this->Item->set(array(
+                        'name_pl'=>$item['name_pl'],
+                        'name_en'=>$item['name_en'],
+                        'price1'=>intval($item['cost1']),
+                        'price2'=>intval($item['cost2']),
+                        'desc_pl'=>$item['desc_pl']
+                        )
+                    );
+                    $this->Item->save();
+                    //don't save tags
+                }
             }
 
             $itemsClass->GetAllImages(20);
