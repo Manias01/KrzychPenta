@@ -30,7 +30,7 @@ class TooltipsController extends AppController {
                 echo 'Poziom: '.$output['Ss']['lv'].'</div>';
                 echo '<div><h3>'.$output['Ss']['name_en'].'</h3>';
                 echo '<h4>'.$output['Ss']['name_pl'].'</h4>';
-                echo $output['Ss']['desc_en'].'</div>';
+                echo $output['Ss']['desc_pl'].'</div>';
             }
 
 

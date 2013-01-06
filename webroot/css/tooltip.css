@@ -31,7 +31,7 @@
     float: left;
 }
 #tooltip-item div, #tooltip-ss div, #tooltip-rune div, #tooltip-champ div, #tooltip-skill div{
-    width: 330px;
+    width: 325px;
     float: right;
 }
 #tooltip-ss img{
@@ -40,6 +40,10 @@
 #tooltip-ss div.ss-lv{
     width: 60px;
     float: left;
+}
+#tooltip-item div{
+    text-align: left;
+    white-space: pre-line;
 }
 
 #tooltip-champ div span{

@@ -53,6 +53,13 @@ class AppController extends Controller {
     }
 
 
+    public function printr($input){
+        echo '<pre>';
+        print_r($input);
+        echo '</pre>';
+        exit();
+    }
+
 
     
 //old function, cut $string from first occur string->$pre, to first occur string->$post

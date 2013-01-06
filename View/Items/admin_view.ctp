@@ -6,6 +6,11 @@
 			<?php echo h($item['Item']['id']); ?>
 			&nbsp;
 		</dd>
+                <dt><?php echo __('Moba_id'); ?></dt>
+		<dd>
+			<?php echo h($item['Item']['moba_id']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Name Pl'); ?></dt>
 		<dd>
 			<?php echo h($item['Item']['name_pl']); ?>
@@ -14,16 +19,6 @@
 		<dt><?php echo __('Name En'); ?></dt>
 		<dd>
 			<?php echo h($item['Item']['name_en']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Price1'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['price1']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Price2'); ?></dt>
-		<dd>
-			<?php echo h($item['Item']['price2']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Desc Pl'); ?></dt>

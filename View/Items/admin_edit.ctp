@@ -6,8 +6,6 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('name_pl');
 		echo $this->Form->input('name_en');
-		echo $this->Form->input('price1');
-		echo $this->Form->input('price2');
 		echo $this->Form->input('desc_pl');
 	?>
 	</fieldset>

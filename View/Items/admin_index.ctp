@@ -3,11 +3,10 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
+                        <th><?php echo $this->Paginator->sort('moba_id');?></th>
                         <th>Image</th>
 			<th><?php echo $this->Paginator->sort('name_en');?></th>
 			<th><?php echo $this->Paginator->sort('name_pl');?></th>
-			<th><?php echo $this->Paginator->sort('price1');?></th>
-			<th><?php echo $this->Paginator->sort('price2');?></th>
 			<th><?php echo $this->Paginator->sort('desc_pl');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
@@ -16,11 +15,10 @@
         <?$img_url = $this->Thumb->Dehumanize($item['Item']['name_en'])?>
 	<tr>
 		<td><?php echo h($item['Item']['id']); ?>&nbsp;</td>
-                <td><img src="<?=$this->base?>/img/lol/items/<?=$img_url?>_38.gif" alt="<?=$item['Item']['name_en']?>"/></td>
+                <td><?php echo h($item['Item']['moba_id']); ?>&nbsp;</td>
+                <td><img src="<?=$this->base?>/img/lol/items/<?=$img_url?>_38.gif" style="width:38px;height:38px;" alt="<?=$item['Item']['name_en']?>"/></td>
 		<td><?php echo h($item['Item']['name_en']); ?>&nbsp;</td>
                 <td><?php echo h($item['Item']['name_pl']); ?>&nbsp;</td>
-		<td><?php echo h($item['Item']['price1']); ?>&nbsp;</td>
-		<td><?php echo h($item['Item']['price2']); ?>&nbsp;</td>
 		<td><?php echo h($item['Item']['desc_pl']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $item['Item']['id'])); ?>

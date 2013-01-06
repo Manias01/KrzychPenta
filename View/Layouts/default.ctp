@@ -162,7 +162,7 @@
 <?php echo $this->element('sql_dump'); ?>
 
 <?if($this->base != '/KrzychPenta')://if it is NOT localhost:?>
-
+<?//google Analytics:?>
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-24389295-1']);
