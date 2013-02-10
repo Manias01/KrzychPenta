@@ -517,3 +517,15 @@ span.ss-desc{
     margin: 0 60px;
     display: inline-block;
 }
+
+
+
+/*----------------------Login/Change password layouts------------------*/
+.input{
+    width: 100%;
+}
+.input label{
+    min-width: 120px;
+    display: block;
+    float: left;
+}

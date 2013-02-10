@@ -13,7 +13,12 @@
     <br/>
 
 <div id="userbox">
-    <a href="<?=$this->base?>/admin" style="color:black">Powrót do panelu admina</a> | <?=$username?> - <a href="<?=$this->Html->url(array('controller'=>'users','action'=>'logout','admin'=>true))?>" style="color:black">Wyloguj się</a>
+
+    <a href="<?=$this->base?>/admin" style="color:black">Powrót do panelu admina</a>
+    |
+    <a href="<?=$this->Html->url(array('controller'=>'users','action'=>'edit_own_account','admin'=>true))?>"><?=$username?></a>
+    -
+    <a href="<?=$this->Html->url(array('controller'=>'users','action'=>'logout','admin'=>true))?>" style="color:black">Wyloguj się</a>
 </div><!--/userbox-->
 
 
@@ -33,9 +38,13 @@
   );?>
   <div class="done">
   <?(isSet($this->params['pass'][0]))?$index = false:$index = true;?>
+      
   <?foreach($links as $nazwa=>$link):?>
-  <?=($link==$this->params['action'])?'</div><!--/done-->':''?>
-    <a href="<?=($index)?'#':$this->Html->url(array('action'=>$link,$this->params['pass'][0]));?>" <?=($link==$this->params['action'])?'class="active"':(($index)?'class="inactive"':'')?> ><?=$nazwa?></a> ->
+        <?=($link==$this->params['action'])?'</div><!--/done-->':''?>
+        <a href="<?=($index)?'#':$this->Html->url(array('action'=>$link,$this->params['pass'][0]));?>"
+            <?=($link==$this->params['action'])?'class="active"':(($index)?'class="inactive"':'')?> >
+            <?=$nazwa?>
+        </a> ->
   <?endforeach?>
 </div><!--/menu-->
 

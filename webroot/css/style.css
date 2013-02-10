@@ -468,7 +468,7 @@ a.another-champ:hover{
     text-decoration: none;
 }
 
-/*-----------------------=Champion-page-------------------------*/
+/*------------------------Champion-page-------------------------*/
 #champion-price{
     width: 130px;
     height: 80px;
@@ -576,6 +576,18 @@ a.another-champ:hover{
 span.ss-desc{
     color: #F7E268;
 }
+
+/*----------------------Login/Change password layouts------------------*/
+.input{
+    width: 100%;
+}
+.input label{
+    min-width: 120px;
+    display: block;
+    float: left;
+}
+
+
 
 /*----------------------------Other------------------------*/
 #pagination{

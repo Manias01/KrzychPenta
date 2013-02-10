@@ -31,7 +31,7 @@
     <ul id="items-ready" class="connectedSortable">
 
         <?foreach($items as $item):?>
-            <a name="<?=strtolower($item['Item']['name_en'])?>">
+            <a name="<?=strtolower($item['Item']['name_en'])?> <?=strtolower($item['Item']['name_pl'])?>">
                 <?=$this->Thumb->item($item['Item']['id'],$item['Item']['name_en'],64)."\n"?>
             </a>
         <?endforeach?>

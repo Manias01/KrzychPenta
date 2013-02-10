@@ -19,12 +19,17 @@ class UsersController extends AppController {
             $user = $this->Session->read();
             //login_amount +1 and new 'modified' value (last login information)
             $user['Auth']['User']['login_amount'] = $user['Auth']['User']['login_amount'] + 1;
-            $this->User->save(array('id'=>$user['Auth']['User']['id'], 'login_amount'=>$user['Auth']['User']['login_amount']));
+            $this->User->save(array(
+                'id'=>$user['Auth']['User']['id'],
+                'login_amount'=>$user['Auth']['User']['login_amount'])
+            );
             
             $this->redirect($this->Auth->redirect());
         } else {
-            $this->Session->setFlash(__('Invalid username or password, try again'));
+            if(!empty($this->data))
+                $this->Session->setFlash(__('Invalid username or password, try again'));
         }
+        
         $this->set('title_for_layout','Logowanie');
         $this->set('header','Zaloguj się');
     }
@@ -32,6 +37,44 @@ class UsersController extends AppController {
     public function admin_logout() {
         $this->Auth->logout();
         $this->redirect('/');
+    }
+
+    public function admin_edit_own_account(){
+        $user = $this->Session->read();
+
+        //save data:
+        if(isSet($this->data['User']['id']) && $this->data['User']['id'] == $user['Auth']['User']['id']){   //validate user permission
+            if(empty($this->data['User']['password'])){
+                $this->User->save(array(
+                    'id'=>$this->data['User']['id'],
+                    'username'=>$this->data['User']['username']
+                ));
+            }else{
+                $this->User->save(array(
+                    'id'=>$this->data['User']['id'],
+                    'username'=>$this->data['User']['username'],
+                    'password'=>Security::hash($this->data['User']['password'],NULL,'785f756785nv7w56om:}{p;[pl[L[p]luii')
+                ));
+            }
+
+            //logout actually logged user:
+            $this->Auth->logout();
+            $this->redirect('/admin');
+        }
+
+
+
+
+        //load default data:
+        if (empty($this->data)) {
+            $this->data = $this->User->read(null, $user['Auth']['User']['id']);
+            $this->request->data['User']['password'] = '';
+        }
+
+
+        $this->layout = 'generator';
+
+        $this->set('title_for_layout', 'Edycja konta');
     }
 
 

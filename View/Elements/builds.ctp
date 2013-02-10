@@ -1,6 +1,6 @@
 <div id="newsy">
     <?foreach($builds as $new):
-        $new_link = array('controller'=>'pages','action'=>'poradnik',strtolower($new['Champion']['name']));
+        $new_link = array('controller'=>'pages','action'=>'poradnik',$this->Thumb->Dehumanize($new['Champion']['name']));
     ?>
 
     <div class="news">

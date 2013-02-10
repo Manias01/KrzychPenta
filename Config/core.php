@@ -342,6 +342,7 @@ Cache::config('_cake_model_', array(
                 0 => 'Super admin',
                 1 => 'Admin',
                 2 => 'Redaktor',
-                3 => 'Obserwator'
+                3 => 'Obserwator',
+                4 => 'Wszystkie poradniki'
             )
      );

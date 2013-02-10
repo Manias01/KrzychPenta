@@ -31,15 +31,18 @@ class AppController extends Controller {
         if (isset($this->params['prefix']) && $this->params['prefix'] == 'admin'){ //if user is login, change layout:
 
             //user type=2 can only use 'generator' and logout
-            if($user_data['Auth']['User']['type'] == 2 && ($this->params['controller']!='users' && $this->params['action']!='admin_logout') ){    //users with 'type'=>2, can use only 'generator'
+            if((isSet($user_data['Auth']['User']['type']) && ($user_data['Auth']['User']['type']==2 || $user_data['Auth']['User']['type']==4))
+                    && ($this->params['controller']!='users' && $this->params['action']!='admin_logout') ){
+                //users with 'type'=>2, can use only 'generator'
                 $this->redirect(array('controller'=>'generator','action'=>'index','admin'=>false));
             }else{
                 $this->layout = 'admin';
             }
 
         }
-        
-        if (isset($this->params['controller']) && $this->params['controller'] == 'generator'){ //change layout to 'generator'
+
+        //change layout to 'generator'
+        if (isset($this->params['controller']) && $this->params['controller'] == 'generator'){
             $this->layout = 'generator';
         }
 
